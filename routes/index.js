@@ -85,6 +85,10 @@ router.get('/', function (req, res, next) {
 
 });
 
+router.get('/types', function (req, res, next) {
+	res.render('productshow', {});
+});
+
 router.get('/header', function (req,res,next) {
   res.render('Header');
 });
