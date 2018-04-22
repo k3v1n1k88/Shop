@@ -1,3 +1,4 @@
+ {{#each product }}
 <div class="container-fluid col-md-12">
 	<div id="main">
 		<div id="myCarousel" class="carousel slide" data-ride="carousel" style="height: 300px;width: 60%;margin-left: auto;margin-right: auto;">
@@ -46,14 +47,14 @@
 		</div><!--End breadcrumb-->
 		<br><br>
 		<div class="col-md-7" style="height: 700px">
-			<img src="/assets/Sanpham/hinhsanpham.png">
+			<img src="/assets/image/{{ this.image }}">
 		</div><!--main picture product-->
 		<div class="col-md-5" style="height: 300px;">
 			<div id="nameitem">
-				<h2>Bucket Bag</h2>
+				<h2>{{ this.name }}</h2>
 			</div>
 			<div id="priceitem">
-				<h3>150.000VND</h3>
+				<h3>{{ this.price }}</h3>
 			</div>
 			<div class="selection" style="margin-top: 30px">
 				<div id="selectionsize" class="col-md-8" >
@@ -110,14 +111,7 @@
 					Details
 				</h3>
 				<div class="content-detail">
-					Túi xách nữ tua rua Chanel sang trọng có thiết kế thời trang thanh lịch, nhỏ gọn là phụ kiện không thể thiếu của phái đẹp <br>
-					Túi có khóa kéo tiện dụng đựng những vật dụng cần thiết, đường may đẹp, chắc chắn, cho bạn an tâm sử dụng
-					Họa tiết ô vuông phối cùng tua rua phía trước xinh xắn, dễ thương, quai đeo dạng mắt xích nối liền nhau chắc chắn, thời trang <br>
-					Màu đen thanh lịch, tinh tế dễ dàng kết hợp phụ kiện và trang phục <br>
-					Chất liệu simili bền màu giúp bạn tự tin khi sử dụng lâu dài <br>
-					Kích thước: <br>
-					Dài 25cm, Rộng 16cm, Đáy 7cm <br>
-					Hotline:01234732339
+					{{ this.description }}
 				</div>
 				<hr>
 			</div>
@@ -192,3 +186,4 @@
 		</div><!--end others product-->
 	</div><!--end main-->
 </div>
+{{/each}}

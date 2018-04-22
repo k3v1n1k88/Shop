@@ -5,12 +5,17 @@ var db = require('./db');
 // 	db.load(sql, fn);
 // }
 
-exports.loadTop10Views = () => {
-	var sql = 'select * from products order by view desc limit 10';
+exports.loadTopViews = top => {
+	var sql = `select * from products order by view desc limit ${top}`;
 	return db.load(sql);
 }
 
-exports.loadTop10Buy = () => {
-	var sql = 'select * from products order by buy desc limit 10';
+exports.loadTopBuy = top => {
+	var sql = `select * from products order by buy desc limit ${top}`;
+	return db.load(sql);
+}
+
+exports.loadById = id => {
+	var sql = `select * from products where id = '${id}'`;
 	return db.load(sql);
 }

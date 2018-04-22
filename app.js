@@ -84,4 +84,8 @@ hbs.registerHelper('ifCond', function (v1, operator, v2, options) {
     }
 });
 
+hbs.registerHelper("list", function(context, options) {
+    return options.fn(this);
+})
+
 module.exports = app;

@@ -34,7 +34,7 @@ var Product = require('../models/product');
 router.get('/', function (req, res, next) {
 	var next_topbuy_products = [];
 	var next_topview_products = [];
-	productRepo.loadTop10Buy()
+	productRepo.loadTopBuy(10)
 		.then(topbuy_products => {
 			var count = 0;
 
@@ -44,14 +44,14 @@ router.get('/', function (req, res, next) {
 				i += 1;
 			}
 			next_topbuy_products.reverse();
-			console.log("Loading top 10 buy data completed.");
+			console.log("Loaded top 10 buy data completed.");
 			// res.render('index', 
 			// { 
 			// 	title: 'Trilpe Shop',
 			// 	topbuy_products: topbuy_products,
 			// 	next_topbuy_products: next_topbuy_product
 			// });
-			productRepo.loadTop10Views()
+			productRepo.loadTopViews(10)
 				.then(topview_products => {
 				var count = 0;
 
@@ -70,7 +70,7 @@ router.get('/', function (req, res, next) {
 					next_topview_products: next_topview_products
 				}
 				);
-				console.log("Loading top 10 view data completed.");
+				console.log("Loaded top 10 view data completed.");
 
 				})
 				.catch(err => {
@@ -85,8 +85,27 @@ router.get('/', function (req, res, next) {
 
 });
 
-router.get('/types', function (req, res, next) {
-	res.render('productshow', {});
+router.get('/product/:id', function (req, res, next) {
+	productRepo.loadById(req.params.id)
+		.then(product => {
+			req.session.product = product;
+			console.log("Loaded product by id.");
+			return res.redirect('/product');
+		})
+		.catch(err => {
+			req.session.product = null;
+			console.log('Error: ' + err);
+			res.redirect('/product');
+		});	
+});
+
+router.get('/product', function (req, res, next) {
+	if (!req.session.product) {
+		return res.render('product', {product: null});
+	}
+	res.render('product', {
+		product: req.session.product
+	});
 });
 
 router.get('/header', function (req,res,next) {
