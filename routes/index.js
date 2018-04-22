@@ -85,4 +85,8 @@ router.get('/', function (req, res, next) {
 
 });
 
+router.get('/header', function (req,res,next) {
+  res.render('Header');
+});
+
 module.exports = router;
