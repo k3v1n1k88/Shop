@@ -5,7 +5,7 @@
  */
 
 var app = require('../app');
-var debug = require('debug')('r3pi-shopping-cart:server');
+var debug = require('debug')('TripleV Shop:server');
 var http = require('http');
 
 /**
