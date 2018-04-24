@@ -68,18 +68,33 @@ router.get('/', function (req, res, next) {
 					next_topbuy_products: next_topbuy_products,
 					topview_products: topview_products,
 					next_topview_products: next_topview_products
-				}
-				);
+				});
 				console.log("Loaded top 10 view data completed.");
 
 				})
 				.catch(err => {
 					console.log('Error: ' + err);
+					return res.render('index', 
+					{ 
+						title: 'Trilpe Shop',
+						topbuy_products: null,
+						next_topbuy_products: null,
+						topview_products: null,
+						next_topview_products: null
+					});
 				});	
 
 		})
 		.catch(err => {
 			console.log('Error: ' + err);
+			return res.render('index', 
+			{ 
+				title: 'Trilpe Shop',
+				topbuy_products: null,
+				next_topbuy_products: null,
+				topview_products: null,
+				next_topview_products: null
+			});
 		});
 
 
