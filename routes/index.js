@@ -115,6 +115,7 @@ router.get('/product/:id', function (req, res, next) {
 });
 
 router.get('/product', function (req, res, next) {
+	console.log(req.session.cartList);
 	if (!req.session.product) {
 		return res.render('product', {product: null});
 	}
@@ -123,8 +124,30 @@ router.get('/product', function (req, res, next) {
 	});
 });
 
+router.get('/cart', function (req, res, next) {
+	res.render('cart', {
+		
+	});
+});
+
 router.get('/header', function (req,res,next) {
   res.render('Header');
 });
+
+router.post('/add-product', function(req, res, next) { 
+	// var listID = req.session.cartList;
+	if (!req.session.cartList) {
+		req.session.cartList = [];
+	}
+	req.session.cartList.push(req.body.product_id)
+	// req.session.cartList = listID;
+	res.redirect('/product')
+});
+
+router.get('/add-product', function(req, res, next) { 
+	console.log("----------------");
+	console.log("OK");
+});
+
 
 module.exports = router;
