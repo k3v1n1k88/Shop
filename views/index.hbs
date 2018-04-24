@@ -31,9 +31,13 @@
 </div>
 <br>
 <br>
-<div class="col-md-4 col-md-offset-4">
-  <h2>10 sản phẩm lượt mua nhiều nhất</h2>
+<div class="col-md-4 col-md-offset-1">
+  <h2 class="title"> 
+    <span class="highlight-color">Top</span>
+    <span>bán chạy</span>    
+  </h2>
 </div>
+ {{# if topbuy_products}}
 <!-- Slide 10 product -->
 <div>
   <div class="col-md-12">
@@ -41,19 +45,29 @@
       <div class="carousel-inner">
         <div class="item active">
           <ul class="thumbnails">
+
             {{# each topbuy_products }}
             {{#ifCond @index '==' 0}}
             <li class="col-sm-2 col-sm-offset-1"> 
               {{else}}
               <li class="col-sm-2"> 
                 {{/ifCond}}
-                <div class="thumbnail">
-                  <a href="/product/{{ this.id }}"><img src="/assets/image/{{ this.image }}" alt=""></a>
-                </div>
-                <div class="caption-box">
-                  <h4>{{ this.name }}</h4>
-                  <p>{{ this.price }}</p>
-                  <a class="btn btn-success btn-mini" href="#">Chi tiết</a>
+                <div class="product">
+                  
+              
+                  <div class="thumbnail">
+                    <a href="/product/{{ this.id }}"><img src="/assets/image/{{ this.image }}" alt=""></a>
+                  </div>
+                  <div class="caption-box">
+                    <h4>{{ this.name }}</h4>
+                    <p class="highlight-color">
+                      {{ this.price }}
+                        <sup>
+                          đ
+                        </sup>
+                    </p>
+                    <p class="light-text">{{ this.type }}</p>
+                  </div>
                 </div>
               </li>
               {{/each}}
@@ -64,25 +78,35 @@
 
 
           <div class="item">
-            <ul class="thumbnails">
-              {{# each next_topbuy_products }}
-              {{#ifCond @index '==' 0}}
-              <li class="col-sm-2 col-sm-offset-1"> 
-                {{else}}
-                <li class="col-sm-2"> 
-                  {{/ifCond}}
+          <ul class="thumbnails">
+
+            {{# each next_topbuy_products }}
+            {{#ifCond @index '==' 0}}
+            <li class="col-sm-2 col-sm-offset-1"> 
+              {{else}}
+              <li class="col-sm-2"> 
+                {{/ifCond}}
+                <div class="product">
+                  
+              
                   <div class="thumbnail">
                     <a href="/product/{{ this.id }}"><img src="/assets/image/{{ this.image }}" alt=""></a>
                   </div>
                   <div class="caption-box">
                     <h4>{{ this.name }}</h4>
-                    <p>{{ this.price }}</p>
-                    <a class="btn btn-success btn-mini" href="#">Chi tiết</a>
+                    <p class="highlight-color">
+                      {{ this.price }}
+                        <sup>
+                          đ
+                        </sup>
+                    </p>
+                    <p class="light-text">{{ this.type }}</p>
                   </div>
-                </li>
-                {{/each}}
-              </ul>            
-            </div>
+                </div>
+              </li>
+              {{/each}}
+            </ul>
+          </div><!-- /Slide2 --> 
           </div>
           <a class="carousel-control" href="#theCarousel1" data-slide="prev"><i class="glyphicon glyphicon-chevron-left"></i></a>
           <a class="carousel-control right carousel-costum" href="#theCarousel1" data-slide="next"><i class="glyphicon glyphicon-chevron-right"></i></a>
@@ -90,6 +114,109 @@
       </div>
     </div>
   </div> <!-- Slide 10 product -->
+{{else}}
+  <h3  class="col-md-4 col-md-offset-1">Not Found</h3>
+{{/if}}
+<div class="col-md-12" height="100px">
+   <div>
+     &nbsp;
+   </div>
+    <div>
+     &nbsp;
+   </div>
+</div>
+<div class="col-md-4 col-md-offset-1">
+  <h2 class="title"> 
+    <span class="highlight-color">Top</span>
+    <span>lượt xem</span>    
+  </h2>
+</div>
+ {{# if topview_products}}
+<!-- Slide 10 product -->
+<div>
+  <div class="col-md-12">
+    <div class="carousel slide multi-item-carousel" id="theCarousel1">
+      <div class="carousel-inner">
+        <div class="item active">
+          <ul class="thumbnails">
+
+            {{# each topview_products }}
+            {{#ifCond @index '==' 0}}
+            <li class="col-sm-2 col-sm-offset-1"> 
+              {{else}}
+              <li class="col-sm-2"> 
+                {{/ifCond}}
+                <div class="product">
+                  
+              
+                  <div class="thumbnail">
+                    <a href="/product/{{ this.id }}"><img src="/assets/image/{{ this.image }}" alt=""></a>
+                  </div>
+                  <div class="caption-box">
+                    <h4>{{ this.name }}</h4>
+                    <p class="highlight-color">
+                      {{ this.price }}
+                        <sup>
+                          đ
+                        </sup>
+                    </p>
+                    <p class="light-text">{{ this.type }}</p>
+                    {{!-- <div class="col-md-12">
+                      <span class="glyphicon glyphicon-eye-open pull-left"> </span>
+                      <p class="pull-left">&nbsp;{{ this.view }}</p>
+                      <p class="pull-right">{{ this.buy }}</p>
+                    </div> --}}
+                    {{!-- <a class="btn btn-success btn-mini" href="#">Chi tiết</a> --}}
+                  </div>
+                </div>
+              </li>
+              {{/each}}
+            </ul>
+          </div><!-- /Slide1 --> 
+
+
+
+
+                    <div class="item">
+          <ul class="thumbnails">
+
+            {{# each next_topview_products }}
+            {{#ifCond @index '==' 0}}
+            <li class="col-sm-2 col-sm-offset-1"> 
+              {{else}}
+              <li class="col-sm-2"> 
+                {{/ifCond}}
+                <div class="product">
+                  
+              
+                  <div class="thumbnail">
+                    <a href="/product/{{ this.id }}"><img src="/assets/image/{{ this.image }}" alt=""></a>
+                  </div>
+                  <div class="caption-box">
+                    <h4>{{ this.name }}</h4>
+                    <p class="highlight-color">
+                      {{ this.price }}
+                        <sup>
+                          đ
+                        </sup>
+                    </p>
+                    <p class="light-text">{{ this.type }}</p>
+                  </div>
+                </div>
+              </li>
+              {{/each}}
+            </ul>
+          </div><!-- /Slide2 --> 
+          </div>
+          <a class="carousel-control" href="#theCarousel1" data-slide="prev"><i class="glyphicon glyphicon-chevron-left"></i></a>
+          <a class="carousel-control right carousel-costum" href="#theCarousel1" data-slide="next"><i class="glyphicon glyphicon-chevron-right"></i></a>
+        </div>
+      </div>
+    </div>
+  </div> <!-- Slide 10 product -->
+{{else}}
+  <h3  class="col-md-4 col-md-offset-1">Not Found</h3>
+{{/if}}
 
 <div class="col-md-12" height="100px">
    <div>
@@ -99,32 +226,49 @@
      &nbsp;
    </div>
 </div>
-<div class="col-md-4 col-md-offset-4">
-  <h2>10 sản phẩm lượt xem nhiều nhất</h2>
+<div class="col-md-4 col-md-offset-1">
+  <h2 class="title"> 
+    <span class="highlight-color">Mới</span>
+    <span>nhất</span>    
+  </h2>
 </div>
-<br>
-<br>
+ {{# if topnew_products}}
 <!-- Slide 10 product -->
-
 <div>
   <div class="col-md-12">
-    <div class="carousel slide multi-item-carousel" id="theCarousel2">
+    <div class="carousel slide multi-item-carousel" id="theCarousel1">
       <div class="carousel-inner">
         <div class="item active">
           <ul class="thumbnails">
-            {{# each topview_products }}
+
+            {{# each topnew_products }}
             {{#ifCond @index '==' 0}}
             <li class="col-sm-2 col-sm-offset-1"> 
               {{else}}
               <li class="col-sm-2"> 
                 {{/ifCond}}
-                <div class="thumbnail">
-                  <a href="/product/{{ this.id }}"><img src="/assets/image/{{ this.image }}" alt=""></a>
-                </div>
-                <div class="caption-box">
-                  <h4>{{ this.name }}</h4>
-                  <p>{{ this.price }}</p>
-                  <a class="btn btn-success btn-mini" href="#">Chi tiết</a>
+                <div class="product">
+                  
+              
+                  <div class="thumbnail">
+                    <a href="/product/{{ this.id }}"><img src="/assets/image/{{ this.image }}" alt=""></a>
+                  </div>
+                  <div class="caption-box">
+                    <h4>{{ this.name }}</h4>
+                    <p class="highlight-color">
+                      {{ this.price }}
+                        <sup>
+                          đ
+                        </sup>
+                    </p>
+                    <p class="light-text">{{ this.type }}</p>
+                    {{!-- <div class="col-md-12">
+                      <span class="glyphicon glyphicon-eye-open pull-left"> </span>
+                      <p class="pull-left">&nbsp;{{ this.view }}</p>
+                      <p class="pull-right">{{ this.buy }}</p>
+                    </div> --}}
+                    {{!-- <a class="btn btn-success btn-mini" href="#">Chi tiết</a> --}}
+                  </div>
                 </div>
               </li>
               {{/each}}
@@ -134,30 +278,43 @@
 
 
 
-          <div class="item">
-            <ul class="thumbnails">
-              {{# each next_topview_products }}
-              {{#ifCond @index '==' 0}}
-              <li class="col-sm-2 col-sm-offset-1"> 
-                {{else}}
-                <li class="col-sm-2"> 
-                  {{/ifCond}}
+                   <div class="item">
+          <ul class="thumbnails">
+
+            {{# each next_topnew_products }}
+            {{#ifCond @index '==' 0}}
+            <li class="col-sm-2 col-sm-offset-1"> 
+              {{else}}
+              <li class="col-sm-2"> 
+                {{/ifCond}}
+                <div class="product">
+                  
+              
                   <div class="thumbnail">
                     <a href="/product/{{ this.id }}"><img src="/assets/image/{{ this.image }}" alt=""></a>
                   </div>
                   <div class="caption-box">
                     <h4>{{ this.name }}</h4>
-                    <p>{{ this.price }}</p>
-                    <a class="btn btn-success btn-mini" href="#">Chi tiết</a>
+                    <p class="highlight-color">
+                      {{ this.price }}
+                        <sup>
+                          đ
+                        </sup>
+                    </p>
+                    <p class="light-text">{{ this.type }}</p>
                   </div>
-                </li>
-                {{/each}}
-              </ul>            
-            </div>
+                </div>
+              </li>
+              {{/each}}
+            </ul>
+          </div><!-- /Slide2 --> 
           </div>
-          <a class="carousel-control " href="#theCarousel2" data-slide="prev"><i class="glyphicon glyphicon-chevron-left"></i></a>
-          <a class="carousel-control right" href="#theCarousel2" data-slide="next"><i class="glyphicon glyphicon-chevron-right"></i></a>
+          <a class="carousel-control" href="#theCarousel1" data-slide="prev"><i class="glyphicon glyphicon-chevron-left"></i></a>
+          <a class="carousel-control right carousel-costum" href="#theCarousel1" data-slide="next"><i class="glyphicon glyphicon-chevron-right"></i></a>
         </div>
       </div>
     </div>
   </div> <!-- Slide 10 product -->
+{{else}}
+  <h3  class="col-md-4 col-md-offset-1">Not Found</h3>
+{{/if}}

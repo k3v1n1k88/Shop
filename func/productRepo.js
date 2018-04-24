@@ -15,6 +15,11 @@ exports.loadTopBuy = top => {
 	return db.load(sql);
 }
 
+exports.loadTopNews = top => {
+	var sql = `select * from products order by date desc limit ${top}`;
+	return db.load(sql);
+}
+
 exports.loadById = id => {
 	var sql = `select * from products where id = '${id}'`;
 	return db.load(sql);
