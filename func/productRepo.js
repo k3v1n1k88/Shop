@@ -24,3 +24,18 @@ exports.loadById = id => {
 	var sql = `select * from products where id = '${id}'`;
 	return db.load(sql);
 }
+
+exports.loadByIds = ids => {
+	var sql = `select * from products where `;
+	var flag = false;
+	for (i of ids) {
+		if (flag) {
+			sql += `or id = '${i}' `;
+		} else {
+			sql += `id = '${i}' `;
+			flag = true;
+		}
+	}
+	
+	return db.load(sql);
+}

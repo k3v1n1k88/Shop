@@ -144,7 +144,7 @@ router.get('/product/:id', function (req, res, next) {
 });
 
 router.get('/product', function (req, res, next) {
-	console.log(req.session.cartList);
+	// console.log(req.session.cartList);
 	if (!req.session.product) {
 		return res.render('product', {product: null});
 	}
@@ -154,29 +154,132 @@ router.get('/product', function (req, res, next) {
 });
 
 router.get('/cart', function (req, res, next) {
-	res.render('cart', {
-		
-	});
+	// console.log("---------------------");
+	if (!req.session.cartList) {
+		return 	res.render('cart', {
+			products: null
+		});
+	}
+	var idList = [];
+	for (i of req.session.cartList) {
+		idList.push(i.id);
+	}
+	productRepo.loadByIds(idList)
+		.then(products => {
+			console.log("Loaded product by ids.");
+			var prods = [];
+			var totalPriceAllProd = 0;
+			for (i of products) {
+				for (j of req.session.cartList) {
+					if (i.id == j.id) {
+						var totalPrice = i.price * j.count;
+						totalPriceAllProd += totalPrice;
+						prods.push({products: i, count: j.count, totalPrice: totalPrice});
+						break;
+					}
+				}
+			}
+			console.log(totalPriceAllProd);
+			res.render('cart', {
+				products: prods,
+				totalPriceAllProd: totalPriceAllProd
+			});
+		})
+		.catch(err => {
+
+			console.log('Error: ' + err);
+			return 	res.render('cart', {
+					products: null
+			});
+		});	
 });
 
-router.get('/header', function (req,res,next) {
-  res.render('Header');
+router.get('/cart/remove/:id', function (req, res, next) {
+	var id = req.params.id;
+	console.log(id);
+	var j = 0;
+	for (i of req.session.cartList) {
+		if (i.id == id) {
+			req.session.cartList.splice(j, 1);
+			console.log(i);
+			break;
+		}
+		j += 1;
+	}
+	console.log("++++++++++++++++");
+	console.log(req.session.cartList);
+	res.redirect('/cart');
 });
+
+router.get('/cart/inc/:id', function (req, res, next) {
+	var id = req.params.id;
+	console.log(id);
+	var j = 0;
+	for (i of req.session.cartList) {
+		if (i.id == id) {
+			i.count += 1;
+			break;
+		}
+		j += 1;
+	}
+	res.redirect('/cart');
+});
+
+router.get('/cart/dec/:id', function (req, res, next) {
+	var id = req.params.id;
+
+	console.log(id);
+	var j = 0;
+	for (i of req.session.cartList) {
+		if (i.id == id) {
+			if (i.count == 1) {
+				return res.redirect(`/cart/remove/${id}`);
+			}
+			i.count -= 1;
+			break;
+		}
+		j += 1;
+	}
+	res.redirect('/cart');
+});
+
+
+// router.get('/header', function (req,res,next) {
+//   res.render('Header');
+// });
 
 router.post('/add-product', function(req, res, next) { 
-	// var listID = req.session.cartList;
-	if (!req.session.cartList) {
+	var cartList = req.session.cartList;
+	var id = req.body.product_id;
+	if (!cartList) {
 		req.session.cartList = [];
+		req.session.cartList.push({id: id, count: 1})
+		return res.redirect('/product')
 	}
-	req.session.cartList.push(req.body.product_id)
-	// req.session.cartList = listID;
+	// console.log("++++++++++++++++++++");
+	// console.log(req.session.cartList);
+	var i = 0;
+	var flag = false;
+	console.log(id);
+	while (i < cartList.length) {
+		if (cartList[i].id == id) {
+			req.session.cartList[i].count += 1;
+			flag = true;
+			break;
+		}
+		i += 1;
+	}
+
+	if (!flag) {
+		req.session.cartList.push({id: id, count: 1})
+	}
 	res.redirect('/product')
 });
 
-router.get('/add-product', function(req, res, next) { 
-	console.log("----------------");
-	console.log("OK");
-});
+// router.get('/add-product', function(req, res, next) { 
+// 	console.log("----------------");
+// 	console.log("OK");
+// });
 
 
 module.exports = router;
