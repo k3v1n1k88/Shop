@@ -1,4 +1,6 @@
+ {{# if product }}
  {{#each product }}
+ 
 <div class="container-fluid col-md-12">
 	<div id="main">
 		<div id="myCarousel" class="carousel slide" data-ride="carousel" style="height: 300px;width: 60%;margin-left: auto;margin-right: auto;">
@@ -90,9 +92,12 @@
 				<h4>20% OFF + FREE SHIPPING</h4>
 				<h5>For All New Levi’s® Email Subscribers <a href="#" class="alert-link">Details</a> </h5>
 			</div>
-			<button type="button" class="btn btn-danger col-md-12">
-				<h4>Add to your cart</h4>
-			</button>
+			<form action="/add-product" method="post" role="form" data-toggle="validator" novalidate="false">
+				<input type="hidden" name="product_id" value="{{ this.id }}">
+				<button type="submit" class="btn btn-danger col-md-12" >
+					<h4>Add to your cart</h4>
+				</button>
+			</form>
 		</div><!-- infor about product-->
 		<div id="slidebar" >
 			<div class="col-md-6" style="margin-top: 0px">
@@ -187,3 +192,5 @@
 	</div><!--end main-->
 </div>
 {{/each}}
+
+{{/if}}
