@@ -1,0 +1,10 @@
+.center{
+    display: table;
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.row{
+	margin:15px;
+}
