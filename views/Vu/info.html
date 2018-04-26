@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>title</title>
+	<meta charset="UTF-8">
+	<title>Le Hoang Vu - 1512682</title>
+	<!-- Latest compiled and minified CSS & JS -->
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="style2.css">
+	<!-- <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet"> -->
+</head>
+<body >
+	<div class="user-info">
+			<div class="col-md-2 col-md-offset-2 user-info-menu">
+
+				<a href="#"><h3  id="title-display-name">Lê Hoàng Vũ</h3></a>
+				<h7>Trang thông tin người dùng</h7>
+				<ul class="user-option"> 
+					<div id="list-user-info">
+						<span class="glyphicon glyphicon-user"></span> 
+						<span>&nbsp;Thông tin cá nhân</span>
+					</div> 
+					<div id="list-orders">
+						<span class="glyphicon glyphicon-list-alt"></span> 
+						<span>&nbsp;Đơn mua</span>
+						
+					</div> 
+				</ul>
+			</div>
+<!-- 	<div class="col-md-6">
+		&nbsp;
+		&nbsp;
+	</div> -->
+	<div class="col-xs-12 col-md-6 form-border" id="table-user-info">
+
+		<table class="table"> 
+			<h4>Hồ sơ cá nhân</h4>
+			<p>Quản lý thông tin hồ sơ cá nhân</p>
+			<tbody> 
+				<tr> 
+					<th class="col-md-3 text-align-right color-bbb" scope="row">Tên hiển thị</th> 
+					<td class="padding-left-30px">
+						<span id="display-name">Lê Hoàng Vũ</span>&nbsp;&nbsp;
+						<a class="change-info" href="javascript:;" id="change-display-name" data-toggle="modal" data-target="#myDisplayNameModal"><span class="glyphicon glyphicon-edit"></span></a>
+					</td> 
+
+				</tr> 
+
+				<tr> 
+					<th class="col-md-3 text-align-right color-bbb" scope="row"><span class="text-align-right">Username</span>	</th> 
+					<td class="padding-left-30px">elhoangvu@gmail.com</td> 
+
+				</tr> 
+				<tr> 
+					<th class="col-md-3 text-align-right color-bbb" scope="row">Password</th> 
+					<td class="padding-left-30px"> <span id="password">*********</span>&nbsp;&nbsp;
+						<a class="change-info" href="javascript:;" id="change-password" data-toggle="modal" data-target="#myPasswordModal"><span class="glyphicon glyphicon-edit"></span></a>
+					</td> 
+
+				</tr>
+			</tbody> 
+		</table>
+	</div>
+	<div  id="table-orders" class="col-xs-12 col-md-6 form-border">
+
+
+		<div class="order">
+
+
+			<div class="order-title">
+							
+								
+					<h4 class="pull-left">Don hang 1 </h4>
+						
+					<h5	class="pull-right color-yellow">Đang giao</h5>
+			</div>	
+			<table class="shop-table ">
+<!-- 				<thead>
+						<tr>
+							<td	 class="col-md-2">a</td>
+							<td	 class="col-md-4">2</td>
+							<td	 class="col-md-2">3</td>
+							<td	 class="col-md-2">4</td>
+							<td	 class="col-md-2">5</td>
+						</tr>
+				</thead>	 -->
+				<tbody>
+					
+					<tr class="table-row">
+						<td>
+							<img src="../Project/Shop/public/assets/image/Bally.jpg" alt="" class="shop-table-image">
+						</td>
+						<td>
+							<div class="shop-details">
+								<div class="productname">
+									Lincoln Corner Unit Products
+								</div>
+
+							</div>
+						</td>
+						<td>
+							<!-- <h5> -->
+								2000000<sup>đ</sup>
+							<!-- </h5> -->
+						</td>
+						<td>
+							1
+						</td>
+						<td>
+							<!-- <h5> -->
+								<strong class="red">
+									200000<sup>đ</sup>
+								</strong>
+							<!-- </h5> -->
+						</td>
+						<!-- <td>Đã giao</td> -->
+					</tr>
+
+					<tr class="table-row">
+						<td>
+							<img src="images/products/small/products-05.png" alt="">
+						</td>
+						<td>
+							<div class="shop-details">
+								<div class="productname">
+									Lincoln Corner Unit Products
+								</div>
+
+							</div>
+						</td>
+						<td>
+							<!-- <h5> -->
+								200000<sup>đ</sup>
+							<!-- </h5> -->
+						</td>
+						<td>
+							2
+						</td>
+						<td>
+							<!-- <h5>
+								<strong class="red"> -->
+									2000000000<sup>đ</sup>
+								<!-- </strong>
+							</h5> -->
+
+							<a href="#">
+								<img src="images/remove.png" alt="">
+							</a>
+						</td>
+						<!-- <td>Đã giao</td> -->
+					</tr>
+				</tbody>
+				<tfoot>
+					<tr>
+						<td colspan="6">
+							<button class=" pull-right" style="margin-top: 5px;">
+								Xem chi tiết
+							</button>
+						</td>
+					</tr>
+				</tfoot>
+			</table>
+		</div>
+
+		<!-- order -->
+		<div class="order">
+
+
+			<div class="order-title">
+							
+								
+					<h4 class="pull-left">Don hang 1 </h4>
+						
+					<h5	class="pull-right color-blue">Đã giao</h5>
+			</div>	
+			<table class="shop-table ">
+<!-- 				<thead>
+						<tr>
+							<td	 class="col-md-2">a</td>
+							<td	 class="col-md-4">2</td>
+							<td	 class="col-md-2">3</td>
+							<td	 class="col-md-2">4</td>
+							<td	 class="col-md-2">5</td>
+						</tr>
+				</thead>	 -->
+				<tbody>
+					
+					<tr class="table-row">
+						<td>
+							<img src="../Project/Shop/public/assets/image/Bally.jpg" alt="" class="shop-table-image">
+						</td>
+						<td>
+							<div class="shop-details">
+								<div class="productname">
+									Lincoln Corner Unit Products
+								</div>
+
+							</div>
+						</td>
+						<td>
+							<!-- <h5> -->
+								2000000<sup>đ</sup>
+							<!-- </h5> -->
+						</td>
+						<td>
+							1
+						</td>
+						<td>
+							<!-- <h5> -->
+								<strong class="red">
+									200000<sup>đ</sup>
+								</strong>
+							<!-- </h5> -->
+						</td>
+						<!-- <td>Đã giao</td> -->
+					</tr>
+
+					<tr class="table-row">
+						<td>
+							<img src="images/products/small/products-05.png" alt="">
+						</td>
+						<td>
+							<div class="shop-details">
+								<div class="productname">
+									Lincoln Corner Unit Products
+								</div>
+
+							</div>
+						</td>
+						<td>
+							<!-- <h5> -->
+								200000<sup>đ</sup>
+							<!-- </h5> -->
+						</td>
+						<td>
+							2
+						</td>
+						<td>
+							<!-- <h5>
+								<strong class="red"> -->
+									2000000000<sup>đ</sup>
+								<!-- </strong>
+							</h5> -->
+
+							<a href="#">
+								<img src="images/remove.png" alt="">
+							</a>
+						</td>
+						<!-- <td>Đã giao</td> -->
+					</tr>
+				</tbody>
+				<tfoot>
+					<tr>
+						<td colspan="6">
+							<button class=" pull-right" style="margin-top: 5px;">
+								Xem chi tiết
+							</button>
+						</td>
+					</tr>
+				</tfoot>
+			</table>
+		</div>
+
+		<!-- order -->
+	</div>
+
+<!-- Trigger the modal with a button -->
+
+<!-- Modal -->
+<div id="myDisplayNameModal" class="modal fade" role="dialog">
+	<div class="modal-dialog">
+
+		<!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title">Thay đổi tên hiển thị</h4>
+			</div>
+			<div class="modal-body">
+				<span>Tên hiển thị:</span>
+				<input type="text" name="text-name" id="edit-displayname-content">
+				<!-- <p id="edit-content">abc</p> -->
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-defaul" id="btn-dn-ok" data-dismiss="modal">OK</button>
+			</div>
+		</div>
+
+	</div>
+</div>
+
+<div id="myPasswordModal" class="modal fade" role="dialog">
+	<div class="modal-dialog">
+
+		<!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title">Thay đổi mật khẩu</h4>
+			</div>
+			<div class="modal-body">
+				<div class="col-md-6">
+					<div class="pw-text">
+						<p class="col-md-6">Mật khẩu mới:</p>
+						<input type="password" name="text-name" id="edit-password-content" class="col-md-6">
+					
+					</div>
+					<div>
+						<p class="col-md-6">Nhập lại mật khẩu:</p>
+						<input type="password" name="text-name" id="second-edit-password-content" class="col-md-6">
+					</div>
+
+				</div>
+				<!-- <p id="edit-content">abc</p> -->
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-defaul" id="btn-pw-ok" data-dismiss="modal">OK</button>
+			</div>
+		</div>
+
+	</div>
+</div>
+</div>
+</div>
+<script src="js/jquery-3.3.1.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script>
+
+	var changedisplayname = document.getElementById("change-display-name");
+	changedisplayname.onclick = function(){
+		var displayname = document.getElementById("display-name");
+		var editcontent = document.getElementById("edit-displayname-content");
+		editcontent.value = displayname.innerHTML;
+	}
+
+	var btnok = document.getElementById("btn-dn-ok");
+	btnok.onclick = function() {
+		var displayname = document.getElementById("display-name");
+		var titledisplayname = document.getElementById("title-display-name");
+		var editcontent = document.getElementById("edit-displayname-content");
+		displayname.innerHTML = editcontent.value;
+		titledisplayname.innerHTML = editcontent.value;
+	}
+
+	var changepassword = document.getElementById("change-password");
+	changepassword.onclick = function(){
+		var editcontent = document.getElementById("edit-password-content");
+		var secondEditContent = document.getElementById("second-edit-password-content");
+		editcontent.value = "";
+		secondEditContent.value = "";
+	}
+
+	var btn_pw_ok = document.getElementById("btn-pw-ok");
+	btn_pw_ok.onclick = function() {
+
+		var editcontent = document.getElementById("edit-password-content");
+		var secondEditContent = document.getElementById("second-edit-password-content");
+		if (editcontent.value == secondEditContent.value && editcontent.value != "") {
+			var password = document.getElementById("password");
+			var pw = "";
+			for (i of editcontent.value) {
+				pw += "*";
+			}
+			password.innerHTML = pw;
+		}
+	}
+
+	var listuserinfo = document.getElementById("list-user-info");
+	var listorders = document.getElementById("list-orders");
+	listuserinfo.style.backgroundColor = "#eee";
+	listuserinfo.onclick = function() {
+		var orders = document.getElementById("table-orders");
+		orders.style.display = 'none';
+		var userinfo = document.getElementById("table-user-info");
+		userinfo.style.display = 'block';
+		listuserinfo.style.backgroundColor = "#ddd";
+		listorders.style.backgroundColor = "unset";
+	}
+
+
+	listorders.onclick = function() {
+		// alert("asd");
+		var orders = document.getElementById("table-orders");
+		orders.style.display = 'block';
+		var userinfo = document.getElementById("table-user-info");
+		userinfo.style.display = 'none';
+		listorders.style.width = '100%';
+		listorders.style.backgroundColor = "#ddd";
+		listuserinfo.style.backgroundColor = "unset";
+	}
+
+
+	</script>
+</body>
+</html>
