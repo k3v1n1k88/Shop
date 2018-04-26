@@ -1,103 +1,107 @@
-<div class="col-md-10 col-md-offset-2">
-	<h2>
-		<span class="glyphicon glyphicon-shopping-cart">&nbsp;Giỏ hàng</span>
-	</h2>
-</div>
-{{# if products}}
-<div class="row">
-	<div class="col-md-8 col-md-offset-2">
+<div class="cart">
 
-		<div>
+	<div class="col-md-10 col-md-offset-2">
+		<h2>
+			<span class="glyphicon glyphicon-shopping-cart">&nbsp;Giỏ hàng</span>
+		</h2>
+	</div>
+	{{# if products}}
+	<div class="row">
+		<div class="col-md-8 col-md-offset-2">
 
-			<ul class="products-listItem">
-				{{# each products}}
-				<li class="products">
-					<a href="/cart/remove/{{ this.products.id }}" class="remove">
-						<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-					</a>
-					<div class="thumbnail col-xs-4 col-md-3">
-						<img src="/assets/image/{{ this.products.image }}" alt="{{ this.products.name }}">
-					</div>
-					<div class="product-list-description col-md-9 col-xs-7">
-						<div class="productname">
-							{{ this.products.name }}
+			<div>
+
+				<ul class="products-listItem">
+					{{# each products}}
+					<li class="products">
+						<a href="/cart/remove/{{ this.products.id }}" class="remove">
+							<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+						</a>
+						<div class="thumbnail col-xs-4 col-md-3">
+							<img src="/assets/image/{{ this.products.image }}" alt="{{ this.products.name }}">
 						</div>
-						<p>
-							<p class="product-price highlight-color">
-								{{ this.products.price }}
-								<sup>
-									đ
-								</sup>
-							</p>
-						</p>
-						<p>
-							Loại: {{ this.products.type }}
-						</p>
-						<p>
-							Nhà sản xuất: {{ this.products.manufacturer }}
-						</p>
-
-						<div class="price">
-							<div class="pull-right title">
-								
-								<span class="new_price">Tổng:</span>
-								<span class="new_price">
-									{{ this.totalPrice }}
+						<div class="product-list-description col-md-9 col-xs-7">
+							<div class="productname">
+								{{ this.products.name }}
+							</div>
+							<p>
+								<p class="product-price highlight-color">
+									{{ this.products.price }}
 									<sup>
 										đ
 									</sup>
-								</span>
-								
-							</div>
-							<!-- <div class="list_bottom"> -->
+								</p>
+							</p>
+							<p>
+								Loại: {{ this.products.type }}
+							</p>
+							<p>
+								Nhà sản xuất: {{ this.products.manufacturer }}
+							</p>
 
-								<div class="button_group">
-									<a href="/cart/dec/{{ this.products.id }}" class="button">
-										<span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
-									</a>
+							<div class="price">
+								<div class="pull-right title">
 									
-									<i class="button">
-										{{ this.count }}
-									</i>
+									<span class="new_price">Tổng:</span>
+									<span class="new_price">
+										{{ this.totalPrice }}
+										<sup>
+											đ
+										</sup>
+									</span>
 									
-									<a href="/cart/inc/{{ this.products.id }}" class="button favorite">
-										<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-									</a>
 								</div>
-								<!-- </div> -->
+								<!-- <div class="list_bottom"> -->
+
+									<div class="button_group">
+										<a href="/cart/dec/{{ this.products.id }}" class="button">
+											<span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+										</a>
+										
+										<i class="button">
+											{{ this.count }}
+										</i>
+										
+										<a href="/cart/inc/{{ this.products.id }}" class="button favorite">
+											<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+										</a>
+									</div>
+									<!-- </div> -->
+								</div>
+
 							</div>
-
-						</div>
-					</li>
-					{{/each}}
-				</ul>
+						</li>
+						{{/each}}
+					</ul>
+				</div>
 			</div>
-		</div>
-	</div>	
-</div>
+		</div>	
+	</div>
 
 
-<div class="col-md-8 col-md-offset-2 product-payment">
 	<div class="col-md-8 col-md-offset-2 product-payment">
-		<h2 class="title">Tổng tiền hàng (2 sản phẩm): 
-			<span>
-				{{!-- {{# each totalPriceAllProd}} --}}
-				{{ totalPriceAllProd }}
-				{{!-- {{/each}} --}}
-				<sup>
-					đ
-				</sup>
-			</span>
-		</h2>
+		<div class="col-md-8 col-md-offset-2 product-payment">
+			<h2 class="title">Tổng tiền hàng (2 sản phẩm): 
+				<span>
+					{{!-- {{# each totalPriceAllProd}} --}}
+					{{ totalPriceAllProd }}
+					{{!-- {{/each}} --}}
+					<sup>
+						đ
+					</sup>
+				</span>
+			</h2>
+			
+		</div>
+		
+		<button class="button pull-right">Thanh Toán</button>
+		
+
 		
 	</div>
-	
-	<button class="button pull-right">Thanh Toán</button>
-	
 
+	{{else}}
+		<h1>No products</h1>
+	{{/if}}
 	
 </div>
-
-{{else}}
-	<h1>No products</h1>
-{{/if}}

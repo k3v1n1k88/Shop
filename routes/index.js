@@ -252,9 +252,9 @@ router.get('/cart/dec/:id', function (req, res, next) {
 //   res.render('Header');
 // });
 
-router.post('/add-product', function(req, res, next) { 
+router.get('/add-product/:id', function(req, res, next) { 
 	var cartList = req.session.cartList;
-	var id = req.body.product_id;
+	var id = req.params.id;
 	if (!cartList) {
 		req.session.cartList = [];
 		req.session.cartList.push({id: id, count: 1})
@@ -279,6 +279,35 @@ router.post('/add-product', function(req, res, next) {
 	}
 	// res.redirect('/product')
 	return res.redirect(`/product/${id}`);
+});
+
+router.get('/buy-product/:id', function(req, res, next) { 
+	var cartList = req.session.cartList;
+	var id = req.params.id;
+	if (!cartList) {
+		req.session.cartList = [];
+		req.session.cartList.push({id: id, count: 1})
+		return res.redirect('/cart');
+	}
+	// console.log("++++++++++++++++++++");
+	// console.log(req.session.cartList);
+	var i = 0;
+	var flag = false;
+	console.log(id);
+	while (i < cartList.length) {
+		if (cartList[i].id == id) {
+			req.session.cartList[i].count += 1;
+			flag = true;
+			break;
+		}
+		i += 1;
+	}
+
+	if (!flag) {
+		req.session.cartList.push({id: id, count: 1})
+	}
+	// res.redirect('/product')
+	return res.redirect('/cart');
 });
 
 // router.get('/add-product', function(req, res, next) { 
