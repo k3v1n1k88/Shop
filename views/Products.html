@@ -142,7 +142,7 @@
                 </button>
             </div>
             <!-- infor about product-->
-            <div id="detail">
+            <div id="detail" class="container-fluid">
                 <div class="col-md-12" style="margin-top:10px">
                     <h3 style="color:#777">
 						<span class="glyphicon glyphicon-list-alt"/>
@@ -157,18 +157,17 @@
                         <br> Dài 25cm, Rộng 16cm, Đáy 7cm
                         <br> Hotline:01234732339
                     </div>
-                    <hr>
                 </div>
             </div>
             <!--end details-->
-            <div id="other-products">
+            <div id="other-same-type-products">
+            	<hr style="background-color: #000; height: 1px; width: 100%;">
                 <div class="col-md-12">
-                    <h3 style="color:#777">
-						<span class=""/>
-						CÁC SẢN PHẨM KHÁC
-					</h3>
+                    <h4 style="color:#777">
+						CÁC SẢN PHẨM CÙNG LOẠI
+					</h4>
                     <div class="row">
-                        <div id="other-carousel" class="carousel slide" data-interval="1000" data-ride="carousel" data-wrap="true">
+                        <div id="other-carousel" class="carousel slide" data-interval="4000" data-ride="carousel" data-wrap="true" style="height: 300px">
                             <!-- Indicators -->
                             <ol class="carousel-indicators">
                                 <li data-target="#other-carouse" data-slide-to="0" class="active"></li>
@@ -179,19 +178,87 @@
                             <div class="carousel-inner" ">
 								<div class="item active ">
 									<div class="row ">
+										<div class="col-md-4">
+											<a href="# ">
+												<img src="../public/assets/Sanpham/sanphamkhac_1.jpg " class="" style="height: 250px;">
+											</a>
+										</div>
+										<div class="col-md-4">
+											<a href="# ">
+												<img src="../public/assets/Sanpham/sanphamkhac_2.jpg" style="height: 250px;">
+											</a>
+										</div>
+										<div class="col-md-4">
+											<a href="# ">
+												<img src="../public/assets/Sanpham/sanphamkhac_4.jpg " class="img-responsive " style="height: 250px;">
+											</a>
+										</div>
+									</div>
+								</div>
+								<div class="item ">
+									<div class="row ">
 										<div class="col-xs-4 ">
 											<a href="# ">
-												<img src="../public/assets/Sanpham/sanphamkhac_1.jpg " class="img-responsive " style="height: 300px ">
+												<img src="../public/assets/Sanpham/sanphamkhac_4.jpg " class="img-responsive " style="height: 250px;">
 											</a>
 										</div>
 										<div class="col-xs-4 ">
 											<a href="# ">
-												<img src="../public/assets/Sanpham/sanphamkhac_2.jpg " class="img-responsive " style="height: 300px ">
+												<img src="../public/assets/Sanpham/sanphamkhac_5.jpg " class="img-responsive " style="height: 250px;">
 											</a>
 										</div>
 										<div class="col-xs-4 ">
 											<a href="# ">
-												<img src="../public/assets/Sanpham/sanphamkhac_4.jpg " class="img-responsive " style="height: 300px ">
+												<img src="../public/assets/Sanpham/sanphamkhac_6.jpg " class="img-responsive " style="height: 250px;">
+											</a>
+										</div>
+									</div>
+								</div>					
+							</div>
+							<!-- Left and right controls -->
+							<a class="left carousel-control " href="#other-carousel " data-slide="prev ">
+								<span class="glyphicon glyphicon-chevron-left "></span>
+								<span class="sr-only ">Previous</span>
+							</a>
+							<a class="right carousel-control " href="#other-carousel " data-slide="next ">
+								<span class="glyphicon glyphicon-chevron-right "></span>
+								<span class="sr-only ">Next</span>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div><!--end others product-->
+			<hr style="background-color: #000; height: 1px; width: 100%; ">
+			<div id="other-same-type-products">
+				<div class="col-md-12">
+					<h4 style="color:#777">
+						CÁC SẢN PHẨM CÙNG NHÃN HÀNG
+					</h4>
+					<div class="row">
+						<div id="other-carousel" class="carousel slide" data-interval="2000" data-ride="carousel" data-wrap="true" style="height: 350px">
+							<!-- Indicators -->
+							<ol class="carousel-indicators">
+								<li data-target="#other-carouse" data-slide-to="0" class="active"></li>
+								<li data-target="#other-carouse" data-slide-to="1"></li>
+								<li data-target="#other-carouse" data-slide-to="2"></li>
+							</ol>
+							<!-- Wrapper for slides -->
+							<div class="carousel-inner" ">
+								<div class="item active ">
+									<div class="row ">
+										<div class="col-md-4 ">
+											<a href="# ">
+												<img src="../public/assets/Sanpham/sanphamkhac_1.jpg " class="img-responsive " style="height: 250px">
+											</a>
+										</div>
+										<div class="col-xs-4 ">
+											<a href="# ">
+												<img src="../public/assets/Sanpham/sanphamkhac_2.jpg " class="img-responsive " style="height: 250px">
+											</a>
+										</div>
+										<div class="col-xs-4 ">
+											<a href="# ">
+												<img src="../public/assets/Sanpham/sanphamkhac_4.jpg " class="img-responsive " style="height:250px">
 											</a>
 										</div>
 									</div>
@@ -230,9 +297,7 @@
 				</div>
 			</div><!--end others product-->
 		</div><!--end main-->
-		<div class="col-md-12 ">
 		<hr style="background-color: #FF7F00; height: 4px; width: 100%; ">
-		</div>
 		<footer class="col-md-12 " style="background-color: #567;height: 200px ">
 			This is my footer
 			<form id ="login-form " class="modal-backdrop center-block col-md-4 " action="Products.html " method="get " style="height: 400px;background-color: #fff;display: none ">
@@ -260,6 +325,7 @@
 							<input type="password" name="password" id="password" class="form-control" value="" required="required" placeholder="Nhập mật khẩu của bạn">
 						</div>
 					</div>
+
 					<div class="row ">
 						<div class="checkbox">
 							<label>
