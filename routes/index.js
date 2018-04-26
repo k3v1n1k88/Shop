@@ -132,26 +132,30 @@ router.get('/', function (req, res, next) {
 router.get('/product/:id', function (req, res, next) {
 	productRepo.loadById(req.params.id)
 		.then(product => {
-			req.session.product = product;
+			res.render('product', {
+				product: product
+			});
 			console.log("Loaded product by id.");
-			return res.redirect('/product');
+			// return res.redirect('/product');
 		})
 		.catch(err => {
-			req.session.product = null;
+			res.render('product', {
+				product: null
+			});
 			console.log('Error: ' + err);
-			res.redirect('/product');
+			// res.redirect('/product');
 		});	
 });
 
-router.get('/product', function (req, res, next) {
-	// console.log(req.session.cartList);
-	if (!req.session.product) {
-		return res.render('product', {product: null});
-	}
-	res.render('product', {
-		product: req.session.product
-	});
-});
+// router.get('/product', function (req, res, next) {
+// 	// console.log(req.session.cartList);
+// 	if (!req.session.product) {
+// 		return res.render('product', {product: null});
+// 	}
+// 	res.render('product', {
+// 		product: req.session.product
+// 	});
+// });
 
 router.get('/cart', function (req, res, next) {
 	// console.log("---------------------");
@@ -254,7 +258,7 @@ router.post('/add-product', function(req, res, next) {
 	if (!cartList) {
 		req.session.cartList = [];
 		req.session.cartList.push({id: id, count: 1})
-		return res.redirect('/product')
+		return res.redirect(`/product/${id}`);
 	}
 	// console.log("++++++++++++++++++++");
 	// console.log(req.session.cartList);
@@ -273,7 +277,8 @@ router.post('/add-product', function(req, res, next) {
 	if (!flag) {
 		req.session.cartList.push({id: id, count: 1})
 	}
-	res.redirect('/product')
+	// res.redirect('/product')
+	return res.redirect(`/product/${id}`);
 });
 
 // router.get('/add-product', function(req, res, next) { 
