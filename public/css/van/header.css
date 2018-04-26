@@ -1,54 +1,46 @@
-.logo {
+.header .logo {
     height: auto;
     width:150px;
 }
-.navbar-collapse.collapse
+.header .navbar-collapse.collapse
 {
     margin-right: 100px;
     margin-top: 50px;
-    height: ;
 }
-.container{
-    width: 1170px;
+.header .container{
+    width: 100%;
     margin-bottom: 100;
+    background-color: #ca6f1e
 }
-.row{
+.header .row{
     margin-right: -400px;
 }
-.header{
-    /* margin-top: -50px; */
-    background-color: darkorange
-}
-.header_bottom{
+
+.header .header_bottom{
     float: left;
     width: 100%;
     margin-top: -50px;
     
 }
-.search-submit{
+.header .search-submit{
     width: 50px;
     height: 50px;
     margin-top: 50px;
     margin-left: 100px;
 }
-.dropdown{
-    color: darkred
-    
-}
-.form-control {
-    position: relative;
-    z-index: 2;
-    float: left;
-    margin-top: 80px;
-    width: 100%;
-}
-.input-group-btn:last-child>.btn, .input-group-btn:last-child>.btn-group {
-    z-index: 2;
-    margin-left: -1px;
-    margin-bottom: -80px;
-}
-.remove{
+.header .remove{
     width: 120px;
     height: 350px;
     margin-top: -20px;
+}
+.input-group .form-control:first-child {
+    border-top-right-radius: 0;
+    width: 200px;
+    margin-top: 80px;
+    float: left;
+}
+.input-group-btn:last-child>.btn, .input-group-btn:last-child>.btn-group {
+    z-index: 2;
+    margin-right: 444px;
+    margin-bottom: -80px;
 }
