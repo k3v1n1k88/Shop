@@ -234,7 +234,7 @@ a {
 }
 
 .user-info .order {
-	margin-bottom: 20px;
+	margin-bottom: 40px;
 }
 
 .user-info #table-user-info {
@@ -281,7 +281,7 @@ a {
 }
 
 body {
-	background-color: #f5f5f5;
+	background-color: #fff;
 }
 
 .user-info #myPasswordModal .modal-body {
@@ -296,7 +296,7 @@ body {
 	background-color: #fff;
 }
 
-.order-detail .shop-table th:nth-child(2), .order-detail .shop-table td:nth-child(2) {
+.user-info .order-detail .shop-table td:nth-child(2) {
 	width: 40%;
 }
 
@@ -311,4 +311,107 @@ body {
 
 .user-info #title-display-name {
 	padding-bottom: 8px;
+}
+
+
+/*Admin*/
+
+.admin-page .shop-table tr{
+	display: inherit;
+}
+
+.admin-page .form-border {
+	background: #fff;
+	padding: 20px;
+	border: 1px solid #ccc;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+	outline: none;
+}
+
+.admin-page .nav {
+	padding-left: 0;
+	margin-bottom: 0;
+	list-style: none;
+}
+.admin-page .user-option {
+	margin-top: 20px;
+}
+.admin-page .user-option div {
+	font-size: 16px;
+	width: 100%;
+	margin: 0;
+	padding: 15px;
+}
+
+.admin-page .padding-left-30px {
+	width: 100%;
+	padding-left: 30px;
+}
+
+.admin-page .padding-right-30px {
+	width: 100%;
+	padding-right: 30px;
+}
+
+
+.admin-page {
+	margin-top: 100px;
+	margin-bottom: 100px;
+	background: #fff;
+}
+
+.admin-page #table-orders {
+/*	background-color: #fff;
+	padding: 20px;
+	border: 1px solid #eee;
+	border-radius: 15px;*/
+	display: none;
+}
+
+.admin-page .order-title {
+	padding-bottom: 30px;
+}
+
+.admin-page .order {
+	margin-bottom: 20px;
+}
+
+.admin-page .table {
+	padding: 60px;
+}
+
+.admin-page .change-info:hover {
+	color: #ff5252;
+}
+
+
+.admin-page .user-info-menu {
+	border-right: 1px solid #ccc;
+	margin-right: 50px;
+}
+
+.admin-page #title-display-name {
+	padding-bottom: 8px;
+}
+/*Admin*/
+
+.admin-page .shop-table-products td:nth-child(3) {
+	width: 20%;
+}
+
+.admin-page .shop-table-products td:nth-child(1) {
+	width: 10%;
+}
+
+.admin-page .shop-table-products td:nth-child(6) {
+	width: 7%;
+}
+
+.admin-page .shop-table-products td:nth-child(2) {
+	width: 10%;
+}
+
+.admin-page input[type="text"] {
+	width: 60px;
 }
