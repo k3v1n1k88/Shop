@@ -13,3 +13,9 @@
 .sanpham>a{
 	color: #000;
 }
+
+.myitem:hover{
+	border-width: 1px;
+	border-color: #001230;
+	border-style: solid;
+}
