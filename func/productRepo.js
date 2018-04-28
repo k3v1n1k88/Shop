@@ -10,7 +10,7 @@ exports.loadTopViews = top => {
 	return db.load(sql);
 }
 
-exports.loadAllProduct = () => {
+exports.loadAllProducts = () => {
 	var sql = `select * from products`;
 	return db.load(sql);
 }

@@ -44,7 +44,7 @@ router.get('/', function (req, res, next) {
 					next_topview_products.reverse();
 					res.render('index', 
 					{ 
-						title: 'Trilpe Shop',
+						title: 'TripleV Shop',
 						topbuy_products: topbuy_products,
 						next_topbuy_products: next_topbuy_products,
 						topview_products: topview_products,
@@ -59,7 +59,7 @@ router.get('/', function (req, res, next) {
 						console.log('Error: ' + err);
 						return res.render('index', 
 						{ 
-							title: 'Trilpe Shop',
+							title: 'TripleV Shop',
 							topbuy_products: null,
 							next_topbuy_products: null,
 							topview_products: null,
@@ -74,7 +74,7 @@ router.get('/', function (req, res, next) {
 					console.log('Error: ' + err);
 					return res.render('index', 
 					{ 
-						title: 'Trilpe Shop',
+						title: 'TripleV Shop',
 						topbuy_products: null,
 						next_topbuy_products: null,
 						topview_products: null,
@@ -87,7 +87,7 @@ router.get('/', function (req, res, next) {
 			console.log('Error: ' + err);
 			return res.render('index', 
 			{ 
-				title: 'Trilpe Shop',
+				title: 'TripleV Shop',
 				topbuy_products: null,
 				next_topbuy_products: null,
 				topview_products: null,
@@ -283,6 +283,7 @@ router.get('/order/:id', function(req, res, next) {
 });
 
 router.get('/products', function(req, res, next) { 
+	// var prods = productRepo.loadAllProducts();
 	return res.render('products');
 });
 
