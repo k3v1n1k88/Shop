@@ -10,6 +10,11 @@ exports.loadTopViews = top => {
 	return db.load(sql);
 }
 
+exports.loadAllProduct = () => {
+	var sql = `select * from products`;
+	return db.load(sql);
+}
+
 exports.loadTopBuy = top => {
 	var sql = `select * from products order by buy desc limit ${top}`;
 	return db.load(sql);
