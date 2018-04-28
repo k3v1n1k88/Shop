@@ -11,7 +11,7 @@ exports.loadTopViews = top => {
 }
 
 exports.loadAllProducts = () => {
-	var sql = `select * from products`;
+	var sql = 'select * from products';
 	return db.load(sql);
 }
 

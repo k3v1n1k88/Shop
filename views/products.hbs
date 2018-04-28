@@ -70,74 +70,48 @@
 			</div>
 			<div class="container-fluid">
 				<div class="hienthisanpham" style="height: 300px">
+					{{#if products13}}
 					<div class="row col-md-12">
+						{{# each products13}}
 						<div class="item col-md-4 text-center" >
-							<img src="/images/Bally.jpg" style="width: 100%">
-							<div class="tensanpham"><h4>Túi da trăn</h4></div>
-							<div class="giasanpham"><h4>200.000 VND</h4></div>
-							<div class="loaisanpham"><h6>Vải</h6></div>
+							<img src="/assets/image/{{ this.image }}" style="width: 100%">
+							<div class="tensanpham"><h4>{{ this.name }}</h4></div>
+							<div class="giasanpham"><h4>{{ this.price }} VND</h4></div>
+							<div class="loaisanpham"><h6>{{ this.type }}</h6></div>
 						</div>
-						<div class="item col-md-4 text-center">
-							<img src="/images/Burberry.jpg" style="width: 100%">
-							<div class="tensanpham"><h4>Túi da trăn</h4></div>
-							<div class="giasanpham"><h4>200.000 VND</h4></div>
-							<div class="loaisanpham"><h6>Vải</h6></div>
-						</div>
-						<div class="item col-md-4 text-center">
-							<img src="/images/Bulgari.jpg" style="width: 100%">
-							<div class="tensanpham"><h4>Túi da trăn</h4></div>
-							<div class="giasanpham"><h4>200.000 VND</h4></div>
-							<div class="loaisanpham"><h6>Vải</h6></div>
-						</div>
+						{{/each}}
 					</div>
 					<div class="row col-md-12">
-						<div class="item col-md-4 text-center">
-							<img src="/images/Bally.jpg" style="width: 100%">
-							<div class="tensanpham"><h4>Túi da trăn</h4></div>
-							<div class="giasanpham"><h4>200.000 VND</h4></div>
-							<div class="loaisanpham"><h6>Vải</h6></div>
-						</div>
-						<div class="item col-md-4 text-center">
-							<img src="/images/Burberry.jpg" style="width: 100%">
-							<div class="tensanpham"><h4>Túi da trăn</h4></div>
-							<div class="giasanpham"><h4>200.000 VND</h4></div>
-							<div class="loaisanpham"><h6>Vải</h6></div>
-						</div>
-						<div class="item col-md-4 text-center">
-							<img src="/images/Bulgari.jpg" style="width: 100%">
-							<div class="tensanpham"><h4>Túi da trăn</h4></div>
-							<div class="giasanpham"><h4>200.000 VND</h4></div>
-							<div class="loaisanpham"><h6>Vải</h6></div>
-						</div>
-					</div>
-					<div class="row col-md-12">
+						{{# each products46}}
 						<div class="item col-md-4 text-center" >
-							<img src="/images/Bally.jpg" style="width: 100%">
-							<div class="tensanpham"><h4>Túi da trăn</h4></div>
-							<div class="giasanpham"><h4>200.000 VND</h4></div>
-							<div class="loaisanpham"><h6>Vải</h6></div>
+							<img src="/assets/image/{{ this.image }}" style="width: 100%">
+							<div class="tensanpham"><h4>{{ this.name }}</h4></div>
+							<div class="giasanpham"><h4>{{ this.price }} VND</h4></div>
+							<div class="loaisanpham"><h6>{{ this.type }}</h6></div>
 						</div>
-						<div class="item col-md-4 text-center">
-							<img src="/images/Burberry.jpg" style="width: 100%">
-							<div class="tensanpham"><h4>Túi da trăn</h4></div>
-							<div class="giasanpham"><h4>200.000 VND</h4></div>
-							<div class="loaisanpham"><h6>Vải</h6></div>
-						</div>
-						<div class="item col-md-4 text-center">
-							<img src="/images/Bulgari.jpg" style="width: 100%">
-							<div class="tensanpham"><h4>Túi da trăn</h4></div>
-							<div class="giasanpham"><h4>200.000 VND</h4></div>
-							<div class="loaisanpham"><h6>Vải</h6></div>
-						</div>
+						{{/each}}
 					</div>
+					<div class="row col-md-12">
+						{{# each products79}}
+						<div class="item col-md-4 text-center" >
+							<img src="/assets/image/{{ this.image }}" style="width: 100%">
+							<div class="tensanpham"><h4>{{ this.name }}</h4></div>
+							<div class="giasanpham"><h4>{{ this.price }} VND</h4></div>
+							<div class="loaisanpham"><h6>{{ this.type }}</h6></div>
+						</div>
+						{{/each}}
+					</div>
+					{{else}}
+					<div>
+						No Products
+					</div>
+					{{/if}}
 					<hr style="background-color: #000; height: 1px; width: 100%;">
 					<div class="container-fluid text-center">
 						<ul class="pagination pagination-lg text-center">
-						  	<li><a href="#">1</a></li>
-						  	<li><a href="#">2</a></li>
-						  	<li><a href="#">3</a></li>
-						  	<li><a href="#">4</a></li>
-						  	<li><a href="#">5</a></li>
+							{{# each pages}}
+						  		<li><a href="/products/page={{ this }}">{{ this }}</a></li>
+						  	{{/each}}
 						</ul>
 					</div>
 				</div>

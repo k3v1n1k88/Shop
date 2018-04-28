@@ -283,8 +283,62 @@ router.get('/order/:id', function(req, res, next) {
 });
 
 router.get('/products', function(req, res, next) { 
-	// var prods = productRepo.loadAllProducts();
-	return res.render('products');
+	return res.redirect('/products/page=1');
+});
+
+router.get('/products/page=:id', function(req, res, next) { 
+	var id = req.params.id;
+	if (id <= 0) {
+		return res.render('products');
+	}
+	var start = 9 * (id - 1);
+	productRepo.loadAllProducts()
+		.then(prods => {
+			console.log("Loaded all product.");
+				// console.log(prods);
+			var list13 = [];
+			var list46 = [];
+			var list79 = [];
+			var count = [];
+			var i = start;
+			var max = i + 3;
+			while (i < max) {
+				list13.push(prods[i]);
+				i += 1;
+			}
+			max += 3;
+			while (i < max) {
+				list46.push(prods[i]);
+				i += 1;
+			}
+			max += 3;
+			while (i < max) {
+				list79.push(prods[i]);
+				i += 1;
+			}
+			var len = prods.length;
+			i = 1;
+			while (len > 0) {
+				count.push(i);
+				len -= 9;
+				console.log(len);
+				i += 1;
+			}
+			return res.render('products', {
+				products13: list13,
+				products46: list46,
+				products79: list79,
+				pages: count
+			});
+		})
+		.catch(err => {
+
+			console.log('Error: ' + err);
+			return 	res.render('products', {
+					products13: null
+			});
+		});	
+
 });
 
 router.get('/orderdetail/:id', function(req, res, next) { 
