@@ -549,3 +549,11 @@ body {
 .option-cart-item .cart-item .button {
 	color: #bbb;
 }
+
+.admin-page .order-title {
+	margin-top: 50px;
+}
+
+.margintop-15 {
+	margin-top: 15px;
+}
