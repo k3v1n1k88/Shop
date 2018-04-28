@@ -9,21 +9,6 @@
                 </div>
             </div>
             <div class="col-md-10 col-sm-10">
-                <div class="header_top">
-                    <div class="row">
-                        <div class="col-md-5">
-                            <ul class="usermenu">
-                                <li>
-                                    <a data-toggle="modal" data-target="#loginModal" href="javascript:;" class="log">Login</a>
-
-                                </li>
-                                <li>
-                                    <a href="/" class="reg">Hotline: 0981463592 </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
                 <div class="clearfix"></div>
                 <div class="header_bottom row">
                     <div class="navbar-collapse collapse col-sm-10 col-xs-10 col-lg-10">
@@ -111,134 +96,74 @@
                                     </div>
                                 </div>
                             </li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Túi xách</a>
-                                <div class="dropdown-menu mega-menu">
-                                    <div class="row">
-                                        <div class="col-md-6 col-sm-6">
-                                            <ul class="mega-menu-links">
-                                                <li>
-                                                    <a href="/">Saint Laurent</a>
-                                                </li>
-                                                <li>
-                                                    <a href="/">Jimmy Choo</a>
-                                                </li>
-                                                <li>
-                                                    <a href="/">Valentino</a>
-                                                </li>
-                                                <li>
-                                                    <a href="/">Gucci</a>
-                                                </li>
-                                                <li>
-                                                    <a href="/">Bottega Veneta</a>
-                                                </li>
-                                                <li>
-                                                    <a href="/">Stella Mcartney</a>
-                                                </li>
-                                                <li>
-                                                    <a href="/">Bally</a>
-                                                </li>
-                                                <li>
-                                                    <a href="/">Da pu</a>
-                                                </li>
-                                                <li>
-                                                    <a href="/">Salvatore Ferragamo</a>
-                                                </li>
-                                                <li>
-                                                    <a href="/">NaZa</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Bóp Ví</a>
-                                <div class="dropdown-menu mega-menu">
-                                    <div class="row">
-                                        <div class="col-md-6 col-sm-6">
-                                            <ul class="mega-menu-links">
-                                                <li>
-                                                    <a href="/">Louis Vuitton</a>
-                                                </li>
-                                                <li>
-                                                    <a href="/">Dior</a>
-                                                </li>
-                                                <li>
-                                                    <a href="/">Alexander McQueen</a>
-                                                </li>
-                                                <li>
-                                                    <a href="/">Bulgari</a>
-                                                </li>
-                                                <li>
-                                                    <a href="/">Victoria Beckham</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">BaLô</a>
-                                <div class="dropdown-menu mega-menu">
-                                    <div class="row">
-                                        <div class="col-md-6 col-sm-6">
-                                            <ul class="mega-menu-links">
-                                                <li>
-                                                    <a href="/">K Swiss</a>
-                                                </li>
-                                                <li>
-                                                    <a href="/">Linoza</a>
-                                                </li>
-                                                <li>
-                                                    <a href="/">Sakos zen</a>
-                                                </li>
-                                                <li>
-                                                    <a href="/">NaZa</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
+                            
                             <li>
                                 <a href="/">liên hệ</a>
                             </li>
-                            <li class="option-cart">
+                            <form>
+                                <div class="input-group col-md-4 pull-left">
+                                    <input type="text" class="form-control" placeholder="Search">
+                                    <div class="input-group-btn">
+                                        <button class="btn btn-default" type="submit">
+                                            <i class="glyphicon glyphicon-search"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                            <li class="option-cart pull-right">
                                 <a href="#" class="cart-icon">cart
                                     <span class="cart_no">01</span>
                                 </a>
                                 <ul class="option-cart-item">
                                     <li>
                                         <div class="cart-item">
-                                            <div class="image">
-                                                <img src="images/icon.png" alt="">
+                                   {{!--          <div class="image">
+                                                <img src="images/icon.png" style="width: 100%;">
+                                            </div> --}}
+                                            <div class="col-md-12">
+                                                <div class="item-description col-md-6">
+                                                    <p><span class="name"> Bally</span>
+                                                    <span> - 200.000</span></p>
+                                                   
+                                                </div>
+                                                <div class="pull-right col-md-12">
+                                                    <a href="/cart" class="remove">
+                                                        <img src="/images/Bally.png" alt="remove">
+                                                    </a>
+                                                </div>
                                             </div>
-                                            <div class="item-description">
-                                                <p class="name">Bally</p>
+                                            <div class="col-md-12">
+                                                <a href="/cart" class="button pull-right">Check out</a>
                                             </div>
-                                            <div class="right">
-                                                <a href="#" class="remove">
-                                                    <img src="/images/Bally.png" alt="remove">
-                                                </a>
-                                            </div>
+                                            
                                         </div>
                                     </li>
                                 </ul>
                             </li>
+                            
+                            <li class="dropdown pull-right">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">User</a>
+                                <div class="dropdown-menu mega-menu">
+                                    <div class="row">
+                                        <div class="col-md-6 col-sm-6">
+                                            <ul class="mega-menu-links">
+                                                <li>
+                                                    <a data-toggle="modal" href="javascript:;" data-target="#loginModal">Đăng nhập</a>
+                                                </li>
+                                                <li>
+                                                    <a href="/userinfo">Thông tin cá nhân</a>
+                                                </li>
+                                                <li>
+                                                    <a href="/admin">Trang quản trị Admin</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>                           
                         </ul>
                     </div>
-
-                    <form>
-                        <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Search">
-                            <div class="input-group-btn">
-                                <button class="btn btn-default" type="submit">
-                                    <i class="glyphicon glyphicon-search"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </form>
+                    
                 </div>
             </div>
         </div>
@@ -324,7 +249,7 @@
                             </div>
                             <div class="row" style="float: right">
                                 <button type="submit" class="btn btn-success right">Đăng kí</button>
-                                <button type="submit" class="btn btn-danger right">Hủy bỏ</button>
+                                <button type="" class="btn btn-danger right" id="btnExit">Hủy bỏ</button>
                             </div>
                             
                         </div>
@@ -333,23 +258,22 @@
             </div>
         </div>
     </div>
-   
 </div>
-                                    <button type="button" class="btn btn-default" data-toggle="modal" data-target="#loginModal">button</button>
- <script>
-        var signup = document.getElementById("signup");
-        var btnExit = document.getElementById("btnExit");
-        var loginform = document.getElementById("login-form");
-        var signupform = document.getElementById("signup-form")
-        signup.onclick = function open(){
-            loginform.style.display = "none"
-            signupform.style.display = "block"
-        }
-        btnExit.onclick = function close(){
 
-        }
-        $("#loginModal").on("hide.bs.modal", function () {
-            loginform.style.display = "block"
-            signupform.style.display = "none"
-        });
-    </script>
+ <script>
+    var signup = document.getElementById("signup");
+    var btnExit = document.getElementById("btnExit");
+    var loginform = document.getElementById("login-form");
+    var signupform = document.getElementById("signup-form")
+    signup.onclick = function open(){
+        loginform.style.display = "none"
+        signupform.style.display = "block"
+    }
+    btnExit.onclick = function close(){
+
+    }
+    $("#loginModal").on("hide.bs.modal", function () {
+        loginform.style.display = "block"
+        signupform.style.display = "none"
+    });
+</script>

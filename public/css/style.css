@@ -468,7 +468,7 @@ body {
 
 /*Header*/
 .header {
-	height: 200px;
+	height: 100px;
 	background: #24242424;
 }
 .header .logo {
@@ -482,8 +482,9 @@ body {
 }
 .header .container{
     width: 100%;
+    height: 100px;
     margin-bottom: 100;
-    background-color: #242424;
+    background-color: #24242424;
 }
 
 .header .header_bottom{
@@ -503,13 +504,7 @@ body {
     height: 350px;
     margin-top: -20px;
 }
- .input-group .form-control:first-child {
-    
-  margin-top: 80px;
-}
-.input-group-btn:last-child>.btn, .input-group-btn:last-child>.btn-group {
-    margin-top: 80px;
-}
+
 .option-cart {
     margin-left: 100px;
     margin-top: 10px;
@@ -550,3 +545,7 @@ body {
 	filter: brightness(70%);
 }
 /*Login*/
+
+.option-cart-item .cart-item .button {
+	color: #bbb;
+}
