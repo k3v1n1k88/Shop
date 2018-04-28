@@ -58,8 +58,8 @@
 		<div class="right col-md-9" style="height: 400px">
 			<div class="row" style="margin-top: 20px">
 				<div class="tieude col-md-2">
-					<h3 style="margin-top: 5px">TÚI XÁCH</h3>
-					<div id="soluong"><h5>999 Items<h5></div>
+					<h3 style="margin-top: 5px">Sản phẩm</h3>
+					<div id="soluong"><h6 style="margin-top: 10px;">({{# each quantity}} {{ this }}{{/each}} sản phẩm)<h6></div>
 				</div>
 				<div class="sort col-md-4" style="float: right">
 					<button id="menu-sort" type="button" class="btn btn-default dropdown-toggle col-md-10" style="border-radius: 0px;">
@@ -73,32 +73,38 @@
 					{{#if products13}}
 					<div class="row col-md-12 margin-bottom-20px margin-top-20px">
 						{{# each products13}}
-						<div class="item col-md-3 text-center product margin-right-10per">
-							<img src="/assets/image/{{ this.image }}" style="width: 100%">
-							<div class="tensanpham"><h4>{{ this.name }}</h4></div>
-							<div class="giasanpham"><h4>{{ this.price }} VND</h4></div>
+						{{#if this}}
+						<div class="item col-md-3 product margin-right-10per">
+							<a href="/product/{{this.id}}"><img src="/assets/image/{{ this.image }}" style="width: 100%"></a>
+							<div class="tensanpham"><h5>{{ this.name }}</h5></div>
+							<div class="giasanpham"><h5 class="color-red"  style="margin-top: 4px; margin-bottom: 4px;">{{ this.price }} VND</h5></div>
 							<div class="loaisanpham"><h6>{{ this.type }}</h6></div>
 						</div>
+						{{/if}}
 						{{/each}}
 					</div>
 					<div class="row col-md-12 margin-bottom-20px">
 						{{# each products46}}
-						<div class="item col-md-3 text-center product margin-right-10per" >
-							<img src="/assets/image/{{ this.image }}" style="width: 100%">
-							<div class="tensanpham"><h4>{{ this.name }}</h4></div>
-							<div class="giasanpham"><h4>{{ this.price }} VND</h4></div>
+						{{#if this }}
+						<div class="item col-md-3 product margin-right-10per" >
+							<a href="/product/{{this.id}}"><img src="/assets/image/{{ this.image }}" style="width: 100%"></a>
+							<div class="tensanpham"><h5>{{ this.name }}</h5></div>
+							<div class="giasanpham"><h5 class="color-red" style="margin-top: 4px; margin-bottom: 4px;">{{ this.price }} VND</h5></div>
 							<div class="loaisanpham"><h6>{{ this.type }}</h6></div>
 						</div>
+						{{/if}}
 						{{/each}}
 					</div>
 					<div class="row col-md-12 margin-bottom-20px">
 						{{# each products79}}
-						<div class="item col-md-3 text-center product margin-right-10per" >
-							<img src="/assets/image/{{ this.image }}" style="width: 100%">
-							<div class="tensanpham"><h4>{{ this.name }}</h4></div>
-							<div class="giasanpham"><h4>{{ this.price }} VND</h4></div>
+						{{#if this }}
+						<div class="item col-md-3 product margin-right-10per" >
+							<a href="/product/{{this.id}}"><img src="/assets/image/{{ this.image }}" style="width: 100%"></a>
+							<div class="tensanpham"><h5>{{ this.name }}</h5></div>
+							<div class="giasanpham"><h5 class="color-red"  style="margin-top: 4px; margin-bottom: 4px;">{{ this.price }} VND</h5></div>
 							<div class="loaisanpham"><h6>{{ this.type }}</h6></div>
 						</div>
+						{{/if}}
 						{{/each}}
 					</div>
 					{{else}}

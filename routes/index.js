@@ -324,18 +324,23 @@ router.get('/products/page=:id', function(req, res, next) {
 				console.log(len);
 				i += 1;
 			}
+			var quantity = [];
+			quantity.push(prods.length);
 			return res.render('products', {
 				products13: list13,
 				products46: list46,
 				products79: list79,
-				pages: count
+				pages: count,
+				quantity: quantity
 			});
 		})
 		.catch(err => {
 
 			console.log('Error: ' + err);
 			return 	res.render('products', {
-					products13: null
+					products13: null,
+					quantity: 0,
+					pages: null
 			});
 		});	
 
