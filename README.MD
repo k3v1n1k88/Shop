@@ -1,8 +1,20 @@
 
-# My project team is project about handbag shopping
+# Our project is project about handbag shopping
 
 # This is our first web project 
-# How to install app.?
+# How to install?
+## Install database
+Create MySQL database with:
+```
+ Host           : localhost
+ Port           : 7000
+ Name           : triplevshop
+```
+Run query to create database table:
+```
+  Run query named "triplevshop.sql" in "Data" file in our project
+```
+## Install app.
 Install packages
 ```
 npm install
@@ -21,3 +33,8 @@ Tran Thi Thanh Van  - 1512663
 
 # Hope this project will successfull
 # Cheer, bro
+# Completion schedule (last updated: 28/04/2018)
+```
+Front-end: 90%
+Back-end: 33%
+```
