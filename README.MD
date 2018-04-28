@@ -2,7 +2,19 @@
 # My project team is project about handbag shopping
 
 # This is our first web project 
-# How to install app.?
+# How to install?
+## Install database
+Create MySQL database with:
+```
+ Host           : localhost
+ Port           : 7000
+ Name           : triplevshop
+```
+Run query to create database table:
+```
+  Run query named "triplevshop.sql" in "Data" file in our project
+```
+## Install app.
 Install packages
 ```
 npm install
