@@ -1,5 +1,5 @@
 body {
-	font-family: 'Quicksand', sans-serif;
+	font-family: 'Quicksand', sans-serif !important;
 	/*background-color: #f5f5f5;*/
 }
 /*----------------------------- Cart -----------------------------*/
@@ -146,22 +146,27 @@ body {
 	border: 1px solid #e1e1e1;
 	border-radius: 10px;
 	padding: 10px;
-	height: 280px;
+	height: 80%;
+}
+
+.prod {
+	height: 80%;
 }
 
 .product:hover {
 	box-shadow: 0 0 5px 1px #d3d3d3;
 }
 
-.thumbnail {
+.index .thumbnail {
 	border: 0;
-
+	margin-top: -10px;
 }
 
 .product .thumbnail img {
-	width: 100%; 
+	/*height: 100%;*/
+/*	width: 100%; 
 	height: auto;
-    overflow: hidden;
+    overflow: hidden;*/
 }
 
 .product img {
@@ -183,10 +188,10 @@ ul {
 .highlight-color {
 	color: #ff5252;
 }
-.carousel-costum {
+/*.carousel-costum {
 	width: 0;
 	padding-right: 10%;
-}
+}*/
 .carousel-control.right {
 	/*right: 75px;*/
 	background-image: -webkit-linear-gradient(left,rgba(0,0,0,0) 0,rgba(0,0,0,0) 100%);
@@ -207,3 +212,337 @@ a:hover {
 /*.index .product {
 	background-color: #fff;
 }*/
+
+.index-container {
+	width: 94%;
+	margin-left: 3%;
+}
+
+.user-info .form-border {
+	background: #fff;
+	padding: 20px;
+	border: 1px solid #ccc;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+	outline: none;
+}
+
+.user-info .nav {
+	padding-left: 0;
+	margin-bottom: 0;
+	list-style: none;
+}
+.user-info .user-option {
+	margin-top: 20px;
+}
+.user-info .user-option div {
+	font-size: 16px;
+	width: 100%;
+	margin: 0;
+	padding: 15px;
+}
+
+./*user-info .user-option div:hover {
+	background-color: #eee;
+}*/
+
+.text-align-right {
+	text-align: right;
+}
+
+.user-info .padding-left-30px {
+	width: 100%;
+	padding-left: 30px;
+}
+
+.user-info .padding-right-30px {
+	width: 100%;
+	padding-right: 30px;
+}
+
+
+.user-info {
+	margin-top: 100px;
+	margin-bottom: 100px;
+	background: #fff;
+}
+
+.user-info #table-orders {
+/*	background-color: #fff;
+	padding: 20px;
+	border: 1px solid #eee;
+	border-radius: 15px;*/
+	display: none;
+}
+
+.user-info .order-title {
+	padding-bottom: 30px;
+}
+
+.user-info .order {
+	margin-bottom: 40px;
+}
+
+.user-info #table-user-info {
+	font-size: 16px;
+}
+
+.user-info #table-user-info .text-align-right {
+	text-align: right;
+}
+
+.user-info .table {
+	padding: 60px;
+}
+.color-bbb {
+	color: #bbb;
+}
+
+.user-info .change-info {
+	color: #66e;
+}
+
+.user-info .change-info:hover {
+	color: #ff5252;
+}
+
+.glyphicon-user {
+	color: #99f;
+}
+
+.glyphicon-list-alt {
+	color: #dd0;
+}
+
+.color-red {
+	color: #ff5252;
+}
+
+.color-yellow {
+	color: #dd0;
+}
+
+.color-blue {
+	color: #00f;
+}
+
+body {
+	background-color: #fff;
+}
+
+.user-info #myPasswordModal .modal-body {
+	height: 100px;
+}
+
+.user-info #myPasswordModal .modal-body .pw-text {
+	margin-bottom: 40px;
+}
+
+.order-detail .table-row {
+	background-color: #fff;
+}
+
+.user-info .order-detail .shop-table td:nth-child(2) {
+	width: 40%;
+}
+
+.order-detail {
+	margin-top: 100px;
+}
+
+.user-info .user-info-menu {
+	border-right: 1px solid #ccc;
+	margin-right: 50px;
+}
+
+.user-info #title-display-name {
+	padding-bottom: 8px;
+}
+
+
+/*Admin*/
+
+.admin-page .shop-table tr{
+	display: inherit;
+}
+
+.admin-page .form-border {
+	background: #fff;
+	padding: 20px;
+	border: 1px solid #ccc;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+	outline: none;
+}
+
+.admin-page .nav {
+	padding-left: 0;
+	margin-bottom: 0;
+	list-style: none;
+}
+.admin-page .user-option {
+	margin-top: 20px;
+}
+.admin-page .user-option div {
+	font-size: 16px;
+	width: 100%;
+	margin: 0;
+	padding: 15px;
+}
+
+.admin-page .padding-left-30px {
+	width: 100%;
+	padding-left: 30px;
+}
+
+.admin-page .padding-right-30px {
+	width: 100%;
+	padding-right: 30px;
+}
+
+
+.admin-page {
+	margin-top: 100px;
+	margin-bottom: 100px;
+	background: #fff;
+}
+
+.admin-page #table-orders {
+/*	background-color: #fff;
+	padding: 20px;
+	border: 1px solid #eee;
+	border-radius: 15px;*/
+	display: none;
+}
+
+.admin-page .order-title {
+	padding-bottom: 30px;
+}
+
+.admin-page .order {
+	margin-bottom: 20px;
+}
+
+.admin-page .table {
+	padding: 60px;
+}
+
+.admin-page .change-info:hover {
+	color: #ff5252;
+}
+
+
+.admin-page .user-info-menu {
+	border-right: 1px solid #ccc;
+	margin-right: 50px;
+}
+
+.admin-page #title-display-name {
+	padding-bottom: 8px;
+}
+/*Admin*/
+
+.admin-page .shop-table-products td:nth-child(3) {
+	width: 20%;
+}
+
+.admin-page .shop-table-products td:nth-child(1) {
+	width: 10%;
+}
+
+.admin-page .shop-table-products td:nth-child(6) {
+	width: 7%;
+}
+
+.admin-page .shop-table-products td:nth-child(2) {
+	width: 10%;
+}
+
+.admin-page input[type="text"] {
+	width: 60px;
+}
+
+/*Header*/
+.header {
+	height: 200px;
+	background: #24242424;
+}
+.header .logo {
+    height: auto;
+    width:150px;
+}
+.header .navbar-collapse.collapse
+{
+    margin-right: 100px;
+    margin-top: 50px;
+}
+.header .container{
+    width: 100%;
+    margin-bottom: 100;
+    background-color: #242424;
+}
+
+.header .header_bottom{
+    float: left;
+    width: 100%;
+    margin-top: -50px;
+    
+}
+.header .search-submit{
+    width: 50px;
+    height: 50px;
+    margin-top: 50px;
+    margin-left: 100px;
+}
+.header .remove{
+    width: 120px;
+    height: 350px;
+    margin-top: -20px;
+}
+ .input-group .form-control:first-child {
+    
+  margin-top: 80px;
+}
+.input-group-btn:last-child>.btn, .input-group-btn:last-child>.btn-group {
+    margin-top: 80px;
+}
+.option-cart {
+    margin-left: 100px;
+    margin-top: 10px;
+}
+
+/*Header*/
+
+/*Login*/
+.shop-login .center{
+    display: table;
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.shop-login .row{
+	margin: 10px;
+}
+
+.shop-login .modal-content{
+	border-height: 20px;
+	border-radius: 20px;
+}
+
+.shop-login #buy-group-button > button{
+	margin: 0px 10px 0px 10px;
+}
+.shop-login #slidebar .img-thumbnail:hover {
+	border-width: 1px;
+	border-color: #000000;
+	border-style: solid;
+	filter: brightness(70%);
+}
+.shop-login #slidebar .active{
+	border-width: 1px;
+	border-color: #000000;
+	border-style: solid;
+	filter: brightness(70%);
+}
+/*Login*/

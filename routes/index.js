@@ -310,6 +310,23 @@ router.get('/buy-product/:id', function(req, res, next) {
 	return res.redirect('/cart');
 });
 
+router.get('/admin', function(req, res, next) { 
+	return res.render('admin');
+});
+
+router.get('/userinfo', function(req, res, next) { 
+	return res.render('userinfo');
+});
+
+router.get('/order/:id', function(req, res, next) { 
+	return res.render('orderdetail');
+});
+
+router.get('/products', function(req, res, next) { 
+	return res.render('products');
+});
+
+
 // router.get('/add-product', function(req, res, next) { 
 // 	console.log("----------------");
 // 	console.log("OK");

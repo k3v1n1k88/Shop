@@ -50,9 +50,9 @@
 
             {{# each topbuy_products }}
             {{#ifCond @index '==' 0}}
-            <li class="col-sm-2 col-sm-offset-1"> 
+            <li class="col-xs-4 col-sm-2 con-md-2 col-sm-offset-1 col-md-offset-1 col-xs-offset-1 prod"> 
               {{else}}
-              <li class="col-sm-2"> 
+              <li class="col-xs-4 col-sm-2 con-md-2 prod"> 
                 {{/ifCond}}
                 <div class="product">
                   
@@ -61,8 +61,8 @@
                     <a href="/product/{{ this.id }}"><img src="/assets/image/{{ this.image }}" alt=""></a>
                   </div>
                   <div class="caption-box">
-                    <h4>{{ this.name }}</h4>
-                    <p class="highlight-color">
+                    <h5>{{ this.name }}</h5>
+                    <p class="highlight-color" style="margin-top: 10px;">
                       {{ this.price }}
                         <sup>
                           đ
@@ -95,7 +95,7 @@
                     <a href="/product/{{ this.id }}"><img src="/assets/image/{{ this.image }}" alt=""></a>
                   </div>
                   <div class="caption-box">
-                    <h4>{{ this.name }}</h4>
+                    <h5>{{ this.name }}</h5>
                     <p class="highlight-color">
                       {{ this.price }}
                         <sup>
@@ -155,7 +155,7 @@
                     <a href="/product/{{ this.id }}"><img src="/assets/image/{{ this.image }}" alt=""></a>
                   </div>
                   <div class="caption-box">
-                    <h4>{{ this.name }}</h4>
+                    <h5>{{ this.name }}</h5>
                     <p class="highlight-color">
                       {{ this.price }}
                         <sup>
@@ -195,7 +195,7 @@
                     <a href="/product/{{ this.id }}"><img src="/assets/image/{{ this.image }}" alt=""></a>
                   </div>
                   <div class="caption-box">
-                    <h4>{{ this.name }}</h4>
+                    <h5>{{ this.name }}</h5>
                     <p class="highlight-color">
                       {{ this.price }}
                         <sup>
@@ -256,7 +256,7 @@
                     <a href="/product/{{ this.id }}"><img src="/assets/image/{{ this.image }}" alt=""></a>
                   </div>
                   <div class="caption-box">
-                    <h4>{{ this.name }}</h4>
+                    <h5>{{ this.name }}</h5>
                     <p class="highlight-color">
                       {{ this.price }}
                         <sup>
@@ -296,7 +296,7 @@
                     <a href="/product/{{ this.id }}"><img src="/assets/image/{{ this.image }}" alt=""></a>
                   </div>
                   <div class="caption-box">
-                    <h4>{{ this.name }}</h4>
+                    <h5>{{ this.name }}</h5>
                     <p class="highlight-color">
                       {{ this.price }}
                         <sup>

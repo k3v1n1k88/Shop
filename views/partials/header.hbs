@@ -1,20 +1,21 @@
-{{!-- <div class="header">
+<div class="header">
     <div class="container">
         <div class="row">
             <div class="col-md-2 col-sm-2">
                 <div class="logo">
                     <a href="/">
-                        <img src="images/Triple.png" alt="MyShop">
+                        <img src="/images/Triple.png" alt="MyShop">
                     </a>
                 </div>
             </div>
             <div class="col-md-10 col-sm-10">
                 <div class="header_top">
                     <div class="row">
-                        <div class="col-md-3">
+                        <div class="col-md-5">
                             <ul class="usermenu">
                                 <li>
-                                    <a href="/" class="log">Login</a>
+                                    <a data-toggle="modal" data-target="#loginModal" href="javascript:;" class="log">Login</a>
+
                                 </li>
                                 <li>
                                     <a href="/" class="reg">Hotline: 0981463592 </a>
@@ -218,7 +219,7 @@
                                             </div>
                                             <div class="right">
                                                 <a href="#" class="remove">
-                                                    <img src="images/Bally.png" alt="remove">
+                                                    <img src="/images/Bally.png" alt="remove">
                                                 </a>
                                             </div>
                                         </div>
@@ -242,4 +243,113 @@
             </div>
         </div>
     </div>
- --}}
+  
+</div>
+<div class="shop-login">
+    <div id="loginModal" class="modal fade" role="dialog">
+        <div class="modal-dialog" style="width: 28%">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="row">
+                        <button type="button" id="btnExit" class="pull-right" style="background-color: transparent;border-width: 0px;" data-dismiss="modal">
+                            <span class="glyphicon glyphicon-remove" style="font-size: 20px;"/>
+                        </button>
+                    </div>
+                    <form id ="login-form" action="Products.html" method="get">
+                        <div class="container-fluid">
+                            <img src="../public/images/logo-login.png" class="center" style="width: 20%;float:none;">
+                            <div class="text-center">
+                                <h3>Login</h3>
+                            </div>
+                            <div class="row">
+                                <div class="input-group col-md-10 col-md-offset-1">
+                                    <div class="input-group-addon">
+                                        <span class="glyphicon glyphicon-user"/>
+                                    </div>
+                                    <input type="text" name="username" id="username" class="form-control" value="" required="required" pattern="[a-z]" title="" placeholder="Nhập tên tài khoản của bạn">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-group col-md-10 col-md-offset-1">
+                                    <div class="input-group-addon">
+                                        <span class="glyphicon glyphicon-lock"/>
+                                    </div>
+                                    <input type="password" name="password" id="password" class="form-control" value="" required="required" placeholder="Nhập mật khẩu của bạn">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="checkbox col-md-offset-1">
+                                    <label>
+                                        <input type="checkbox" name="remember-id" value="">
+                                        Nhớ lấy tôi vào lần đăng nhập sau
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <button type="submit" class="btn btn-success center-block">Đăng nhập</button>
+                            </div>
+                            <div class="row pull-right">
+                                <a id="signup" href="javascript:;">Đăng kí | </a>
+                                <a href="javascript:;" class="pull-right">Quên mật khẩu</a>
+                            </div>
+                        </div>
+                    </form><!--End form login-->
+                    <form id ="signup-form" action="Products.html" method="get" style="display: none">
+                        <div class="container-fluid">
+                            <img src="../public/images/logo-login.png" class="center-block" style="width: 20%;">
+                            <div class="text-center">
+                                <h3>Sign up</h3>
+                            </div>
+                            <div class="row">
+                                <input type="text" name="" id="input" class="form-control" value="" required="required" pattern="" title="" placeholder="Tên đăng nhập">
+                            </div>
+                            <div class="row">
+                                <input type="password" name="" id="input" class="form-control" required="required" title="" placeholder="Nhập mật khẩu của bạn">
+                            </div>
+                            <div class="row">
+                                <input type="password" name="" id="input" class="form-control" required="required" title="" placeholder="Xác nhận lại mật khẩu">
+                            </div>
+                            <div class="row">
+                                <input type="number" name="" id="input" class="form-control" value="" required="required" title="" placeholder="Nhập số điện thoại của bạn">
+                            </div>
+                            <div class="row">
+                                <input type="email" name="" id="input" class="form-control" value="" required="required" title="" placeholder="Nhập email của bạn">
+                            </div>
+                            <div class="row form-inline">
+                                <input type="text" name="" id="input" class="col-md-8 form-control" value="" required="required" pattern="" title="" placeholder="Nhập mã xác nhận">
+                                <img class="col-md-4" src="../public/images/capcha.png">
+                            </div>
+                            <div class="container-fluid">
+                                <div class="g-recaptcha col-md-12 center-block" data-sitekey="6LcesFUUAAAAAJ9CIog9x0js4AowNVfJNYTgvr_K"></div>
+                            </div>
+                            <div class="row" style="float: right">
+                                <button type="submit" class="btn btn-success right">Đăng kí</button>
+                                <button type="submit" class="btn btn-danger right">Hủy bỏ</button>
+                            </div>
+                            
+                        </div>
+                    </form><!--end form sign up-->
+                </div>
+            </div>
+        </div>
+    </div>
+   
+</div>
+                                    <button type="button" class="btn btn-default" data-toggle="modal" data-target="#loginModal">button</button>
+ <script>
+        var signup = document.getElementById("signup");
+        var btnExit = document.getElementById("btnExit");
+        var loginform = document.getElementById("login-form");
+        var signupform = document.getElementById("signup-form")
+        signup.onclick = function open(){
+            loginform.style.display = "none"
+            signupform.style.display = "block"
+        }
+        btnExit.onclick = function close(){
+
+        }
+        $("#loginModal").on("hide.bs.modal", function () {
+            loginform.style.display = "block"
+            signupform.style.display = "none"
+        });
+    </script>
