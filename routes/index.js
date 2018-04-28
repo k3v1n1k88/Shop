@@ -4,32 +4,6 @@ var productRepo = require('../func/productRepo.js');
 var fs = require('fs');
 var Product = require('../models/product');
 
-//var Cart = require('../models/cart'); <- model cart
-//
-// var products = [];
-// var next_product = [];
-// productRepo.loadTop10Views()
-//     .then(rows => {
-//     	var count = 0;
-//     	for (i of rows) {
-//     		var prod = new Product(rows);
-//     		products.push(prod);
-//     	}
-//     	products = rows;
-// // console.log(products);
-// 		var i = 0;
-// 		while (i < 5) {
-// 			next_product.push(products.pop());
-// 			i += 1;
-// 		}
-// 		next_product.reverse();
-
-//     	console.log("Loading top 10 view data completed.");
-
-//     })
-//     .catch(err => {
-//         console.log('Error: ' + err);
-//     });
 
 router.get('/', function (req, res, next) {
 	var next_topbuy_products = [];
@@ -46,12 +20,7 @@ router.get('/', function (req, res, next) {
 			}
 			next_topbuy_products.reverse();
 			console.log("Loaded top 10 buy data completed.");
-			// res.render('index', 
-			// { 
-			// 	title: 'Trilpe Shop',
-			// 	topbuy_products: topbuy_products,
-			// 	next_topbuy_products: next_topbuy_product
-			// });
+
 			productRepo.loadTopViews(10)
 				.then(topview_products => {
 				var count = 0;
@@ -147,15 +116,6 @@ router.get('/product/:id', function (req, res, next) {
 		});	
 });
 
-// router.get('/product', function (req, res, next) {
-// 	// console.log(req.session.cartList);
-// 	if (!req.session.product) {
-// 		return res.render('product', {product: null});
-// 	}
-// 	res.render('product', {
-// 		product: req.session.product
-// 	});
-// });
 
 router.get('/cart', function (req, res, next) {
 	// console.log("---------------------");
@@ -326,7 +286,18 @@ router.get('/products', function(req, res, next) {
 	return res.render('products');
 });
 
+router.get('/orderdetail/:id', function(req, res, next) { 
+	return res.render('orderdetail');
+});
 
+router.get('/payment/:id', function(req, res, next) { 
+	return res.render('payment');
+});
+
+router.post('/order/payment/ORER0003', function(req, res, next) {
+	req.session.cartList = []; 
+	return res.render('cart');
+});
 // router.get('/add-product', function(req, res, next) { 
 // 	console.log("----------------");
 // 	console.log("OK");
