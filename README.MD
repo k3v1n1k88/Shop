@@ -1,5 +1,5 @@
 
-# My project team is project about handbag shopping
+# Our project is project about handbag shopping
 
 # This is our first web project 
 # How to install?
@@ -33,3 +33,8 @@ Tran Thi Thanh Van  - 1512663
 
 # Hope this project will successfull
 # Cheer, bro
+# Completion schedule (last updated: 28/04/2018)
+```
+Front-end: 90%
+Back-end: 33%
+```
