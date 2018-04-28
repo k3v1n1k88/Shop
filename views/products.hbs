@@ -1,5 +1,5 @@
 	<div class="container-fluid" style="margin-top: 100px;">
-		<div class="left col-md-3" style="height: 400px">
+		<div class="left col-md-2" style="height: 400px; margin-right: 8%; border-right: 1px solid #ddd;">
 			<div class="sanpham" style="margin-bottom: 0px;">
 				<h3>TÚI XÁCH</h3>
 				<hr style="border-color:#000; margin-top: 3px;margin-bottom: 0px">
@@ -71,9 +71,9 @@
 			<div class="container-fluid">
 				<div class="hienthisanpham" style="height: 300px">
 					{{#if products13}}
-					<div class="row col-md-12">
+					<div class="row col-md-12 margin-bottom-20px margin-top-20px">
 						{{# each products13}}
-						<div class="item col-md-4 text-center" >
+						<div class="item col-md-3 text-center product margin-right-10per">
 							<img src="/assets/image/{{ this.image }}" style="width: 100%">
 							<div class="tensanpham"><h4>{{ this.name }}</h4></div>
 							<div class="giasanpham"><h4>{{ this.price }} VND</h4></div>
@@ -81,9 +81,9 @@
 						</div>
 						{{/each}}
 					</div>
-					<div class="row col-md-12">
+					<div class="row col-md-12 margin-bottom-20px">
 						{{# each products46}}
-						<div class="item col-md-4 text-center" >
+						<div class="item col-md-3 text-center product margin-right-10per" >
 							<img src="/assets/image/{{ this.image }}" style="width: 100%">
 							<div class="tensanpham"><h4>{{ this.name }}</h4></div>
 							<div class="giasanpham"><h4>{{ this.price }} VND</h4></div>
@@ -91,9 +91,9 @@
 						</div>
 						{{/each}}
 					</div>
-					<div class="row col-md-12">
+					<div class="row col-md-12 margin-bottom-20px">
 						{{# each products79}}
-						<div class="item col-md-4 text-center" >
+						<div class="item col-md-3 text-center product margin-right-10per" >
 							<img src="/assets/image/{{ this.image }}" style="width: 100%">
 							<div class="tensanpham"><h4>{{ this.name }}</h4></div>
 							<div class="giasanpham"><h4>{{ this.price }} VND</h4></div>
@@ -106,7 +106,7 @@
 						No Products
 					</div>
 					{{/if}}
-					<hr style="background-color: #000; height: 1px; width: 100%;">
+					<hr style="background-color: #ddd; height: 1px; width: 100%;">
 					<div class="container-fluid text-center">
 						<ul class="pagination pagination-lg text-center">
 							{{# each pages}}
