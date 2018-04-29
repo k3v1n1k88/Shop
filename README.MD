@@ -15,6 +15,7 @@ Run query to create database table:
   Run query named "triplevshop.sql" in "Data" file in our project
 ```
 ## Install app.
+Download or clone the project.
 Install packages
 ```
 npm install
