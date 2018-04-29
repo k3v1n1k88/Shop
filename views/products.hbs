@@ -1,18 +1,21 @@
-	<div class="container-fluid" style="margin-top: 100px;">
+	<div class="container-fluid shop-products" style="margin-top: 100px;">
 		<div class="left col-md-2" style="height: 400px; margin-right: 8%; border-right: 1px solid #ddd;">
 			<div class="sanpham" style="margin-bottom: 0px;">
-				<h3>TÚI XÁCH</h3>
+				<h3>Shop</h3>
 				<hr style="border-color:#000; margin-top: 3px;margin-bottom: 0px">
-				<ul class="nav nav-stacked">
-					<li><a href="#" style="color:#000">Home</a></li>
-					<li><a href="#" style="color:#000">Túi xách</a></li>
-					<li><a href="#" style="color:#000">Balô</a></li>
-				</ul>
+				<a href="javascript:;" style="color:#333; width: 100%; margin-top: 10px; margin-bottom: 10px;" class="pull-left"><h5>Home</h5></a>
+				<a href="javascript:;" style="color:#333; width: 100%; margin-top: 10px; margin-bottom: 10px;" class="pull-left"><h5>Túi xách</h5></a>
+				<a href="javascript:;" style="color:#333; width: 100%; margin-top: 10px; margin-bottom: 10px;" class="pull-left"><h5>Balô</h5></a>
+				{{!-- <ul class="nav nav-stacked">
+					<li><a href="javascript:;" style="color:#000; width: 100%;" class="pull-left">Home</a></li>
+					<li><a href="javascript:;" style="color:#000; width: 100%;" class="pull-left">Túi xách</a></li>
+					<li><a href="javascript:;" style="color:#000; width: 100%;" class="pull-left">Balô</a></li>
+				</ul> --}}
 			</div><!--end tim kiem theo san pham-->
-			<h3>LỌC THEO DANH SÁCH</h3>
+			<h3>Lọc theo danh sách</h3>
 			<hr style="border-color:#000; margin-top: 3px">
 			<div class="loaisanpham">
-				<h4>LOẠI SẢN PHẨM</h4>
+				<h4>Loại sản phẩm</h4>
 				<div class="checkbox">
 					<label>
 						<input type="checkbox" value="">
@@ -34,7 +37,7 @@
 			</div><!--end tim kiem theo loai-->
 			<hr style="border-color:#000; margin-top: 3px">
 			<div class="kieudang">
-				<h4>NHÀ SẢN XUẤT</h4>
+				<h4>Nhà sản xuất</h4>
 				<div class="checkbox">
 					<label>
 						<input type="checkbox" value="">
@@ -116,7 +119,7 @@
 					<div class="container-fluid text-center">
 						<ul class="pagination pagination-lg text-center">
 							{{# each pages}}
-						  		<li><a href="/products/page={{ this }}">{{ this }}</a></li>
+						  		<li><a style="color: #222;" href="/products/page={{ this }}">{{ this }}</a></li>
 						  	{{/each}}
 						</ul>
 					</div>

@@ -50,25 +50,31 @@
 
             {{# each topbuy_products }}
             {{#ifCond @index '==' 0}}
-            <li class="col-xs-4 col-sm-2 con-md-2 col-sm-offset-1 col-md-offset-1 col-xs-offset-1 prod"> 
+            <li class="col-sm-2 col-sm-offset-1"> 
               {{else}}
-              <li class="col-xs-4 col-sm-2 con-md-2 prod"> 
+              <li class="col-sm-2"> 
                 {{/ifCond}}
-                <div class="product">
+                <div class="product col-md-12">
                   
-              
-                  <div class="thumbnail">
-                    <a href="/product/{{ this.id }}"><img src="/assets/image/{{ this.image }}" alt=""></a>
-                  </div>
-                  <div class="caption-box">
+              <a href="/product/{{ this.id }}"><img src="/assets/image/{{ this.image }}" alt="" class="col-md-12" style="margin: 0; height: auto;"></a>
+             {{!--      <div class="thumbnail col-md-12" style="margin: 0;">
+                    
+                  </div> --}}
+                  <div class="caption-box col-md-12">
                     <h5>{{ this.name }}</h5>
-                    <p class="highlight-color" style="margin-top: 10px;">
+                    <p class="highlight-color price">
                       {{ this.price }}
                         <sup>
                           đ
                         </sup>
                     </p>
                     <p class="light-text">{{ this.type }}</p>
+                    {{!-- <div class="col-md-12">
+                      <span class="glyphicon glyphicon-eye-open pull-left"> </span>
+                      <p class="pull-left">&nbsp;{{ this.view }}</p>
+                      <p class="pull-right">{{ this.buy }}</p>
+                    </div> --}}
+                    {{!-- <a class="btn btn-success btn-mini" href="#">Chi tiết</a> --}}
                   </div>
                 </div>
               </li>
@@ -79,7 +85,7 @@
 
 
 
-          <div class="item">
+                    <div class="item">
           <ul class="thumbnails">
 
             {{# each next_topbuy_products }}
@@ -91,12 +97,10 @@
                 <div class="product">
                   
               
-                  <div class="thumbnail">
-                    <a href="/product/{{ this.id }}"><img src="/assets/image/{{ this.image }}" alt=""></a>
-                  </div>
+                  <a href="/product/{{ this.id }}"><img src="/assets/image/{{ this.image }}" alt="" class="col-md-12" style="margin: 0; height: auto;"></a>
                   <div class="caption-box">
                     <h5>{{ this.name }}</h5>
-                    <p class="highlight-color">
+                    <p class="highlight-color price">
                       {{ this.price }}
                         <sup>
                           đ
@@ -148,15 +152,15 @@
               {{else}}
               <li class="col-sm-2"> 
                 {{/ifCond}}
-                <div class="product">
+                <div class="product col-md-12">
                   
-              
-                  <div class="thumbnail">
-                    <a href="/product/{{ this.id }}"><img src="/assets/image/{{ this.image }}" alt=""></a>
-                  </div>
-                  <div class="caption-box">
+              <a href="/product/{{ this.id }}"><img src="/assets/image/{{ this.image }}" alt="" class="col-md-12" style="margin: 0; height: auto;"></a>
+             {{!--      <div class="thumbnail col-md-12" style="margin: 0;">
+                    
+                  </div> --}}
+                  <div class="caption-box col-md-12">
                     <h5>{{ this.name }}</h5>
-                    <p class="highlight-color">
+                    <p class="highlight-color price" style='margin-bottom: 7px; margin-top: 7px;'>
                       {{ this.price }}
                         <sup>
                           đ
@@ -191,12 +195,10 @@
                 <div class="product">
                   
               
-                  <div class="thumbnail">
-                    <a href="/product/{{ this.id }}"><img src="/assets/image/{{ this.image }}" alt=""></a>
-                  </div>
+                  <a href="/product/{{ this.id }}"><img src="/assets/image/{{ this.image }}" alt="" class="col-md-12" style="margin: 0; height: auto;"></a>
                   <div class="caption-box">
                     <h5>{{ this.name }}</h5>
-                    <p class="highlight-color">
+                    <p class="highlight-color price"  style='margin-bottom: 7px; margin-top: 7px;'>
                       {{ this.price }}
                         <sup>
                           đ
@@ -252,12 +254,10 @@
                 <div class="product">
                   
               
-                  <div class="thumbnail">
-                    <a href="/product/{{ this.id }}"><img src="/assets/image/{{ this.image }}" alt=""></a>
-                  </div>
+                  <a href="/product/{{ this.id }}"><img src="/assets/image/{{ this.image }}" alt="" class="col-md-12" style="margin: 0; height: auto;"></a>
                   <div class="caption-box">
                     <h5>{{ this.name }}</h5>
-                    <p class="highlight-color">
+                    <p class="highlight-color price" style='margin-bottom: 7px; margin-top: 7px;'>
                       {{ this.price }}
                         <sup>
                           đ
@@ -292,12 +292,10 @@
                 <div class="product">
                   
               
-                  <div class="thumbnail">
-                    <a href="/product/{{ this.id }}"><img src="/assets/image/{{ this.image }}" alt=""></a>
-                  </div>
+                  <a href="/product/{{ this.id }}"><img src="/assets/image/{{ this.image }}" alt="" class="col-md-12" style="margin: 0; height: auto;"></a>
                   <div class="caption-box">
                     <h5>{{ this.name }}</h5>
-                    <p class="highlight-color">
+                    <p class="highlight-color price" style='margin-bottom: 7px; margin-top: 7px;'>
                       {{ this.price }}
                         <sup>
                           đ
