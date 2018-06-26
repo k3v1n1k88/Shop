@@ -50,34 +50,39 @@
 											đ
 										</sup>
 									</span>
-									
-								</div>
-								<!-- <div class="list_bottom"> -->
-
-									<div class="button_group">
-										<a href="/cart/dec/{{ this.products.id }}" class="button">
-											<span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
-										</a>
+									<div class="button_group pull-left">
+										<form method="post" action="/cart/inc/{{ this.products.id }}">
+											<button type="button submit" class="button">
+												<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+											</button>
+										</form>
 										
 										<i class="button">
 											{{ this.count }}
 										</i>
-										
-										<a href="/cart/inc/{{ this.products.id }}" class="button favorite">
-											<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-										</a>
-									</div>
-									<!-- </div> -->
-								</div>
+										<form method="post" action="/cart/dec/{{ this.products.id }}">
+											<button type="button submit" class="button">
+												<span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+											</button>
+										</form>
 
+									</div>
+									
+								</div>
+								<!-- <div class="list_bottom"> -->
+
+								
+									<!-- </div> -->
 							</div>
-						</li>
+
+						</div>
+					</li>
 						{{/each}}
-					</ul>
-				</div>
+				</ul>
 			</div>
-		</div>	
-	</div>
+		</div>
+	</div>	
+</div>
 
 
 	<div class="col-md-8 col-md-offset-2 product-payment">

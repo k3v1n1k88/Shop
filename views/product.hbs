@@ -93,12 +93,16 @@
                 <div class="text-center" style="margin-top:50px">
                     <div id="sold-quatity"><h4>Đã có <i><b>{{ this.buy }}</b></i> người đặt sản phẩm này<h4></div>
                 </div>
-                <button type="button" class="btn btn-success col-md-6">
-                    <a href="/add-product/{{ this.id }}"><h4>Thêm vào giỏ hàng</h4></a>
-                </button>
-                <button type="button" class="btn btn-danger col-md-6">
-                    <a href="/buy-product/{{ this.id }}"><h4>Mua ngay</h4></a>
-                </button>
+                <form class="form-horizontal" id="" method="post" action="/product/add/{{ this.id }}">
+	                <button type="button submit" class="btn btn-success col-md-6">
+	                    <h4>Thêm vào giỏ hàng</h4>
+	                </button>
+	            </form>
+	            <form class="form-horizontal" id="" method="post" action="/product/buy/{{ this.id }}">
+	                <button type="button submit" class="btn btn-danger col-md-6">
+	                    <h4>Mua ngay</h4>
+	                </button>
+	            </form>
             </div>
             <!-- infor about product-->
             <div id="detail" class="container-fluid col-md-12">

@@ -104,10 +104,13 @@ body {
 	margin-bottom: 10px;
 }
 .cart .products .button_group {
-	float: left;
 	margin-bottom: 10px;
-	/*width: 100%;*/
 	text-align: center;
+}
+
+.cart .products .button_group .button {
+	float: right;
+	margin-top: -5%;
 }
 .cart .button, button {
 	background: #fff;
