@@ -1,19 +1,30 @@
-var db = require('./db');
+var db = require('../func/db');
 
-exports.loadUserByUsername = username => {
-	var sql = `select * from users where username = '${username}'`;
+exports.loadCart = username => {
+	var sql = `select * from carts where user = '${username}'`;
 	return db.load(sql);
 }
 
-exports.addUser = user => {
-	var sql = `INSERT INTO users (username, password, email, phone, displayname, birthday) VALUES ('${user.username}', '${user.password}', '${user.email}', ${user.phone}, '${user.displayname}', ${user.birthday})`;
+exports.addCart = cart => {
+	var sql = `INSERT INTO carts (user, product, quantity) VALUES ('${cart.user}', '${cart.product}', ${cart.quantity})`;
 	return db.save(sql);
 }
 
-exports.updateUser = user => {
-	var sql = `UPDATE users SET password = '${user.password}', email = '${user.email}', phone = ${user.phone}, displayname = '${user.displayname}', birthday = ${user.birthday}) WHERE username = '${user.username}'`;
+exports.updateCart = cart => {
+	var sql = `UPDATE carts SET quantity = ${cart.quantity} WHERE user = '${cart.user}' and product = '${cart.product}'`;
 	return db.save(sql);
 }
+
+exports.removeCart = username => {
+	var sql = `DELETE FROM carts WHERE username = '${username}'`;
+	return db.save(sql);
+}
+
+
+// exports.loadTopViews = top => {
+// 	var sql = `select * from products order by view desc limit ${top}`;
+// 	return db.load(sql);
+// }
 
 // exports.loadAllProducts = () => {
 // 	var sql = 'select * from products';

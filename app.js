@@ -7,8 +7,16 @@ var bodyParser = require('body-parser');
 
 var hbs = require('hbs');
 var session = require('express-session');
+var restrict = require('./middle-wares/restrict');
 
-var index = require('./routes/index');
+// var index = require('./routes/index');
+var homeController = require('./controllers/homeController'),
+    productController = require('./controllers/productController'),
+    productsController = require('./controllers/productsController'),
+    cartController = require('./controllers/cartController'),
+    userController = require('./controllers/userController'),
+    adminController = require('./controllers/adminController'),
+    orderController = require('./controllers/orderController');
 
 var app = express();
 
@@ -36,7 +44,14 @@ app.use(function(req, res, next) {
     next();
 });
 
-app.use('/', index);
+app.use('/', homeController);
+app.use('/home', homeController);
+app.use('/product', productController);
+app.use('/products', productsController);
+app.use('/cart', cartController);
+app.use('/user', userController);
+app.use('/admin', adminController);
+app.use('/order', orderController);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

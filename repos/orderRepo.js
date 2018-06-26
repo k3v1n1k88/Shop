@@ -1,4 +1,4 @@
-var db = require('./db');
+var db = require('../func/db');
 
 exports.loadOrders = username => {
 	var sql = `select * from orders, productsinorder where orders.user = '${username}' and orders.id = productsinorder.order`;
