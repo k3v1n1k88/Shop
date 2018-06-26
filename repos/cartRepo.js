@@ -16,7 +16,7 @@ exports.updateCart = cart => {
 }
 
 exports.removeCart = username => {
-	var sql = `DELETE FROM carts WHERE username = '${username}'`;
+	var sql = `DELETE FROM carts WHERE user = '${username}'`;
 	return db.save(sql);
 }
 
