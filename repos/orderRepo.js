@@ -6,12 +6,12 @@ exports.loadOrders = username => {
 }
 
 exports.loadOrdersByID = id => {
-	var sql = `select * from orders, productsinorder where orders.id = '${id}' and orders.id = productsinorder.order`;
+	var sql = `select * from orders, productsinorder where orders.id = '${id}'`;
 	return db.load(sql);
 }
 
 exports.addOrder = order => {
-	var sql = `INSERT INTO orders (id, status, date, user) VALUES ('${order.id}', '${order.status}', ${order.date}, '${order.user}')`;
+	var sql = `INSERT INTO orders (id, status, date, user, recivername, reciverphone, reciveraddress) VALUES ('${order.id}', '${order.status}', ${order.date}, '${order.user}', '${order.recivername}', ${order.reciverphone}, '${order.reciveraddress}')`;
 	return db.save(sql);
 }
 
@@ -21,7 +21,7 @@ exports.addProductToOrder = productsinorder => {
 }
 
 exports.updateOrder = order => {
-	var sql = `UPDATE orders SET status = '${order.status}', date = ${order.date}, user = '${order.user}' WHERE id = '${order.id}'`;
+	var sql = `UPDATE orders SET status = '${order.status}', date = ${order.date}, user = '${order.user}', recivername = '${order.recivername}', reciverphone = ${order.reciverphone}, reciveraddress = '${order.reciveraddress}' WHERE id = '${order.id}'`;
 	return db.save(sql);
 }
 
