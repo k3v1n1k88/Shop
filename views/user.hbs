@@ -1,7 +1,8 @@
+{{#with user}}
 <div class="user-info">
 			<div class="col-md-2 col-md-offset-2 user-info-menu">
 
-				<a href="#"><h3  id="title-display-name">Lê Hoàng Vũ</h3></a>
+				<a href="#"><h3  id="title-display-name">{{displayname}}</h3></a>
 				<h7>Trang thông tin người dùng</h7>
 				<ul class="user-option"> 
 					<div id="list-user-info">
@@ -28,20 +29,20 @@
 				<tr> 
 					<th class="col-md-3 text-align-right color-bbb" scope="row">Tên hiển thị</th> 
 					<td class="padding-left-30px">
-						<span id="display-name">Lê Hoàng Vũ</span>&nbsp;&nbsp;
+						<span id="display-name">{{displayname}}</span>&nbsp;&nbsp;
 						<a class="change-info" href="javascript:;" id="change-display-name" data-toggle="modal" data-target="#myDisplayNameModal"><span class="glyphicon glyphicon-edit"></span></a>
 					</td> 
 
 				</tr> 
 				<tr> 
 					<th class="col-md-3 text-align-right color-bbb" scope="row"><span class="text-align-right">Số điện thoại:</span>	</th> 
-					<td class="padding-left-30px">01639421192</td> 
+					<td class="padding-left-30px">{{phone}}</td> 
 
 				</tr> 
 
 				<tr> 
 					<th class="col-md-3 text-align-right color-bbb" scope="row"><span class="text-align-right">Username</span>	</th> 
-					<td class="padding-left-30px">elhoangvu@gmail.com</td> 
+					<td class="padding-left-30px">{{email}}</td> 
 
 				</tr> 
 				<tr> 
@@ -54,6 +55,7 @@
 			</tbody> 
 		</table>
 	</div>
+	{{/with}}
 	<div  id="table-orders" class="col-xs-12 col-md-6 form-border">
 
 

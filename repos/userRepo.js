@@ -5,6 +5,11 @@ exports.loadUserByUsername = username => {
 	return db.load(sql);
 }
 
+exports.loadUser = user => {
+	var sql = `select * from users where username = '${user.username}' and password = '${user.password}'`;
+	return db.load(sql);
+}
+
 exports.addUser = user => {
 	var sql = `INSERT INTO users (username, password, email, phone, displayname, birthday) VALUES ('${user.username}', '${user.password}', '${user.email}', ${user.phone}, '${user.displayname}', ${user.birthday})`;
 	return db.save(sql);
