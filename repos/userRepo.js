@@ -1,4 +1,4 @@
-var db = require('./db');
+var db = require('../func/db');
 
 exports.loadUserByUsername = username => {
 	var sql = `select * from users where username = '${username}'`;

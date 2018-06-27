@@ -1,27 +1,22 @@
-var db = require('./db');
+var db = require('../func/db');
 
-exports.loadOrders = username => {
-	var sql = `select * from orders, productsinorder where orders.user = '${username}' and orders.id = productsinorder.order`;
+exports.loadCart = username => {
+	var sql = `select * from carts where user = '${username}'`;
 	return db.load(sql);
 }
 
-exports.loadOrdersByID = id => {
-	var sql = `select * from orders, productsinorder where orders.id = '${id}' and orders.id = productsinorder.order`;
-	return db.load(sql);
-}
-
-exports.addOrder = order => {
-	var sql = `INSERT INTO orders (id, status, date, user) VALUES ('${order.id}', '${order.status}', ${order.date}, '${order.user}')`;
+exports.addCart = cart => {
+	var sql = `INSERT INTO carts (user, product, quantity) VALUES ('${cart.user}', '${cart.product}', ${cart.quantity})`;
 	return db.save(sql);
 }
 
-exports.addProductToOrder = productsinorder => {
-	var sql = `INSERT INTO productsinorder (order, product, quantity) VALUES ('${productsinorder.order}', '${productsinorder.product}', ${productsinorder.quantity})`;
+exports.updateCart = cart => {
+	var sql = `UPDATE carts SET quantity = ${cart.quantity} WHERE user = '${cart.user}' and product = '${cart.product}'`;
 	return db.save(sql);
 }
 
-exports.updateOrder = order => {
-	var sql = `UPDATE orders SET status = '${order.status}', date = ${order.date}, user = '${order.user}' WHERE id = '${order.id}'`;
+exports.removeCart = username => {
+	var sql = `DELETE FROM carts WHERE user = '${username}'`;
 	return db.save(sql);
 }
 

@@ -1,5 +1,5 @@
 /*
- Navicat MySQL Data Transfer
+ Navicat Premium Data Transfer
 
  Source Server         : triplev
  Source Server Type    : MySQL
@@ -11,11 +11,37 @@
  Target Server Version : 100131
  File Encoding         : 65001
 
- Date: 29/04/2018 10:58:55
+ Date: 27/06/2018 07:05:03
 */
 
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
+
+-- ----------------------------
+-- Table structure for carts
+-- ----------------------------
+DROP TABLE IF EXISTS `carts`;
+CREATE TABLE `carts`  (
+  `user` char(6) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `product` char(6) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `quantity` int(5) NULL DEFAULT NULL,
+  PRIMARY KEY (`user`, `product`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Table structure for orders
+-- ----------------------------
+DROP TABLE IF EXISTS `orders`;
+CREATE TABLE `orders`  (
+  `id` char(6) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `status` varchar(20) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `date` date NULL DEFAULT NULL,
+  `user` char(6) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `recivername` varchar(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `reciverphone` int(11) NOT NULL,
+  `reciveraddress` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Table structure for products
@@ -80,5 +106,35 @@ INSERT INTO `products` VALUES ('BL0003', 'NaZa', 'NaZa.jpg', 890000, 0, 0, 'Hàn
 INSERT INTO `products` VALUES ('BL0004', 'Ba lô Da pu', 'Linoza.jpg', 560000, 0, 0, 'Trung Quốc', 'Da pu', 'Chiếc túi được  trang trí bằng những họa tiết đơn giản,tinh tế,đáng yêu nên rất hợp cho các bạn tuổi teen', 'Da ', '2018-04-22', 14);
 INSERT INTO `products` VALUES ('BL0005', 'BALO ĐINH TÁN', 'BLhiKa.jpg', 550000, 1, 0, 'Korea', 'HiKa', 'Trong thế giới thời trang của phái đẹp, chiếc túi luôn chiếm một vị trí quan trọng. Từ những cô nàng bình thường nhất cho tới những ngôi sao hàng đầu, tất cả đều chia sẻ một tình yêu vĩ đại với những chiếc túi', 'Vải dù', '2018-04-30', 7);
 INSERT INTO `products` VALUES ('BL0006', 'Túi Đeo Chéo', 'blHaras.jpg', 850000, 0, 0, 'Việt Nam', 'Haras', 'Túi Đeo Chéo HARAS được gia công bằng chất liệu Da Phối vải Polyester đảm bảo độ bền chắc theo thời gian. Loại chất liệu này góp phần hạn chế tối đa tình trạng sờn cũ, phai màu sau một thời gian dài sử dụng.', 'Da', '2018-04-09', 20);
+
+-- ----------------------------
+-- Table structure for productsinorder
+-- ----------------------------
+DROP TABLE IF EXISTS `productsinorder`;
+CREATE TABLE `productsinorder`  (
+  `order` char(6) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `product` char(6) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `quantity` int(5) NULL DEFAULT NULL,
+  PRIMARY KEY (`order`, `product`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Table structure for users
+-- ----------------------------
+DROP TABLE IF EXISTS `users`;
+CREATE TABLE `users`  (
+  `username` char(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `password` char(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `email` char(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `phone` int(12) NULL DEFAULT NULL,
+  `displayname` varchar(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `birthday` date NULL DEFAULT NULL,
+  PRIMARY KEY (`username`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of users
+-- ----------------------------
+INSERT INTO `users` VALUES ('admin', 'admin', NULL, NULL, 'Admin', NULL);
 
 SET FOREIGN_KEY_CHECKS = 1;

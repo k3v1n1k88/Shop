@@ -1,7 +1,6 @@
 var mysql = require('mysql');
-var Product = require('../models/product');
+
 exports.load = sql => {
-    var products = [];
     return new Promise((resolve, reject) => {
         var cn = mysql.createConnection({
             host: 'localhost',
@@ -17,11 +16,7 @@ exports.load = sql => {
             if (error) {
             	reject(error);
             } else {
-                for (i of rows) {
-                    var prod = new Product(i);
-                    products.push(prod);
-                }
-            	resolve(products);
+            	resolve(rows);
             }
 
             cn.end();

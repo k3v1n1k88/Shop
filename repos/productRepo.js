@@ -1,4 +1,4 @@
-var db = require('./db');
+var db = require('../func/db');
 
 // exports.loadAll = (fn) => {
 // 	var sql = 'select * from products';
