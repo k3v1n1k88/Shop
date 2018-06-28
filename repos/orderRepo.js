@@ -16,7 +16,7 @@ exports.loadAllOrdersWithUsername = username => {
 }
 
 exports.loadAllProducts = () => {
-	var sql = `select * from productsinorder, products where productsinorder.product = products.id`;
+	var sql = `select products.*, productsinorder.* from productsinorder, products where productsinorder.product = products.id`;
 	return db.load(sql);
 }
 
@@ -25,21 +25,25 @@ exports.loadOrdersAndProductsByID = id => {
 	return db.load(sql);
 }
 
-exports.addOrder = order => {
-	var sql = `INSERT INTO orders (id, status, date, user, recivername, reciverphone, reciveraddress) VALUES ('${order.id}', '${order.status}', ${order.date}, '${order.user}', '${order.recivername}', ${order.reciverphone}, '${order.reciveraddress}')`;
+exports.insertOrder = order => {
+	var sql = `INSERT INTO orders (status, date, user, receivername, receiverphone, receiveraddress) VALUES ('${order.status}', '${order.date}', '${order.user}', '${order.receivername}', ${order.receiverphone}, '${order.receiveraddress}')`;
 	return db.save(sql);
 }
 
-exports.addProductToOrder = productsinorder => {
-	var sql = `INSERT INTO productsinorder (order, product, quantity) VALUES ('${productsinorder.order}', '${productsinorder.product}', ${productsinorder.quantity})`;
+exports.insertProductToOrder = productsinorder => {
+	var sql = `INSERT INTO productsinorder VALUES ('${productsinorder.order}', '${productsinorder.product}', ${productsinorder.quantity})`;
 	return db.save(sql);
 }
 
 exports.updateOrder = order => {
-	var sql = `UPDATE orders SET status = '${order.status}', date = ${order.date}, user = '${order.user}', recivername = '${order.recivername}', reciverphone = ${order.reciverphone}, reciveraddress = '${order.reciveraddress}' WHERE id = '${order.id}'`;
+	var sql = `UPDATE orders SET status = '${order.status}', date = ${order.date}, user = '${order.user}', recivername = '${order.receivername}', reciverphone = ${order.receiverphone}, reciveraddress = '${order.receiveraddress}' WHERE id = '${order.id}'`;
 	return db.save(sql);
 }
 
+exports.loadLastOrderID = username => {
+	var sql = `select max(id) as id from orders where user = '${username}'`;
+	return db.load(sql);	
+}
 
 // exports.loadTopViews = top => {
 // 	var sql = `select * from products order by view desc limit ${top}`;

@@ -54,3 +54,13 @@ exports.loadByIds = ids => {
 	
 	return db.load(sql);
 }
+
+exports.loadProductsWithOrderID = id => {
+	var sql = `select products.*, productsinorder.*, orders.id as orderid, status, orders.date as orderdate, user, receivername, receiverphone, receiveraddress, productsinorder.quantity as productsinorderquantity, productsinorder.quantity*products.price as totalprice from productsinorder, products, orders where orders.id = productsinorder.order and productsinorder.product = products.id and orders.id = ${id}`;
+	return db.load(sql);
+}
+
+exports.updateQuantity = (id, offset) => {
+	var sql = `UPDATE products SET quantity = quantity + ${offset} WHERE id = '${id}'`;
+	return db.save(sql);
+}

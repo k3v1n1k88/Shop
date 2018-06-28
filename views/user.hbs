@@ -78,6 +78,10 @@
 	{{else}}
 	
 	<div  id="table-orders" class="col-xs-12 col-md-6 form-border" style="display: block;">
+		{{#if orders}}
+		{{else}}
+		<h3 style="text-align: center;">Không có đơn hàng nào.</h3>
+		{{/if}}
 		{{#each orders}}
 		<div class="order">
 
@@ -103,28 +107,28 @@
 					{{#each this.products}}
 					<tr class="table-row">
 						<td>
-							<img src="/assets/image/{{this.image}}" alt="" class="shop-table-image">
+							<img src="/assets/image/{{this.product.image}}" alt="" class="shop-table-image">
 						</td>
 						<td>
 							<div class="shop-details">
 								<div class="productname">
-									{{this.name}}
+									{{this.product.name}}
 								</div>
 
 							</div>
 						</td>
 						<td>
 							<!-- <h5> -->
-								{{this.price}}<sup>đ</sup>
+								{{this.product.price}}<sup>đ</sup>
 							<!-- </h5> -->
 						</td>
 						<td>
-							1
+							{{this.product.quantity}}
 						</td>
 						<td>
 							<!-- <h5> -->
 								<strong class="red">
-									200000<sup>đ</sup>
+									{{this.totalprice}}
 								</strong>
 							<!-- </h5> -->
 						</td>
@@ -136,7 +140,7 @@
 				<tfoot>
 					<tr>
 						<td>
-							<a href="/order/ORDER003" class="pull-left button" style="margin-top: 8px;">
+							<a href="/order/detailId={{this.order.id}}" class="pull-left button" style="margin-top: 8px;">
 								Xem chi tiết
 							</a>
 						</td>

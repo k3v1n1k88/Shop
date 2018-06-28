@@ -1,49 +1,40 @@
 <div class="payment col-md-8 col-sm-8">
-	<form action="/order/payment/ORER0003" method="post" accept-charset="utf-8">
+	<form action="/cart/payment" method="post" accept-charset="utf-8">
 
 		
 		<table class="table"> 
-			<h4>Thanh toán hóa đơn: ORER0003</h4>
+			<h4>Thanh toán hóa đơn</h4>
 			<p>Dịch vụ hỗ trợ COD</p>
+			{{#with user}}
 			<tbody> 
 				<tr> 
-					<th class="col-md-3 text-align-right color-bbb" scope="row">Họ tên*</th> 
-					<td class="padding-left-30px">
-						<input type="text" name="name" class="col-md-6">
-					</td> 
-
+					<th class="col-md-3 text-align-right color-bbb" scope="row"><span class="text-align-right">Họ và tên người nhận*</span>	</th> 
+					<td class="padding-left-30px"><input type="text" name="receivername" value="{{this.displayname}}" class="col-md-6"></td> 
+				</tr>
+				<tr> 
+					<th class="col-md-3 text-align-right color-bbb" scope="row"><span class="text-align-right">Số điện thoại người nhận*</span>	</th> 
+					<td class="padding-left-30px"><input type="text" name="receiverphone" value="{{this.phone}}" class="col-md-6"></td> 
 				</tr> 
 				<tr> 
-					<th class="col-md-3 text-align-right color-bbb" scope="row">Email</th> 
-					<td class="padding-left-30px">
-						<input type="text" name="email"  class="col-md-6">
-					</td> 
-
-				</tr> 
-
-				<tr> 
-					<th class="col-md-3 text-align-right color-bbb" scope="row"><span class="text-align-right">Số điện thoại*</span>	</th> 
-					<td class="padding-left-30px"><input type="text" name="phonenumber"  class="col-md-6"></td> 
-
-				</tr> 
-				<tr> 
-					<th class="col-md-3 text-align-right color-bbb" scope="row">Địa chỉ*</th> 
-					<td class="padding-left-30px"><input type="text" name="address" class="col-md-8"></td> 
-
+					<th class="col-md-3 text-align-right color-bbb" scope="row">Địa chỉ nhận hàng*</th> 
+					<td class="padding-left-30px"><input type="text" name="receiveraddress" class="col-md-8"></td> 
 				</tr>
 			</tbody> 
+			{{/with}}
 		</table>
+		{{#with totalmoney}}
 		<div class="col-md-4 pull-left">
-			<h5>Tổng tiền: 1.000.000 VND</h5>
+			<h5>Tổng tiền: {{this}} VND</h5>
 		</div>
+		{{/with}}
 		<button type="submit" class="pull-right" id='pay'>Thanh toán</button>
 	</form>
 </div>
 
 <script>
-	var pay = document.getElementById('pay');
-	pay.onclick = function(){
-		alert('Thanh toán thành công!');
-	}
+	// var pay = document.getElementById('pay');
+	// pay.onclick = function() {
+	// 	alert('Thanh toán thành công!');
+	// }
 
 </script>

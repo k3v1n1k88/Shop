@@ -6,38 +6,38 @@
 			<span>&nbsp;Giỏ hàng của bạn</span>
 		</h2>
 	</div>
-	{{# if products}}
+	{{#if products}}
 	<div class="row">
 		<div class="col-md-8 col-md-offset-2">
 
 			<div>
 
 				<ul class="products-listItem">
-					{{# each products}}
+					{{#each products}}
 					<li class="products">
-						<a href="/cart/remove/{{ this.products.id }}" class="remove">
+						<a href="/cart/remove/{{ this.id }}" class="remove">
 							<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
 						</a>
 						<div class="thumbnail col-xs-4 col-md-3">
-							<img src="/assets/image/{{ this.products.image }}" alt="{{ this.products.name }}">
+							<img src="/assets/image/{{ this.image }}" alt="{{ this.name }}">
 						</div>
 						<div class="product-list-description col-md-9 col-xs-7">
 							<div class="productname">
-								{{ this.products.name }}
+								{{ this.name }}
 							</div>
 							<p>
 								<p class="product-price highlight-color">
-									{{ this.products.price }}
+									{{ this.price }}
 									<sup>
 										đ
 									</sup>
 								</p>
 							</p>
 							<p>
-								Loại: {{ this.products.type }}
+								Loại: {{ this.type }}
 							</p>
 							<p>
-								Nhà sản xuất: {{ this.products.manufacturer }}
+								Nhà sản xuất: {{ this.manufacturer }}
 							</p>
 
 							<div class="price">
@@ -45,22 +45,22 @@
 									
 									<span class="new_price">Tổng:</span>
 									<span class="new_price">
-										{{ this.totalPrice }}
+										{{ this.totalprice }}
 										<sup>
 											đ
 										</sup>
 									</span>
 									<div class="button_group pull-left">
-										<form method="post" action="/cart/inc/{{ this.products.id }}">
+										<form method="post" action="/cart/incWithId={{ this.id }}&quantity={{this.cartquantity}}">
 											<button type="button submit" class="button">
 												<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
 											</button>
 										</form>
 										
 										<i class="button">
-											{{ this.count }}
+											{{ this.cartquantity }}
 										</i>
-										<form method="post" action="/cart/dec/{{ this.products.id }}">
+										<form method="post" action="/cart/decWithId={{ this.id }}&quantity={{this.cartquantity}}">
 											<button type="button submit" class="button">
 												<span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
 											</button>
@@ -87,10 +87,14 @@
 
 	<div class="col-md-8 col-md-offset-2 product-payment">
 		<div class="col-md-8 col-md-offset-2 product-payment">
-			<h2 class="title">Tổng tiền hàng (2 sản phẩm): 
+			{{#with count}}
+			<h2 class="title">Tổng tiền hàng ({{this}} sản phẩm): 
+			{{/with}}
 				<span>
 					{{!-- {{# each totalPriceAllProd}} --}}
-					{{ totalPriceAllProd }}
+					{{#with totalprice}}
+						{{ this }}
+					{{/with}}
 					{{!-- {{/each}} --}}
 					<sup>
 						đ
@@ -100,7 +104,7 @@
 			
 		</div>
 		
-		<a class="button pull-right button" href="/user/payment/ORDER003">Thanh Toán</a>
+		<a class="button pull-right button" href="/cart/payment">Thanh Toán</a>
 		
 
 		

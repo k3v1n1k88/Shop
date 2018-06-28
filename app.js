@@ -3,7 +3,8 @@ var path = require('path');
 var favicon = require('serve-favicon');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-
+var wnumb = require('wnumb');
+var exphbs = require('express-handlebars');
 var hbs = require('hbs');
 var session = require('express-session');
 var restrict = require('./middle-wares/restrict');
@@ -15,15 +16,29 @@ var homeController = require('./controllers/homeController'),
     cartController = require('./controllers/cartController'),
     userController = require('./controllers/userController'),
     adminController = require('./controllers/adminController'),
-    orderController = require('./controllers/orderController');
+    orderController = require('./controllers/orderController'),
+    loginController = require('./controllers/loginController');
 
 var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 hbs.registerPartials(__dirname + '/views/partials');
+// app.engine('hbs', exphbs({
+//     defaultLayout: 'layout',
+//     layoutsDir: '/',
+//     helpers: {
+//         number_format: n => {
+//             var nf = wnumb({
+//                 thousand: ','
+//             });
+//             return nf.to(n);
+//         }
+//     }
+// }));
 app.set('view engine', 'hbs');
 app.use(express.static(__dirname + 'public'));
+
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 // app.use(logger('dev'));
@@ -47,10 +62,11 @@ app.use('/', homeController);
 app.use('/home', homeController);
 app.use('/product', productController);
 app.use('/products', productsController);
-app.use('/cart', cartController);
-app.use('/user', userController);
-app.use('/admin', adminController);
-app.use('/order', orderController);
+app.use('/login', loginController);
+app.use('/cart', restrict, cartController);
+app.use('/user', restrict, userController);
+app.use('/admin', restrict, adminController);
+app.use('/order', restrict, orderController);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

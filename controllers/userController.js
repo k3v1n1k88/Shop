@@ -5,7 +5,6 @@ var userRepo = require('../repos/userRepo.js');
 var orderRepo = require('../repos/orderRepo.js');
 var fs = require('fs');
 var Order = require('../models/Order.js');
-var SHA256 = require('crypto-js/sha256');
 
 router.get('/', function(req, res, next) { 
 	if (req.session.isLogged) {
@@ -30,6 +29,12 @@ router.get('/:type', function(req, res, next) {
 				isDetailMode: true
 			});
 		} else {
+			if (req.session.user.username === 'admin') {
+				return res.render('user', {
+						user: req.session.user,
+						isDetailMode: false
+					});
+			}
 			var promise1 = orderRepo.loadAllOrdersWithUsername(req.session.user.username);
 			var promise2 = orderRepo.loadAllProducts();
 			Promise.all([promise1, promise2])
@@ -46,8 +51,12 @@ router.get('/:type', function(req, res, next) {
 						var totalprice = 0;
 						for (var prod of prods) {
 							if (prod.order == order.id) {
-								products.push(prod);
-								totalprice += prod.price;
+								var productprice = prod.price*prod.quantity;
+								products.push({
+									product: prod,
+									totalprice: productprice
+								});
+								totalprice += productprice;
 							}
 						}
 						orders.push({
@@ -57,7 +66,7 @@ router.get('/:type', function(req, res, next) {
 						});
 						console.log('++' + orders[0].order);
 					}
-					console.log('++' + orders);
+					console.log('++' + orders[0].order.date);
 					return res.render('user', {
 						user: req.session.user,
 						orders: orders,
@@ -75,42 +84,11 @@ router.get('/:type', function(req, res, next) {
 	// return res.render('user');
 });
 
-router.get('/payment/:id', function(req, res, next) { 
-	return res.render('payment');
-});
-
-router.post('/login', function(req, res) {
-	var user = {
-		username: req.body.username,
-		password: SHA256(req.body.password).toString()
-	}
-	console.log(SHA256('admin').toString());
-	userRepo.loadUser(user).then(rows => {
-        if (rows.length > 0) {
-            req.session.isLogged = true;
-            req.session.user = rows[0];
-            req.session.cart = [];
-            console.log('**************************');
-            var url = '/';
-            if (req.query.retUrl) {
-                url = req.query.retUrl;
-            }
-            res.redirect('/');
-        } else {
-            var vm = {
-                showError: true,
-                errorMsg: 'Login failed'
-            };
-            res.redirect('/');
-        }
-    });
-});
-
-router.get('/login', function(req, res, next) { 
-	if (req.session.isLogged) {
-		res.redirect('/');
-	}
-	res.redirect('/');
-});
+// router.get('/login', function(req, res, next) { 
+// 	if (req.session.isLogged) {
+// 		res.redirect('/');
+// 	}
+// 	res.redirect('/');
+// });
 
 module.exports = router;
