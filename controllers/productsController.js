@@ -13,10 +13,13 @@ router.get('/page=:id', function(req, res, next) {
 		return res.render('products');
 	}
 	var start = 9 * (id - 1);
-	productRepo.loadAllProducts()
-		.then(prods => {
+	var p1 = productRepo.loadAllProducts();	
+	var p3 = productRepo.loadAllManufacturers();	
+	var p4 = productRepo.loadAllTypes();
+	Promise.all([p1, p3, p4])
+		.then(([prods,manufactorers,types])=> {
 			console.log("Loaded all product.");
-				// console.log(prods);
+			//console.log(prods);
 			var list13 = [];
 			var list46 = [];
 			var list79 = [];
@@ -47,12 +50,15 @@ router.get('/page=:id', function(req, res, next) {
 			}
 			var quantity = [];
 			quantity.push(prods.length);
+			console.log(types);
 			return res.render('products', {
 				products13: list13,
 				products46: list46,
 				products79: list79,
 				pages: count,
-				quantity: quantity
+				quantity: quantity,
+				branch: manufactorers,
+				types: types
 			});
 		})
 		.catch(err => {

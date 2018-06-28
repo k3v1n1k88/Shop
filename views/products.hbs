@@ -14,48 +14,28 @@
 			</div><!--end tim kiem theo san pham-->
 			<h3>Lọc theo danh sách</h3>
 			<hr style="border-color:#000; margin-top: 3px">
-			<div class="loaisanpham">
+			<div id="type" class="loaisanpham">
 				<h4>Loại sản phẩm</h4>
+				{{# each types}}
 				<div class="checkbox">
 					<label>
 						<input type="checkbox" value="">
-						Vải
+						{{this.type}}
 					</label>
 				</div>
-				<div class="checkbox">
-					<label>
-						<input type="checkbox" value="">
-						Da
-					</label>
-				</div>
-				<div class="checkbox">
-					<label>
-						<input type="checkbox" value="">
-						Cotton
-					</label>
-				</div>
+				{{/each}}
 			</div><!--end tim kiem theo loai-->
 			<hr style="border-color:#000; margin-top: 3px">
-			<div class="kieudang">
+			<div id="manufactory"class="kieudang">
 				<h4>Nhà sản xuất</h4>
+				{{# each branch}}
 				<div class="checkbox">
 					<label>
 						<input type="checkbox" value="">
-						Le'vis
+						{{this.manufacturer}}
 					</label>
 				</div>
-				<div class="checkbox">
-					<label>
-						<input type="checkbox" value="">
-						Gucci
-					</label>
-				</div>
-				<div class="checkbox">
-					<label>
-						<input type="checkbox" value="">
-						Bally
-					</label>
-				</div>
+				{{/each}}
 			</div>
 		</div><!--end left bar-->
 		<div class="right col-md-9" style="height: 400px">
