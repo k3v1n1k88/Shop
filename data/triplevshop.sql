@@ -11,7 +11,7 @@
  Target Server Version : 100131
  File Encoding         : 65001
 
- Date: 27/06/2018 07:05:03
+ Date: 28/06/2018 15:22:14
 */
 
 SET NAMES utf8mb4;
@@ -33,22 +33,28 @@ CREATE TABLE `carts`  (
 -- ----------------------------
 DROP TABLE IF EXISTS `orders`;
 CREATE TABLE `orders`  (
-  `id` char(6) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `id` int(6) NOT NULL AUTO_INCREMENT,
   `status` varchar(20) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `date` date NULL DEFAULT NULL,
   `user` char(6) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
-  `recivername` varchar(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `recivername` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_520_ci NULL DEFAULT NULL,
   `reciverphone` int(11) NOT NULL,
-  `reciveraddress` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `reciveraddress` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_520_ci NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of orders
+-- ----------------------------
+INSERT INTO `orders` VALUES (1, 'Đã giao', '2018-06-27', 'vulh', 'Lê Hoàng Vũ', 12346789, '123 Q1');
+INSERT INTO `orders` VALUES (2, 'Đang giao', '2018-06-20', '00003', 'Lê Văn A', 45678913, '456 Q2');
 
 -- ----------------------------
 -- Table structure for products
 -- ----------------------------
 DROP TABLE IF EXISTS `products`;
 CREATE TABLE `products`  (
-  `id` char(6) CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL,
+  `id` char(6) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `name` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
   `image` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
   `price` int(11) NULL DEFAULT NULL,
@@ -112,11 +118,18 @@ INSERT INTO `products` VALUES ('BL0006', 'Túi Đeo Chéo', 'blHaras.jpg', 85000
 -- ----------------------------
 DROP TABLE IF EXISTS `productsinorder`;
 CREATE TABLE `productsinorder`  (
-  `order` char(6) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `order` int(6) NOT NULL AUTO_INCREMENT,
   `product` char(6) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `quantity` int(5) NULL DEFAULT NULL,
   PRIMARY KEY (`order`, `product`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of productsinorder
+-- ----------------------------
+INSERT INTO `productsinorder` VALUES (1, 'BG0001', 10);
+INSERT INTO `productsinorder` VALUES (1, 'BG0002', 5);
+INSERT INTO `productsinorder` VALUES (1, 'BG0003', 6);
 
 -- ----------------------------
 -- Table structure for users
@@ -124,10 +137,10 @@ CREATE TABLE `productsinorder`  (
 DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users`  (
   `username` char(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `password` char(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `password` char(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `email` char(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   `phone` int(12) NULL DEFAULT NULL,
-  `displayname` varchar(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `displayname` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
   `birthday` date NULL DEFAULT NULL,
   PRIMARY KEY (`username`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
@@ -135,6 +148,7 @@ CREATE TABLE `users`  (
 -- ----------------------------
 -- Records of users
 -- ----------------------------
-INSERT INTO `users` VALUES ('admin', 'admin', NULL, NULL, 'Admin', NULL);
+INSERT INTO `users` VALUES ('admin', '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918', NULL, NULL, 'Admin', NULL);
+INSERT INTO `users` VALUES ('vulh', '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918', 'elhoangvu@gmail.com', 1639421192, 'Lê Hoàng Vũ', '1997-01-31');
 
 SET FOREIGN_KEY_CHECKS = 1;

@@ -70,7 +70,7 @@
 	</div>
 	{{else}}
 
-	<div  id="table-orders" class="col-xs-12 col-md-6 form-border">
+	<div  id="table-orders" class="col-xs-12 col-md-6 form-border" style="display: block;">
 		{{#each orders}}
 		<div class="order">
 
@@ -93,7 +93,7 @@
 						</tr>
 				</thead>	 -->
 				<tbody>
-					{{#each ../this.products}}
+					{{#each this.products}}
 					<tr class="table-row">
 						<td>
 							<img src="/assets/image/{{this.image}}" alt="" class="shop-table-image">
