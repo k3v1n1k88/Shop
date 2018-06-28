@@ -13,10 +13,17 @@
 						</div> 
 					</a>
 					<a href="/user/order">
+						{{#if isDetailMode}}
 						<div id="list-orders">
 							<span class="glyphicon glyphicon-list-alt"></span> 
 							<span>&nbsp;Đơn mua</span>
 						</div> 
+						{{else}}
+						<div id="list-orders" style="background-color: #ddd;">
+							<span class="glyphicon glyphicon-list-alt"></span> 
+							<span>&nbsp;Đơn mua</span>
+						</div> 
+						{{/if}}
 					</a>
 				</ul>
 			</div>
@@ -69,7 +76,7 @@
 		</table>
 	</div>
 	{{else}}
-
+	
 	<div  id="table-orders" class="col-xs-12 col-md-6 form-border" style="display: block;">
 		{{#each orders}}
 		<div class="order">
@@ -134,7 +141,7 @@
 							</a>
 						</td>
 						<td colspan="6">
-							<h4 class="pull-right" style="margin-top: 8px;">Tổng tiền: 10000000VND</h4>
+							<h4 class="pull-right" style="margin-top: 8px;">Tổng tiền: {{this.totalprice}} VND</h4>
 						</td>
 					</tr>
 				</tfoot>
@@ -255,7 +262,6 @@
 		listuserinfo.style.backgroundColor = "#ddd";
 		listorders.style.backgroundColor = "unset";
 	};
-
 
 	listorders.onclick = function() {
 		// alert("asd");
