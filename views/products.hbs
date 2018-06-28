@@ -14,29 +14,52 @@
 			</div><!--end tim kiem theo san pham-->
 			<h3>Lọc theo danh sách</h3>
 			<hr style="border-color:#000; margin-top: 3px">
-			<div id="type" class="loaisanpham">
-				<h4>Loại sản phẩm</h4>
-				{{# each types}}
-				<div class="checkbox">
-					<label>
-						<input type="checkbox" value="">
-						{{this.type}}
-					</label>
+			<!-- Tim theo loai -->
+			<form action="/products/search" method="GET">
+				<div id="type" class="loaisanpham">
+					<h4>Loại sản phẩm</h4>
+					{{# each types}}
+					<div class="checkbox">
+						<label>
+							<input type="checkbox" name="type" value="{{this.type}}">
+							{{this.type}}
+						</label>
+					</div>
+					{{/each}}
+				</div><!--end tim kiem theo loai-->
+				<hr style="border-color:#000; margin-top: 3px">
+				<!--Tim theo nha san xuat-->
+				<div id="manufactory" class="branch">
+					<h4>Nhà sản xuất</h4>
+					{{# each branch}}
+					<div class="checkbox">
+						<label>
+							<input type="checkbox" name="branch" value="{{this.manufacturer}}">
+							{{this.manufacturer}}
+						</label>
+					</div>
+					{{/each}}
+				</div><!--ket thuc tim theo nha san xuat-->
+				<!--Tim theo gia-->
+				<hr style="border-color:#000; margin-top: 3px">
+				<div id="price" class="price">
+					<h4>Tìm theo giá</h4><br>
+					<div class="form-group">
+						<label for="minprice" class="control-label">Từ</label><br>
+						<div class="col-sm-12">
+							<input type="number" name="minprice" id="minprice" class="form-control" value="" pattern="" placeholder="Giá thấp nhất">
+						</div>
+						<label for="maxprice" class=" control-label">Đến</label><br>
+						<div class="col-sm-12">
+							<input type="number" name="maxprice" id="maxprice" class="form-control" value="	" pattern="" title="" placeholder="Giá cao nhất">
+						</div>
+					</div>
 				</div>
-				{{/each}}
-			</div><!--end tim kiem theo loai-->
-			<hr style="border-color:#000; margin-top: 3px">
-			<div id="manufactory"class="kieudang">
-				<h4>Nhà sản xuất</h4>
-				{{# each branch}}
-				<div class="checkbox">
-					<label>
-						<input type="checkbox" value="">
-						{{this.manufacturer}}
-					</label>
-				</div>
-				{{/each}}
-			</div>
+				<!--ket thuc tim theo gia-->
+				<br><br><br>
+				<button type="submit" class="btn btn-primary center">Tìm kiếm</button>
+				<br><br><br>
+			</form>
 		</div><!--end left bar-->
 		<div class="right col-md-9" style="height: 400px">
 			<div class="row" style="margin-top: 20px">
@@ -72,7 +95,7 @@
 						<div class="item col-md-3 product margin-right-10per" >
 							<a href="/product/{{this.id}}"><img src="/assets/image/{{ this.image }}" style="width: 100%"></a>
 							<div class="tensanpham"><h5>{{ this.name }}</h5></div>
-							<div class="giasanpham"><h5 class="color-red" style="margin-top: 4px; margin-bottom: 4px;">{{ this.price }} VND</h5></div>
+							<div class="giasanpham"><h5 class="color-red" style="margin-top: 4px; margin-bottom: 4px;number-format: "###,##0.00" ;">{{ this.price }} VND</h5></div>
 							<div class="loaisanpham"><h6>{{ this.type }}</h6></div>
 						</div>
 						{{/if}}
