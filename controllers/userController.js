@@ -43,15 +43,17 @@ router.get('/:type', function(req, res, next) {
 					for (var order of ords) {
 						
 						var products = [];
-						
+						var totalprice = 0;
 						for (var prod of prods) {
 							if (prod.order == order.id) {
 								products.push(prod);
+								totalprice += prod.price;
 							}
 						}
 						orders.push({
 							order: order,
-							products: products
+							products: products,
+							totalprice: totalprice
 						});
 						console.log('++' + orders[0].order);
 					}
