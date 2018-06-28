@@ -15,16 +15,6 @@ exports.loadAllProducts = () => {
 	return db.load(sql);
 }
 
-exports.loadAllManufacturers = () => {
-	var sql = 'select distinct manufacturer from products';
-	return db.load(sql);
-}
-
-exports.loadAllTypes = () => {
-	var sql = 'select distinct type from products';
-	return db.load(sql);
-}
-
 exports.loadTopBuy = top => {
 	var sql = `select * from products order by buy desc limit ${top}`;
 	return db.load(sql);

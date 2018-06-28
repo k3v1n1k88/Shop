@@ -35,63 +35,70 @@
 					</tr>
 				</thead>	
 				<tbody>
-					
+					{{#each products}}
 					<tr class="table-row">
-						<td>BL0001</td>
+						<td>{{this.id}}</td>
 						<td>
-							<img src="/assets/image/Bally.jpg" alt="" class="shop-image">
+							<img src="/assets/image/{{this.image}}" alt="" class="shop-image">
 						</td>
 						<td>
 							<div class="shop-details">
 								<div class="productname">
-									<h6>Lincoln Corner Unit Products</h6>
-									<p class='color-red'>BL0001</p>
+									<h6>{{this.name}}</h6>
+									{{!-- <p class='color-red'>BL0001</p> --}}
 								</div>
 
 							</div>
 						</td>
 						<td>
-														<select>
-								<option value="1" selected="selected">
-									Da
-								</option>
-								<option value="1">
-									Vải thêu
-								</option>
-								<option value="2">
-									Nỉ
-								</option>
+							<select>
+								{{#each ../types}}
+
+									{{#ifCond ../this.type '==' this.type}}
+										<option value="1" selected="selected">
+											{{this.type}}
+										</option>
+									{{else}}
+										<option>
+											{{this.type}}
+										</option>
+									{{/ifCond}}
+								{{/each}}
 							</select>
 						</td>
 						<td>
 
-														<select>
-								<option value="1" selected="selected">
-									LV
-								</option>
-								<option value="1">
-									Levi's
-								</option>
-								<option value="2">
-									Crumpler
-								</option>
+							<select>
+								{{#each ../manufacturers}}
+
+									{{#ifCond ../this.manufacturer '==' this.manufacturer}}
+										<option value="1" selected="selected">
+											{{this.manufacturer}}
+										</option>
+									{{else}}
+										<option>
+											{{this.manufacturer}}
+										</option>
+									{{/ifCond}}
+								{{/each}}
 							</select>
 							
 						</td>
 						<td>
-							<input type="text" value="200">
+							<input type="text" value="{{this.quantity}}">
 						</td>
 						<td>
-							
-							<strong class="red">
-								200000<sup>đ</sup>
-							</strong>
-
+							<input style="width:60%;" style="text-align: right;" type="text" value="{{this.price}}">
+{{!-- 							<strong class="red">
+								{{this.price}}<sup>đ</sup>
+							</strong> --}}
+							đ
 						</td>
 						<td><a href="javasript:;">Cập nhật</a></td>
 
 					</tr>
-					<tr class="table-row">
+					{{/each}}
+					{{!-- <tr class="table-row">
 						<td>BL0002</td>
 						<td>
 							<img src="/assets/image/BLhiKa.jpg" alt="" class="shop-image">
@@ -200,7 +207,7 @@
 						</td>
 						<td><a href="javasript:;">Cập nhật</a></td>
 
-					</tr>
+					</tr> --}}
 				</tbody>
 
 			</table>

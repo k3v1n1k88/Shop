@@ -1,30 +1,36 @@
-{{#with user}}
+
 <div class="user-info">
 			<div class="col-md-2 col-md-offset-2 user-info-menu">
-
+				{{#with user}}
 				<a href="#"><h3  id="title-display-name">{{displayname}}</h3></a>
+				{{/with}}
 				<h7>Trang thông tin người dùng</h7>
 				<ul class="user-option"> 
-					<div id="list-user-info">
-						<span class="glyphicon glyphicon-user"></span> 
-						<span>&nbsp;Thông tin cá nhân</span>
-					</div> 
-					<div id="list-orders">
-						<span class="glyphicon glyphicon-list-alt"></span> 
-						<span>&nbsp;Đơn mua</span>
-						
-					</div> 
+					<a href="/user/detail">
+						<div id="list-user-info">
+							<span class="glyphicon glyphicon-user"></span> 
+							<span>&nbsp;Thông tin cá nhân</span>
+						</div> 
+					</a>
+					<a href="/user/order">
+						<div id="list-orders">
+							<span class="glyphicon glyphicon-list-alt"></span> 
+							<span>&nbsp;Đơn mua</span>
+						</div> 
+					</a>
 				</ul>
 			</div>
 <!-- 	<div class="col-md-6">
 		&nbsp;
 		&nbsp;
 	</div> -->
+	{{#if isDetailMode}}
 	<div class="col-xs-12 col-md-6 form-border" id="table-user-info">
 
 		<table class="table"> 
 			<h4>Hồ sơ cá nhân</h4>
 			<p>Quản lý thông tin hồ sơ cá nhân</p>
+			{{#with user}}
 			<tbody> 
 				<tr> 
 					<th class="col-md-3 text-align-right color-bbb" scope="row">Tên hiển thị</th> 
@@ -36,13 +42,19 @@
 				</tr> 
 				<tr> 
 					<th class="col-md-3 text-align-right color-bbb" scope="row"><span class="text-align-right">Số điện thoại:</span>	</th> 
-					<td class="padding-left-30px">{{phone}}</td> 
+					<td class="padding-left-30px">
+						<span id="phone">{{phone}}</span>&nbsp;&nbsp;
+						<a class="change-info" href="javascript:;" id="change-phone" data-toggle="modal" data-target="#myPasswordModal"><span class="glyphicon glyphicon-edit"></span></a>
+					</td> 
 
 				</tr> 
 
 				<tr> 
 					<th class="col-md-3 text-align-right color-bbb" scope="row"><span class="text-align-right">Username</span>	</th> 
-					<td class="padding-left-30px">{{email}}</td> 
+					<td class="padding-left-30px">
+						<span id="email">{{email}}</span>&nbsp;&nbsp;
+						<a class="change-info" href="javascript:;" id="change-email" data-toggle="modal" data-target="#myPasswordModal"><span class="glyphicon glyphicon-edit"></span></a>
+					</td> 
 
 				</tr> 
 				<tr> 
@@ -53,21 +65,22 @@
 
 				</tr>
 			</tbody> 
+			{{/with}}
 		</table>
 	</div>
-	{{/with}}
+	{{else}}
+
 	<div  id="table-orders" class="col-xs-12 col-md-6 form-border">
-
-
+		{{#each orders}}
 		<div class="order">
 
 
 			<div class="order-title">
 							
 								
-					<h4 class="pull-left">Đơn hàng 3 - ORDER003</h4>
+					<h4 class="pull-left">Đơn hàng {{this.order.id}}</h4>
 						
-					<h5	class="pull-right color-red">Chưa giao</h5>
+					<h5	class="pull-right color-red">{{this.order.status}}</h5>
 			</div>	
 			<table class="shop-table ">
 <!-- 				<thead>
@@ -80,22 +93,22 @@
 						</tr>
 				</thead>	 -->
 				<tbody>
-					
+					{{#each ../this.products}}
 					<tr class="table-row">
 						<td>
-							<img src="/assets/image/Bally.jpg" alt="" class="shop-table-image">
+							<img src="/assets/image/{{this.image}}" alt="" class="shop-table-image">
 						</td>
 						<td>
 							<div class="shop-details">
 								<div class="productname">
-									Lincoln Corner Unit Products
+									{{this.name}}
 								</div>
 
 							</div>
 						</td>
 						<td>
 							<!-- <h5> -->
-								2000000<sup>đ</sup>
+								{{this.price}}<sup>đ</sup>
 							<!-- </h5> -->
 						</td>
 						<td>
@@ -110,37 +123,8 @@
 						</td>
 						<!-- <td>Đã giao</td> -->
 					</tr>
-
-					<tr class="table-row">
-						<td>
-							<img src="/assets/image/Kors.jpg" alt="">
-						</td>
-						<td>
-							<div class="shop-details">
-								<div class="productname">
-									Lincoln Corner Unit Products
-								</div>
-
-							</div>
-						</td>
-						<td>
-							<!-- <h5> -->
-								200000<sup>đ</sup>
-							<!-- </h5> -->
-						</td>
-						<td>
-							2
-						</td>
-						<td>
-							<!-- <h5>
-								<strong class="red"> -->
-									2000000000<sup>đ</sup>
-								<!-- </strong>
-							</h5> -->
-
-						</td>
-						<!-- <td>Đã giao</td> -->
-					</tr>
+					{{/each}}
+					
 				</tbody>
 				<tfoot>
 					<tr>
@@ -156,205 +140,10 @@
 				</tfoot>
 			</table>
 		</div>
-
-		<!-- order -->
-		<div class="order">
-
-
-			<div class="order-title">
-							
-								
-					<h4 class="pull-left">Đơn hàng 3 - ORDER003</h4>
-						
-					<h5	class="pull-right color-red">Chưa giao</h5>
-			</div>	
-			<table class="shop-table ">
-<!-- 				<thead>
-						<tr>
-							<td	 class="col-md-2">a</td>
-							<td	 class="col-md-4">2</td>
-							<td	 class="col-md-2">3</td>
-							<td	 class="col-md-2">4</td>
-							<td	 class="col-md-2">5</td>
-						</tr>
-				</thead>	 -->
-				<tbody>
-					
-					<tr class="table-row">
-						<td>
-							<img src="/assets/image/Bally.jpg" alt="" class="shop-table-image">
-						</td>
-						<td>
-							<div class="shop-details">
-								<div class="productname">
-									Lincoln Corner Unit Products
-								</div>
-
-							</div>
-						</td>
-						<td>
-							<!-- <h5> -->
-								2000000<sup>đ</sup>
-							<!-- </h5> -->
-						</td>
-						<td>
-							1
-						</td>
-						<td>
-							<!-- <h5> -->
-								<strong class="red">
-									200000<sup>đ</sup>
-								</strong>
-							<!-- </h5> -->
-						</td>
-						<!-- <td>Đã giao</td> -->
-					</tr>
-
-					<tr class="table-row">
-						<td>
-							<img src="/assets/image/AN.jpg" alt="">
-						</td>
-						<td>
-							<div class="shop-details">
-								<div class="productname">
-									Lincoln Corner Unit Products
-								</div>
-
-							</div>
-						</td>
-						<td>
-							<!-- <h5> -->
-								200000<sup>đ</sup>
-							<!-- </h5> -->
-						</td>
-						<td>
-							2
-						</td>
-						<td>
-							<!-- <h5>
-								<strong class="red"> -->
-									2000000000<sup>đ</sup>
-								<!-- </strong>
-							</h5> -->
-
-						</td>
-						<!-- <td>Đã giao</td> -->
-					</tr>
-				</tbody>
-				<tfoot>
-					<tr>
-						<td>
-							<a href="/order/ORDER002" class="pull-left button" style="margin-top: 8px;">
-								Xem chi tiết
-							</a>
-						</td>
-						<td colspan="6">
-							<h4 class="pull-right" style="margin-top: 8px;">Tổng tiền: 10000000VND</h4>
-						</td>
-					</tr>
-				</tfoot>
-			</table>
-		</div>
-		<div class="order">
-
-
-			<div class="order-title">
-							
-								
-					<h4 class="pull-left">Đơn hàng 3 - ORDER003</h4>
-						
-					<h5	class="pull-right color-red">Chưa giao</h5>
-			</div>	
-			<table class="shop-table ">
-<!-- 				<thead>
-						<tr>
-							<td	 class="col-md-2">a</td>
-							<td	 class="col-md-4">2</td>
-							<td	 class="col-md-2">3</td>
-							<td	 class="col-md-2">4</td>
-							<td	 class="col-md-2">5</td>
-						</tr>
-				</thead>	 -->
-				<tbody>
-					
-					<tr class="table-row">
-						<td>
-							<img src="/assets/image/Bally.jpg" alt="" class="shop-table-image">
-						</td>
-						<td>
-							<div class="shop-details">
-								<div class="productname">
-									Lincoln Corner Unit Products
-								</div>
-
-							</div>
-						</td>
-						<td>
-							<!-- <h5> -->
-								2000000<sup>đ</sup>
-							<!-- </h5> -->
-						</td>
-						<td>
-							1
-						</td>
-						<td>
-							<!-- <h5> -->
-								<strong class="red">
-									200000<sup>đ</sup>
-								</strong>
-							<!-- </h5> -->
-						</td>
-						<!-- <td>Đã giao</td> -->
-					</tr>
-
-					<tr class="table-row">
-						<td>
-							<img src="/assets/image/AN.jpg" alt="">
-						</td>
-						<td>
-							<div class="shop-details">
-								<div class="productname">
-									Lincoln Corner Unit Products
-								</div>
-
-							</div>
-						</td>
-						<td>
-							<!-- <h5> -->
-								200000<sup>đ</sup>
-							<!-- </h5> -->
-						</td>
-						<td>
-							2
-						</td>
-						<td>
-							<!-- <h5>
-								<strong class="red"> -->
-									2000000000<sup>đ</sup>
-								<!-- </strong>
-							</h5> -->
-
-						</td>
-						<!-- <td>Đã giao</td> -->
-					</tr>
-				</tbody>
-				<tfoot>
-					<tr>
-						<td>
-							<a href="/order/ORDER001" class="pull-left button" style="margin-top: 8px;">
-								Xem chi tiết
-							</a>
-						</td>
-						<td colspan="6">
-							<h4 class="pull-right" style="margin-top: 8px;">Tổng tiền: 10000000VND</h4>
-						</td>
-					</tr>
-				</tfoot>
-			</table>
-		</div>
-
-		<!-- order -->
+		{{/each}}
+		
 	</div>
+	{{/if}}
 
 <!-- Trigger the modal with a button -->
 
@@ -414,15 +203,14 @@
 </div>
 </div>
 </div>
-
 <script>
-
 	var changedisplayname = document.getElementById("change-display-name");
-	changedisplayname.onclick = function(){
+
+	changedisplayname.onclick = function() {
 		var displayname = document.getElementById("display-name");
 		var editcontent = document.getElementById("edit-displayname-content");
 		editcontent.value = displayname.innerHTML;
-	}
+	};
 
 	var btnok = document.getElementById("btn-dn-ok");
 	btnok.onclick = function() {
@@ -431,15 +219,15 @@
 		var editcontent = document.getElementById("edit-displayname-content");
 		displayname.innerHTML = editcontent.value;
 		titledisplayname.innerHTML = editcontent.value;
-	}
+	};
 
 	var changepassword = document.getElementById("change-password");
-	changepassword.onclick = function(){
+	changepassword.onclick = function() {
 		var editcontent = document.getElementById("edit-password-content");
 		var secondEditContent = document.getElementById("second-edit-password-content");
 		editcontent.value = "";
 		secondEditContent.value = "";
-	}
+	};
 
 	var btn_pw_ok = document.getElementById("btn-pw-ok");
 	btn_pw_ok.onclick = function() {
@@ -454,19 +242,19 @@
 			}
 			password.innerHTML = pw;
 		}
-	}
+	};
 
 	var listuserinfo = document.getElementById("list-user-info");
 	var listorders = document.getElementById("list-orders");
 	listuserinfo.style.backgroundColor = "#eee";
 	listuserinfo.onclick = function() {
 		var orders = document.getElementById("table-orders");
-		orders.style.display = 'none';
+		// orders.style.display = 'none';
 		var userinfo = document.getElementById("table-user-info");
 		userinfo.style.display = 'block';
 		listuserinfo.style.backgroundColor = "#ddd";
 		listorders.style.backgroundColor = "unset";
-	}
+	};
 
 
 	listorders.onclick = function() {
@@ -474,11 +262,10 @@
 		var orders = document.getElementById("table-orders");
 		orders.style.display = 'block';
 		var userinfo = document.getElementById("table-user-info");
-		userinfo.style.display = 'none';
+		// userinfo.style.display = 'none';
 		listorders.style.width = '100%';
 		listorders.style.backgroundColor = "#ddd";
 		listuserinfo.style.backgroundColor = "unset";
-	}
+	};
+</script>
 
-
-	</script>
