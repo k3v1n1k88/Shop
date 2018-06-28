@@ -60,7 +60,7 @@ exports.loadProductsWithOrderID = id => {
 	return db.load(sql);
 }
 
-exports.updateQuantity = (id, offset) => {
-	var sql = `UPDATE products SET quantity = quantity + ${offset} WHERE id = '${id}'`;
+exports.updateQuantityAndBuy = (id, offset) => {
+	var sql = `UPDATE products SET quantity = quantity + ${offset}, buy = buy - ${offset}  WHERE id = '${id}'`;
 	return db.save(sql);
 }

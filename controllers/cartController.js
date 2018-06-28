@@ -7,73 +7,29 @@ var fs = require('fs');
 var dateFormater = require('dateformat');
 
 router.get('/', function (req, res, next) {
-	console.log('----------------- username ' + req.session.user.username);
-	if (!req.session.isLogged) {
-		return res.redirect('/');
-	} else {
-		console.log('+++++++++++++++++++++++++++++++++++++++vu1');
-		cartRepo.loadAllProducts(req.session.user.username)
-			.then(products => {
-				console.log('+++++++++++++++++++++++++++++++++++++++vu2');
-				var totalprice = 0;
-				var count = 0;
-				for (var product of products) {
-					totalprice += product.price*product.cartquantity;
-					// console.log('-------------' + product.cartprice);
-					count += product.cartquantity;
-				}
-				return res.render('cart', {
-					products: products,
-					totalprice: totalprice,
-					count: count
-				});
-			})
-			.catch(err => {
-
-				console.log('Error: ' + err);
-				return 	res.render('cart', {
-						products: null
-				});
+	cartRepo.loadAllProducts(req.session.user.username)
+		.then(products => {
+			var totalprice = 0;
+			var count = 0;
+			for (var product of products) {
+				totalprice += product.price*product.cartquantity;
+				// console.log('-------------' + product.cartprice);
+				count += product.cartquantity;
+			}
+			return res.render('cart', {
+				products: products,
+				totalprice: totalprice,
+				count: count
 			});
+		})
+		.catch(err => {
 
-		// if (!req.session.cartList) {
-		// 	return 	res.render('cart', {
-		// 		products: null
-		// 	});
-		// }
-		// var idList = [];
-		// for (i of req.session.cartList) {
-		// 	idList.push(i.id);
-		// }
-		// productRepo.loadByIds(idList)
-		// 	.then(products => {
-		// 		console.log("Loaded product by ids.");
-		// 		var prods = [];
-		// 		var totalPriceAllProd = 0;
-		// 		for (i of products) {
-		// 			for (j of req.session.cartList) {
-		// 				if (i.id == j.id) {
-		// 					var totalPrice = i.price * j.count;
-		// 					totalPriceAllProd += totalPrice;
-		// 					prods.push({products: i, count: j.count, totalPrice: totalPrice});
-		// 					break;
-		// 				}
-		// 			}
-		// 		}
-		// 		console.log(totalPriceAllProd);
-		// 		res.render('cart', {
-		// 			products: prods,
-		// 			totalPriceAllProd: totalPriceAllProd
-		// 		});
-		// 	})
-		// 	.catch(err => {
+			console.log('Error: ' + err);
+			return 	res.render('cart', {
+					products: null
+			});
+		});
 
-		// 		console.log('Error: ' + err);
-		// 		return 	res.render('cart', {
-		// 				products: null
-		// 		});
-		// 	});	
-	}
 });
 
 router.get('/remove/:id', function (req, res, next) {
@@ -91,21 +47,6 @@ router.get('/remove/:id', function (req, res, next) {
 			});
 	}
 	
-
-	
-	// console.log(id);
-	// var j = 0;
-	// for (i of req.session.cartList) {
-	// 	if (i.id == id) {
-	// 		req.session.cartList.splice(j, 1);
-	// 		console.log(i);
-	// 		break;
-	// 	}
-	// 	j += 1;
-	// }
-	// console.log("++++++++++++++++");
-	// console.log(req.session.cartList);
-	// res.redirect('/cart');
 });
 
 router.post('/incWithId=:id&quantity=:quantity', function (req, res) {
@@ -139,10 +80,10 @@ router.post('/decWithId=:id&quantity=:quantity', function (req, res) {
 	if (quantity <= 1) {
 		cartRepo.removeProducts(req.session.user.username, id)
 			.then(value => {
-				return res.render('/cart');
+				return res.redirect('/cart');
 			})
 			.catch(error => {
-				return res.render('/cart');
+				return res.redirect('/cart');
 			});
 	} else {
 		cartRepo.updateQuantity(req.session.user.username, id, +quantity - 1)
@@ -179,11 +120,21 @@ router.post('/payment', function(req, res) {
 	if (receivername === '' || receivername === null ||
 		receiverphone === '' || receiverphone === null ||
 		receiveraddress === '' || receiveraddress === null) {
-		return res.redirect('/cart/payment');
+		cartRepo.loadTotalMoney(req.session.user.username)
+			.then(totalmoney => {
+				return res.render('payment',{
+					totalmoney: totalmoney[0].totalmoney,
+					user: req.session.user,
+					isFailed: true
+				});
+			})
+			.catch(error => {
+				return res.redirect('/cart');
+			});
 	} else {
 		var date = Date();
 		var username = req.session.user.username;
-		var curDate = dateFormater(date, 'yyyy-mm-dd');
+		var curDate = dateFormater(date, 'yyyy-mm-dd h:MM:ss');
 		var order = {
 			status: 			'Chưa giao',
 			date: 				curDate,
@@ -210,7 +161,7 @@ router.post('/payment', function(req, res) {
 								quantity: prod.cartquantity
 							}
 							var promise3 = orderRepo.insertProductToOrder(productsinorder);
-							var promise4 = productRepo.updateQuantity(prod.id, -(+prod.cartquantity));
+							var promise4 = productRepo.updateQuantityAndBuy(prod.id, -(+prod.cartquantity));
 							console.log(`---------------+++++++++ ${-(+prod.cartquantity)}`);
 							Promise.all([promise3, promise4])
 								.then(([value1, value2]) => {
@@ -223,8 +174,10 @@ router.post('/payment', function(req, res) {
 						}
 						cartRepo.removeCart(username)
 							.then(value => {
+
 								console.log('************** removeCart OK');
-								return res.redirect('/cart');
+								req.session.isPayment = true;
+								return res.redirect('/user/orders');
 							})
 							.catch(error => {
 								console.log('************** removeCart failed');

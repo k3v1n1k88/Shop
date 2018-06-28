@@ -11,7 +11,7 @@ exports.loadAllOrders = () => {
 }
 
 exports.loadAllOrdersWithUsername = username => {
-	var sql = `select * from orders where user = '${username}'`;
+	var sql = `select * from orders where user = '${username}' ORDER BY date DESC`;
 	return db.load(sql);
 }
 

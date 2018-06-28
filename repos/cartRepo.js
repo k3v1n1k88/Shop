@@ -5,8 +5,13 @@ exports.loadAllProducts = username => {
 	return db.load(sql);
 }
 
-exports.addCart = cart => {
-	var sql = `INSERT INTO carts (user, product, quantity) VALUES ('${cart.user}', '${cart.product}', ${cart.quantity})`;
+exports.loadProduct = (username, id) => {
+	var sql = `select * from carts where user = '${username}' and product = '${id}'`;
+	return db.load(sql);
+}
+
+exports.insertCart = cart => {
+	var sql = `INSERT INTO carts VALUES ('${cart.user}', '${cart.product}', ${cart.quantity})`;
 	return db.save(sql);
 }
 

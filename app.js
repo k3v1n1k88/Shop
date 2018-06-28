@@ -17,8 +17,8 @@ var homeController = require('./controllers/homeController'),
     userController = require('./controllers/userController'),
     adminController = require('./controllers/adminController'),
     orderController = require('./controllers/orderController'),
-    loginController = require('./controllers/loginController');
-
+    loginController = require('./controllers/loginController'),
+    registerController = require('./controllers/registerController');
 var app = express();
 
 // view engine setup
@@ -63,10 +63,12 @@ app.use('/home', homeController);
 app.use('/product', productController);
 app.use('/products', productsController);
 app.use('/login', loginController);
+app.use('/register', registerController);
 app.use('/cart', restrict, cartController);
 app.use('/user', restrict, userController);
 app.use('/admin', restrict, adminController);
 app.use('/order', restrict, orderController);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

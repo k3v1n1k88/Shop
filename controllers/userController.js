@@ -28,7 +28,7 @@ router.get('/:type', function(req, res, next) {
 				user: req.session.user,
 				isDetailMode: true
 			});
-		} else {
+		} if (type === 'orders') {
 			if (req.session.user.username === 'admin') {
 				return res.render('user', {
 						user: req.session.user,
@@ -67,17 +67,23 @@ router.get('/:type', function(req, res, next) {
 						console.log('++' + orders[0].order);
 					}
 					console.log('++' + orders[0].order.date);
+					var isPayment = req.session.isPayment;
+					req.session.isPayment = false;
 					return res.render('user', {
 						user: req.session.user,
 						orders: orders,
-						isDetailMode: false
+						isDetailMode: false,
+						isPayment: isPayment
 					});
+
 				})		
 				.catch(err => {
 
 					console.log('***************************8 Error: ' + err);
 					res.redirect('/');
 				});
+		} else {
+			return res.redirect('/user');
 		}
 	}
 	// res.redirect('/');

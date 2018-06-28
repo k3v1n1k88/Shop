@@ -12,7 +12,7 @@
 							<span>&nbsp;Thông tin cá nhân</span>
 						</div> 
 					</a>
-					<a href="/user/order">
+					<a href="/user/orders">
 						{{#if isDetailMode}}
 						<div id="list-orders">
 							<span class="glyphicon glyphicon-list-alt"></span> 
@@ -51,7 +51,7 @@
 					<th class="col-md-3 text-align-right color-bbb" scope="row"><span class="text-align-right">Số điện thoại:</span>	</th> 
 					<td class="padding-left-30px">
 						<span id="phone">{{phone}}</span>&nbsp;&nbsp;
-						<a class="change-info" href="javascript:;" id="change-phone" data-toggle="modal" data-target="#myPasswordModal"><span class="glyphicon glyphicon-edit"></span></a>
+						<a class="change-info" href="javascript:;" id="change-phone" data-toggle="modal" data-target="#myPhoneModal"><span class="glyphicon glyphicon-edit"></span></a>
 					</td> 
 
 				</tr> 
@@ -60,7 +60,7 @@
 					<th class="col-md-3 text-align-right color-bbb" scope="row"><span class="text-align-right">Username</span>	</th> 
 					<td class="padding-left-30px">
 						<span id="email">{{email}}</span>&nbsp;&nbsp;
-						<a class="change-info" href="javascript:;" id="change-email" data-toggle="modal" data-target="#myPasswordModal"><span class="glyphicon glyphicon-edit"></span></a>
+						<a class="change-info" href="javascript:;" id="change-email" data-toggle="modal" data-target="#myEmailModal"><span class="glyphicon glyphicon-edit"></span></a>
 					</td> 
 
 				</tr> 
@@ -76,7 +76,9 @@
 		</table>
 	</div>
 	{{else}}
-	
+	{{#if isPayment}}
+			<h3 class="col-xs-12 col-md-6" style="color: #68f;">Thanh toán thành công.</h3>
+	{{/if}}
 	<div  id="table-orders" class="col-xs-12 col-md-6 form-border" style="display: block;">
 		{{#if orders}}
 		{{else}}
@@ -181,6 +183,50 @@
 	</div>
 </div>
 
+<div id="myPhoneModal" class="modal fade" role="dialog">
+	<div class="modal-dialog">
+
+		<!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title">Thay đổi số điện thoại</h4>
+			</div>
+			<div class="modal-body">
+				<span>Số điện thoại mới:</span>
+				<input type="text" name="text-name" id="edit-phone-content">
+				<!-- <p id="edit-content">abc</p> -->
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-defaul" id="btn-phone-ok" data-dismiss="modal">OK</button>
+			</div>
+		</div>
+
+	</div>
+</div>
+
+<div id="myEmailModal" class="modal fade" role="dialog">
+	<div class="modal-dialog">
+
+		<!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title">Thay đổi email</h4>
+			</div>
+			<div class="modal-body">
+				<span>Email mới:</span>
+				<input type="text" name="text-name" id="edit-email-content">
+				<!-- <p id="edit-content">abc</p> -->
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-defaul" id="btn-email-ok" data-dismiss="modal">OK</button>
+			</div>
+		</div>
+
+	</div>
+</div>
+
 <div id="myPasswordModal" class="modal fade" role="dialog">
 	<div class="modal-dialog">
 
@@ -192,6 +238,11 @@
 			</div>
 			<div class="modal-body">
 				<div class="col-md-8">
+					<div class="pw-text">
+						<p class="col-md-5">Mật hiện tại:</p>
+						<input type="password" name="text-name" id="old-password-content" class="col-md-7">
+					
+					</div>
 					<div class="pw-text">
 						<p class="col-md-5">Mật khẩu mới:</p>
 						<input type="password" name="text-name" id="edit-password-content" class="col-md-7">
@@ -215,6 +266,7 @@
 </div>
 </div>
 <script>
+	// displayname
 	var changedisplayname = document.getElementById("change-display-name");
 
 	changedisplayname.onclick = function() {
@@ -232,6 +284,41 @@
 		titledisplayname.innerHTML = editcontent.value;
 	};
 
+	// phone
+	var changephone = document.getElementById("change-phone");
+
+	changephone.onclick = function() {
+		var phone = document.getElementById("phone");
+		var editcontent = document.getElementById("edit-phone-content");
+		editcontent.value = phone.innerHTML;
+	};
+
+	var btn_phone_ok = document.getElementById("btn-phone-ok");
+	btn_phone_ok.onclick = function() {
+		var phone = document.getElementById("phone");
+		var editcontent = document.getElementById("edit-phone-content");
+		phone.innerHTML = editcontent.value;
+	};
+	//
+	//
+	//	email
+	var changeemail = document.getElementById("change-email");
+
+	changeemail.onclick = function() {
+		var email = document.getElementById("email");
+		var editcontent = document.getElementById("edit-email-content");
+		editcontent.value = email.innerHTML;
+	};
+
+	var btn_email_ok = document.getElementById("btn-email-ok");
+	btn_phone_ok.onclick = function() {
+		var email = document.getElementById("email");
+		var editcontent = document.getElementById("edit-email-content");
+		email.innerHTML = editcontent.value;
+	};
+	//
+
+	// password
 	var changepassword = document.getElementById("change-password");
 	changepassword.onclick = function() {
 		var editcontent = document.getElementById("edit-password-content");
