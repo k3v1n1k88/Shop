@@ -1,7 +1,7 @@
 var db = require('../func/db');
 
-exports.loadCart = username => {
-	var sql = `select * from carts where user = '${username}'`;
+exports.loadAllProducts = username => {
+	var sql = `select carts.quantity as cartquantity, products.*, carts.quantity*products.price as totalprice from carts, products where user = '${username}' and carts.product = products.id`;
 	return db.load(sql);
 }
 
@@ -19,6 +19,22 @@ exports.removeCart = username => {
 	var sql = `DELETE FROM carts WHERE user = '${username}'`;
 	return db.save(sql);
 }
+
+exports.removeProducts = (username, id) => {
+	var sql = `DELETE FROM carts WHERE product = '${id}' and user = '${username}'`;
+	return db.save(sql);
+}
+
+exports.updateQuantity = (username, id, quantity) => {
+	var sql = `UPDATE carts SET quantity = ${quantity} WHERE user = '${username}' and product = '${id}'`;
+	return db.save(sql);
+}
+
+exports.loadTotalMoney = username => {
+	var sql = `select sum(carts.quantity*products.price) as totalmoney from carts, products where user = '${username}' and carts.product = products.id`;
+	return db.load(sql);
+}
+
 
 
 // exports.loadTopViews = top => {

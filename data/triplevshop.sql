@@ -11,7 +11,7 @@
  Target Server Version : 100131
  File Encoding         : 65001
 
- Date: 28/06/2018 15:22:14
+ Date: 29/06/2018 00:53:35
 */
 
 SET NAMES utf8mb4;
@@ -29,6 +29,11 @@ CREATE TABLE `carts`  (
 ) ENGINE = InnoDB CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
+-- Records of carts
+-- ----------------------------
+INSERT INTO `carts` VALUES ('vanttt', 'BG0001', 3);
+
+-- ----------------------------
 -- Table structure for orders
 -- ----------------------------
 DROP TABLE IF EXISTS `orders`;
@@ -37,17 +42,23 @@ CREATE TABLE `orders`  (
   `status` varchar(20) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `date` date NULL DEFAULT NULL,
   `user` char(6) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
-  `recivername` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_520_ci NULL DEFAULT NULL,
-  `reciverphone` int(11) NOT NULL,
-  `reciveraddress` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_520_ci NOT NULL,
+  `receivername` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_520_ci NULL DEFAULT NULL,
+  `receiverphone` int(11) NOT NULL,
+  `receiveraddress` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_520_ci NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 19 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of orders
 -- ----------------------------
-INSERT INTO `orders` VALUES (1, 'Đã giao', '2018-06-27', 'vulh', 'Lê Hoàng Vũ', 12346789, '123 Q1');
-INSERT INTO `orders` VALUES (2, 'Đang giao', '2018-06-20', '00003', 'Lê Văn A', 45678913, '456 Q2');
+INSERT INTO `orders` VALUES (1, 'Đang giao', '2018-06-12', 'vulh', 'Lê Hoàng Vũ', 981463592, '123 Q1');
+INSERT INTO `orders` VALUES (2, 'Đang giao', '0000-00-00', 'vulh', 'Lê Hoàng Vũ', 981463592, '123 Q1');
+INSERT INTO `orders` VALUES (5, 'Đã giao', '2018-05-06', 'vulh', 'Lê Hoàng Vũ', 123456789, '123 Q1');
+INSERT INTO `orders` VALUES (6, 'Đã giao', '2018-05-06', 'vulh', 'Lê Hoàng Vũ', 123456789, '123 Q1');
+INSERT INTO `orders` VALUES (15, 'Chưa giao', '2018-06-29', 'vulh', 'Lê Hoàng Vũ', 1639421192, '123456');
+INSERT INTO `orders` VALUES (16, 'Chưa giao', '2018-06-29', 'vulh', 'Lê Hoàng Vũ', 1639421192, '123456');
+INSERT INTO `orders` VALUES (17, 'Chưa giao', '2018-06-29', 'vulh', 'Lê Hoàng Vũ', 1639421192, '123456');
+INSERT INTO `orders` VALUES (18, 'Chưa giao', '2018-06-29', 'vulh', 'Lê Hoàng Vũ', 1639421192, '123456');
 
 -- ----------------------------
 -- Table structure for products
@@ -74,7 +85,7 @@ CREATE TABLE `products`  (
 -- ----------------------------
 INSERT INTO `products` VALUES ('BG0001', 'Louis Vuitton', 'Louis Vuitton.jpg', 1450000, 0, 0, 'Pháp', 'Louis Vuitton', 'Chiếc túi được trang trí bằng những hạt cườm thêu đính bằng tay,kết hợp với những vòng đai được trang trí xung quanh làm cho chiếc túi sang trọng,quý phái.', 'Da', '2018-04-22', 10);
 INSERT INTO `products` VALUES ('BG0002', 'Saint Laurent', 'Saint Laurent.jpg', 970000, 0, 0, 'Pháp', 'Saint Laurent', 'Chiếc túi được  trang trí bằng những họa tiết nhỏ,đáng yêu nên rất hợp cho các bạn tuổi teen', 'Da', '2018-04-22', 20);
-INSERT INTO `products` VALUES ('BG0003', 'Dior', 'Dior.jpg', 1050000, 0, 0, 'Mỹ', 'Dior', 'Với thiết kế nhẹ nhàng nhưng lại rất tinh tế kèm vào đó là những cho tiết tỉ mỉ,dây mắc xích làm cho sản phẩm rất thời trang', 'Da', '2018-04-22', 45);
+INSERT INTO `products` VALUES ('BG0003', 'Dior', 'Dior.jpg', 1050000, 0, 0, 'Mỹ', 'Dior', 'Với thiết kế nhẹ nhàng nhưng lại rất tinh tế kèm vào đó là những cho tiết tỉ mỉ,dây mắc xích làm cho sản phẩm rất thời trang', 'Da', '2018-04-22', 40);
 INSERT INTO `products` VALUES ('BG0004', 'Alexander McQueen', 'Alexander McQueen.jpg', 890000, 0, 0, 'Anh', 'Alexander McQueen', 'Với chiếc bóp được thiết kế theo dạng bo tròn kèm theo đó là những hạt cườm được đính bằng tay rất tỉ mỉ làm cho sản phẩm nhìn rất sang trọng.', 'Da', '2018-04-22', 60);
 INSERT INTO `products` VALUES ('BG0005', 'Jimmy Choo', 'Jimmy Choo.jpg', 1240000, 0, 0, 'Mỹ', 'Jimmy Choo', 'Thật không có gì sang trọng hơn khi mang bên mình một chiếc ví với chất liệu vải được thêu họa tiết cực kì tỉ mỉ,thêm vào đó là dây đeo mắc xích.', 'Vải thiêu', '2018-04-22', 2);
 INSERT INTO `products` VALUES ('BG0006', 'Valentino', 'Valentino.jpg', 1070000, 0, 0, 'Malaysia', 'Valentino', 'Với mẫu túi xách Valentino luôn là phong cách Italy nhẹ nhàng và thanh tao,rất phù hợp cho những bạn làm công sở ', 'Vải', '2018-04-22', 72);
@@ -118,18 +129,37 @@ INSERT INTO `products` VALUES ('BL0006', 'Túi Đeo Chéo', 'blHaras.jpg', 85000
 -- ----------------------------
 DROP TABLE IF EXISTS `productsinorder`;
 CREATE TABLE `productsinorder`  (
-  `order` int(6) NOT NULL AUTO_INCREMENT,
+  `order` int(6) NOT NULL,
   `product` char(6) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `quantity` int(5) NULL DEFAULT NULL,
   PRIMARY KEY (`order`, `product`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of productsinorder
 -- ----------------------------
+INSERT INTO `productsinorder` VALUES (0, 'BG0005', 6);
 INSERT INTO `productsinorder` VALUES (1, 'BG0001', 10);
 INSERT INTO `productsinorder` VALUES (1, 'BG0002', 5);
 INSERT INTO `productsinorder` VALUES (1, 'BG0003', 6);
+INSERT INTO `productsinorder` VALUES (1, 'BG0011', 10);
+INSERT INTO `productsinorder` VALUES (1, 'BG0012', 10);
+INSERT INTO `productsinorder` VALUES (1, 'BG0014', 10);
+INSERT INTO `productsinorder` VALUES (2, 'BG0003', 5);
+INSERT INTO `productsinorder` VALUES (2, 'BG0011', 10);
+INSERT INTO `productsinorder` VALUES (2, 'BG0016', 5);
+INSERT INTO `productsinorder` VALUES (2, 'BG0017', 6);
+INSERT INTO `productsinorder` VALUES (5, 'BG0001', 10);
+INSERT INTO `productsinorder` VALUES (5, 'BG0019', 4);
+INSERT INTO `productsinorder` VALUES (5, 'BG0020', 12);
+INSERT INTO `productsinorder` VALUES (6, 'BG0001', 6);
+INSERT INTO `productsinorder` VALUES (6, 'BG0002', 10);
+INSERT INTO `productsinorder` VALUES (15, 'BG0001', 5);
+INSERT INTO `productsinorder` VALUES (16, 'BG0002', 5);
+INSERT INTO `productsinorder` VALUES (16, 'BG0003', 5);
+INSERT INTO `productsinorder` VALUES (17, 'BG0002', 5);
+INSERT INTO `productsinorder` VALUES (17, 'BG0003', 5);
+INSERT INTO `productsinorder` VALUES (18, 'BG0003', 5);
 
 -- ----------------------------
 -- Table structure for users
@@ -149,6 +179,7 @@ CREATE TABLE `users`  (
 -- Records of users
 -- ----------------------------
 INSERT INTO `users` VALUES ('admin', '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918', NULL, NULL, 'Admin', NULL);
+INSERT INTO `users` VALUES ('Vanttt', '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918', 'tranthithanhvan10397@gmail.com', 981463592, 'VanVan', '0000-00-00');
 INSERT INTO `users` VALUES ('vulh', '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918', 'elhoangvu@gmail.com', 1639421192, 'Lê Hoàng Vũ', '1997-01-31');
 
 SET FOREIGN_KEY_CHECKS = 1;
