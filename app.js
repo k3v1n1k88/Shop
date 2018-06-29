@@ -10,15 +10,15 @@ var session = require('express-session');
 var restrict = require('./middle-wares/restrict');
 
 // var index = require('./routes/index');
-var homeController = require('./controllers/homeController'),
-    productController = require('./controllers/productController'),
-    productsController = require('./controllers/productsController'),
-    cartController = require('./controllers/cartController'),
-    userController = require('./controllers/userController'),
-    adminController = require('./controllers/adminController'),
-    orderController = require('./controllers/orderController'),
-    loginController = require('./controllers/loginController'),
-    registerController = require('./controllers/registerController');
+var homeController      = require('./controllers/homeController'),
+    productController   = require('./controllers/productController'),
+    productsController  = require('./controllers/productsController'),
+    cartController      = require('./controllers/cartController'),
+    userController      = require('./controllers/userController'),
+    adminController     = require('./controllers/adminController'),
+    orderController     = require('./controllers/orderController'),
+    loginController     = require('./controllers/loginController'),
+    registerController  = require('./controllers/registerController');
 var app = express();
 
 // view engine setup

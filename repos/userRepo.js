@@ -10,8 +10,9 @@ exports.loadUser = user => {
 	return db.load(sql);
 }
 
-exports.addUser = user => {
-	var sql = `INSERT INTO users (username, password, email, phone, displayname, birthday) VALUES ('${user.username}', '${user.password}', '${user.email}', ${user.phone}, '${user.displayname}', ${user.birthday})`;
+exports.insertUser = user => {
+	var sql = `INSERT INTO users VALUES ('${user.username}', '${user.password}', '${user.email}', ${user.phone}, '${user.displayname}', '${user.birthday}')`;
+	console.log('-------------------- que ' + sql);
 	return db.save(sql);
 }
 

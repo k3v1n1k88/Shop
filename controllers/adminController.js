@@ -17,7 +17,8 @@ router.get('/', function(req, res, next) {
 				products: products,
 				orders: orders,
 				manufacturers: manufacturers,
-				types: types
+				types: types,
+				userdisplayname: req.session.userdisplayname
 			});
 		});
 	} else {

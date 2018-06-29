@@ -2,11 +2,17 @@
 
     <form id ="login-form" action="/login" method="post">
         <div class="container-fluid">
-            <img src="/images/logo-login.png" class="center" style="width: 20%;float:none;">
+            <img src="/images/logo-login.png" class="center-block" style="width: 20%;">
             <div class="text-center">
                 <h3>Login</h3>
             </div>
-            <div class="row">
+            {{#if isSuccess}}
+                <span style="margin-top: 5px; margin-bottom: 5px;color: #68f;">Bạn vừa đăng ký thành công.</span>
+            {{/if}}
+            {{#if isFailed}}
+                <span style="margin-top: 5px; margin-bottom: 5px;color: #ff5252;">Đăng nhập thất bại.</span>
+            {{/if}}
+            <div class="row" style="margin-top: 20px;margin-bottom: 20px;">
                 <div class="input-group col-md-10 col-md-offset-1">
                     <div class="input-group-addon">
                         <span class="glyphicon glyphicon-user"/>
@@ -14,7 +20,7 @@
                     <input type="text" name="username" id="username" class="form-control" value="" required="required" title="" placeholder="Nhập tên tài khoản của bạn">
                 </div>
             </div>
-            <div class="row">
+            <div class="row" style="margin-top: 20px;margin-bottom: 20px;">
                 <div class="input-group col-md-10 col-md-offset-1">
                     <div class="input-group-addon">
                         <span class="glyphicon glyphicon-lock"/>
@@ -22,7 +28,7 @@
                     <input type="password" name="password" id="password" class="form-control" value="" required="required" placeholder="Nhập mật khẩu của bạn">
                 </div>
             </div>
-            <div class="row">
+            <div class="row" style="margin-top: 20px;margin-bottom: 20px;">
                 <div class="checkbox col-md-offset-1">
                     <label>
                         <input type="checkbox" name="remember-id" value="">
@@ -30,11 +36,11 @@
                     </label>
                 </div>
             </div>
-            <div class="row">
+            <div class="row" style="margin-top: 20px;margin-bottom: 20px;">
                 <button type="subFnmit" class="btn btn-success center-block">Đăng nhập</button>
             </div>
             <div class="row pull-right">
-                <a id="signup" href="javascript:;">Đăng kí | </a>
+                <a id="signup" href="/register">Đăng kí | </a>
                 <a href="javascript:;" class="pull-right">Quên mật khẩu</a>
             </div>
         </div>

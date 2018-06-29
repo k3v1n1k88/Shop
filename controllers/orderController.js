@@ -23,7 +23,8 @@ router.get('/detailId=:id', function(req, res, next) {
 			return res.render('orderdetail', {
 				ordersID: ordersID,
 				orders: orders,
-				totalprice: totalprice
+				totalprice: totalprice,
+				userdisplayname: req.session.userdisplayname
 			});
 		})		
 		.catch(err => {
@@ -33,9 +34,9 @@ router.get('/detailId=:id', function(req, res, next) {
 		});
 });
 
-router.post('/payment/:id', function(req, res, next) {
-	req.session.cartList = []; 
-	return res.render('cart');
-});
+// router.post('/payment/:id', function(req, res, next) {
+// 	req.session.cartList = []; 
+// 	return res.render('cart');
+// });
 
 module.exports = router;

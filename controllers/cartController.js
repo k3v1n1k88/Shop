@@ -19,14 +19,16 @@ router.get('/', function (req, res, next) {
 			return res.render('cart', {
 				products: products,
 				totalprice: totalprice,
-				count: count
+				count: count,
+				userdisplayname: req.session.userdisplayname
 			});
 		})
 		.catch(err => {
 
 			console.log('Error: ' + err);
 			return 	res.render('cart', {
-					products: null
+					products: null,
+					userdisplayname: req.session.userdisplayname
 			});
 		});
 
@@ -104,7 +106,8 @@ router.get('/payment', function(req, res, next) {
 		.then(totalmoney => {
 			return res.render('payment',{
 				totalmoney: totalmoney[0].totalmoney,
-				user: req.session.user
+				user: req.session.user,
+				userdisplayname: req.session.userdisplayname
 			});
 		})
 		.catch(error => {
@@ -125,7 +128,8 @@ router.post('/payment', function(req, res) {
 				return res.render('payment',{
 					totalmoney: totalmoney[0].totalmoney,
 					user: req.session.user,
-					isFailed: true
+					isFailed: true,
+					userdisplayname: req.session.userdisplayname
 				});
 			})
 			.catch(error => {

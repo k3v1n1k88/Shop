@@ -110,24 +110,31 @@
                             </li>
                             
                             <li class="dropdown pull-right">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">User</a>
+                                {{#if userdisplayname}}
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    {{#with userdisplayname}}
+                                        {{this}}
+                                    {{/with}}
+                                </a>
                                 <div class="dropdown-menu mega-menu">
                                     <div class="row">
                                         <div class="col-md-6 col-sm-6">
                                             <ul class="mega-menu-links">
                                                 <li>
-                                                    <a data-toggle="modal" href="javascript:;" data-target="#loginModal">Đăng nhập</a>
-                                                </li>
-                                                <li>
                                                     <a href="/user">Thông tin cá nhân</a>
                                                 </li>
                                                 <li>
-                                                    <a href="/admin">Trang quản trị Admin</a>
+                                                    <a href="/user/logout">Đăng xuất</a>
                                                 </li>
                                             </ul>
                                         </div>
                                     </div>
                                 </div>
+                                {{else}}
+                                    <a data-toggle="modal" href="javascript:;" data-target="#loginModal" class="dropdown-toggle" id="loginbtn">Login</a>   
+                                {{/if}}
+
+                                
                             </li>                           
                         </ul>
                     </div>
@@ -187,41 +194,54 @@
                             </div>
                         </div>
                     </form><!--End form login-->
-                    <form id ="signup-form" action="Products.html" method="get" style="display: none">
+                    <form id="signup-form" action="/register" method="post" style="display: none;">
                         <div class="container-fluid">
                             <img src="/images/logo-login.png" class="center-block" style="width: 20%;">
                             <div class="text-center">
-                                <h3>Sign up</h3>
+                                <h3>Register</h3>
                             </div>
-                            <div class="row">
-                                <input type="text" name="" id="input" class="form-control" value="" required="required" pattern="" title="" placeholder="Tên đăng nhập">
+                             <div class="row" style="margin-top: 20px;margin-bottom: 20px;">
+                                <h6 style="margin-bottom: 5px;">Họ tên:</h6>
+                                <input type="text" name="displayname" id="inputName" class="form-control" value="" title="" placeholder="Nhập họ tên">
                             </div>
-                            <div class="row">
-                                <input type="password" name="" id="input" class="form-control" required="required" title="" placeholder="Nhập mật khẩu của bạn">
+                            <div class="row" style="margin-top: 20px;margin-bottom: 20px;">
+                                <h6 style="margin-bottom: 5px;">Tên đăng nhập:</h6>
+                                <input type="text" name="username" id="username" class="form-control" value="" required="required" title="" placeholder="Tên đăng nhập*">
                             </div>
-                            <div class="row">
-                                <input type="password" name="" id="input" class="form-control" required="required" title="" placeholder="Xác nhận lại mật khẩu">
+                            <div class="row" style="margin-top: 20px;margin-bottom: 20px;">
+                                <h6 style="margin-bottom: 5px;">Mật khẩu:</h6>
+                                <input type="password" name="password" id="password" class="form-control" required="required" title="" placeholder="Nhập mật khẩu của bạn*">
                             </div>
-                            <div class="row">
-                                <input type="number" name="" id="input" class="form-control" value="" required="required" title="" placeholder="Nhập số điện thoại của bạn">
+                            <div class="row" style="margin-top: 20px;margin-bottom: 20px;">
+                                <h6 style="margin-bottom: 5px;">Xác nhận mật khẩu*:</h6>
+                                <input type="password" name="retype_password" id="retype_password" class="form-control" required="required" title="" placeholder="Xác nhận lại mật khẩu*">
                             </div>
-                            <div class="row">
-                                <input type="email" name="" id="input" class="form-control" value="" required="required" title="" placeholder="Nhập email của bạn">
+                            <div class="row" style="margin-top: 20px;margin-bottom: 20px;">
+                                <h6 style="margin-bottom: 5px;">Số điện thoại:</h6>
+                                <input type="number" name="phone" id="number" class="form-control" value="" title="" placeholder="Nhập số điện thoại của bạn">
                             </div>
-                            <div class="row form-inline">
-                                <input type="text" name="" id="input" class="col-md-8 form-control" value="" required="required" pattern="" title="" placeholder="Nhập mã xác nhận">
+                            <div class="row" style="margin-top: 20px;margin-bottom: 20px;">
+                                <h6 style="margin-bottom: 5px;">Email:</h6>
+                                <input type="email" name="email" id="email" class="form-control" value="" title="" placeholder="Nhập email của bạn">
+                            </div>
+                            <div class="row" style="margin-top: 20px;margin-bottom: 20px;">
+                                <h6 style="margin-bottom: 5px;">Ngày sinh:</h6>
+                                <input type="date" name="birthday" id="input" class="form-control" value="" title="">
+                            </div>
+                            <div class="row form-inline" style="margin-top: 20px;margin-bottom: 20px;">
+                                <input type="text" name="" id="input" class="col-md-8 form-control" value="" title="" placeholder="Nhập mã xác nhận">
                                 <img class="col-md-4" src="/images/capcha.png">
                             </div>
-                            <div class="container-fluid">
+                            <div class="container-fluid" style="margin-top: 20px;margin-bottom: 20px;">
                                 <div class="g-recaptcha col-md-12 center-block" data-sitekey="6LcesFUUAAAAAJ9CIog9x0js4AowNVfJNYTgvr_K"></div>
                             </div>
-                            <div class="row" style="float: right">
+                            <div class="row" style="float: right; margin-top: 20px;margin-bottom: 20px;">
                                 <button type="submit" class="btn btn-success right">Đăng kí</button>
-                                <button type="" class="btn btn-danger right" id="btnExit">Hủy bỏ</button>
+                                <button type="reset" class="btn btn-danger right" id="btnExit">Nhập lại</button>
                             </div>
-                            
+
                         </div>
-                    </form><!--end form sign up-->
+                </form><!--end form sign up-->
                 </div>
             </div>
         </div>
@@ -232,16 +252,24 @@
     var signup = document.getElementById("signup");
     var btnExit = document.getElementById("btnExit");
     var loginform = document.getElementById("login-form");
-    var signupform = document.getElementById("signup-form")
+    var signupform = document.getElementById("signup-form");
+    var loginbtn = document.getElementById("loginbtn");
+    loginbtn.onclick = function open2() {
+        // alert('2222222222222222222222222222');
+        loginform.style.display = "block";
+        signupform.style.display = "none";   
+    }
     signup.onclick = function open(){
-        loginform.style.display = "none"
-        signupform.style.display = "block"
+        // alert('111111111111111111111111');
+        loginform.style.display = "none";
+        signupform.style.display = "block";
     }
     btnExit.onclick = function close(){
 
     }
     $("#loginModal").on("hide.bs.modal", function () {
-        loginform.style.display = "block"
-        signupform.style.display = "none"
+        loginform.style.display = "block";
+        signupform.style.display = "none";
     });
+
 </script>

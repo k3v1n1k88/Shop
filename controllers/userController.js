@@ -13,7 +13,8 @@ router.get('/', function(req, res, next) {
 		// }
 		return res.render('user', {
 			user: req.session.user,
-			isDetailMode: true
+			isDetailMode: true,
+			userdisplayname: req.session.userdisplayname
 		});
 	}
 	res.redirect('/');
@@ -26,13 +27,15 @@ router.get('/:type', function(req, res, next) {
 		if (type === 'detail') {
 			return res.render('user', {
 				user: req.session.user,
-				isDetailMode: true
+				isDetailMode: true,
+				userdisplayname: req.session.userdisplayname
 			});
 		} if (type === 'orders') {
 			if (req.session.user.username === 'admin') {
 				return res.render('user', {
 						user: req.session.user,
-						isDetailMode: false
+						isDetailMode: false,
+						userdisplayname: req.session.userdisplayname
 					});
 			}
 			var promise1 = orderRepo.loadAllOrdersWithUsername(req.session.user.username);
@@ -42,7 +45,16 @@ router.get('/:type', function(req, res, next) {
 					// console.log(ords);
 					// console.log(prods);
 					// 
-									
+					// console.log('------------------------------------------- ords ' + ords);
+					if (ords[0] === undefined) {
+						// console.log('------------------------------------------- ords ' + ords);
+						return res.render('user', {
+							user: req.session.user,
+							orders: null,
+							isDetailMode: false,
+							userdisplayname: req.session.userdisplayname
+						});
+					}
 					var orders = [];
 					// console.log('-------------------------------------------');
 					for (var order of ords) {
@@ -73,7 +85,8 @@ router.get('/:type', function(req, res, next) {
 						user: req.session.user,
 						orders: orders,
 						isDetailMode: false,
-						isPayment: isPayment
+						isPayment: isPayment,
+						userdisplayname: req.session.userdisplayname
 					});
 
 				})		

@@ -1,40 +1,53 @@
-<form id="signup-form" action="user/login" method="post" class="col-md-6 col-md-offset-1">
+<form id="signup-form" action="/register" method="post" class="col-md-6 col-md-offset-1">
         <div class="container-fluid">
             <img src="/images/logo-login.png" class="center-block" style="width: 20%;">
             <div class="text-center">
-                <h3>Sign up</h3>
+                <h3>Register</h3>
             </div>
-            <div class="row">
-                <input type="text" name="username" id="username" class="form-control" value="" required="required" pattern="" title="" placeholder="Tên đăng nhập">
+            {{#if isFailed}}
+                <span style="margin-top: 5px; margin-bottom: 5px;color: #ff5252;">Đăng ký thất bại.</span>
+            {{/if}}
+            {{#if isWrongPassword}}
+                <span style="margin-top: 5px; margin-bottom: 5px;color: #ff5252;">Đăng ký thất bại. Mật khẩu không khớp.</span>
+            {{/if}}
+             <div class="row" style="margin-top: 20px;margin-bottom: 20px;">
+                <h6 style="margin-bottom: 5px;">Họ tên:</h6>
+                <input type="text" name="displayname" id="inputName" class="form-control" value="" title="" placeholder="Nhập họ tên">
             </div>
-            <div class="row">
-                <input type="password" name="password" id="password" class="form-control" required="required" title="" placeholder="Nhập mật khẩu của bạn">
+            <div class="row" style="margin-top: 20px;margin-bottom: 20px;">
+                <h6 style="margin-bottom: 5px;">Tên đăng nhập:</h6>
+                <input type="text" name="username" id="username" class="form-control" value="" required="required" title="" placeholder="Tên đăng nhập*">
             </div>
-            <div class="row">
-                <input type="password" name="retype_password" id="retype_password" class="form-control" required="required" title="" placeholder="Xác nhận lại mật khẩu">
+            <div class="row" style="margin-top: 20px;margin-bottom: 20px;">
+                <h6 style="margin-bottom: 5px;">Mật khẩu:</h6>
+                <input type="password" name="password" id="password" class="form-control" required="required" title="" placeholder="Nhập mật khẩu của bạn*">
             </div>
-            <div class="row">
-                <input type="number" name="number" id="number" class="form-control" value="" required="required" title="" placeholder="Nhập số điện thoại của bạn">
+            <div class="row" style="margin-top: 20px;margin-bottom: 20px;">
+                <h6 style="margin-bottom: 5px;">Xác nhận mật khẩu*:</h6>
+                <input type="password" name="retype_password" id="retype_password" class="form-control" required="required" title="" placeholder="Xác nhận lại mật khẩu*">
             </div>
-            <div class="row">
-                <input type="email" name="email" id="email" class="form-control" value="" required="required" title="" placeholder="Nhập email của bạn">
+            <div class="row" style="margin-top: 20px;margin-bottom: 20px;">
+                <h6 style="margin-bottom: 5px;">Số điện thoại:</h6>
+                <input type="number" name="phone" id="number" class="form-control" value="" title="" placeholder="Nhập số điện thoại của bạn">
             </div>
-            <div class="row">
-                <input type="date" name="birth_date" id="input" class="form-control" value="" required="required" title="">
+            <div class="row" style="margin-top: 20px;margin-bottom: 20px;">
+                <h6 style="margin-bottom: 5px;">Email:</h6>
+                <input type="email" name="email" id="email" class="form-control" value="" title="" placeholder="Nhập email của bạn">
             </div>
-            <div class="row">
-                <input type="text" name="name" id="inputName" class="form-control" value="" required="required" pattern="" title="" placeholder="Nhập họ tên">
+            <div class="row" style="margin-top: 20px;margin-bottom: 20px;">
+                <h6 style="margin-bottom: 5px;">Ngày sinh:</h6>
+                <input type="date" name="birthday" id="input" class="form-control" value="" title="">
             </div>
-            <div class="row form-inline">
-                <input type="text" name="" id="input" class="col-md-8 form-control" value="" required="required" pattern="" title="" placeholder="Nhập mã xác nhận">
+            <div class="row form-inline" style="margin-top: 20px;margin-bottom: 20px;">
+                <input type="text" name="" id="input" class="col-md-8 form-control" value="" title="" placeholder="Nhập mã xác nhận">
                 <img class="col-md-4" src="/images/capcha.png">
             </div>
-            <div class="container-fluid">
+            <div class="container-fluid" style="margin-top: 20px;margin-bottom: 20px;">
                 <div class="g-recaptcha col-md-12 center-block" data-sitekey="6LcesFUUAAAAAJ9CIog9x0js4AowNVfJNYTgvr_K"></div>
             </div>
-            <div class="row" style="float: right">
+            <div class="row" style="float: right; margin-top: 20px;margin-bottom: 20px;">
                 <button type="submit" class="btn btn-success right">Đăng kí</button>
-                <button type="" class="btn btn-danger right" id="btnExit">Hủy bỏ</button>
+                <button type="reset" class="btn btn-danger right" id="btnExit">Nhập lại</button>
             </div>
 
         </div>
