@@ -4,7 +4,7 @@ exports.load = sql => {
     return new Promise((resolve, reject) => {
         var cn = mysql.createConnection({
             host: 'localhost',
-            port: 7000,
+            port: 3307,
             user: 'root',
             password: '',
             database: 'triplevshop'
@@ -28,7 +28,7 @@ exports.save = sql => {
     return new Promise((resolve, reject) => {
         var cn = mysql.createConnection({
             host: 'localhost',
-            port: 7000,
+            port: 3307,
             user: 'root',
             password: '',
             database: 'triplevshop'
