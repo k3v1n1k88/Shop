@@ -16,6 +16,7 @@ router.post('/', function(req, res) {
     if (req.session.isLogged) {
         return res.redirect('/user/detail');
     } else {
+        console.log('--------------------------');
     	var user = {
     		username: req.body.username,
     		password: SHA256(req.body.password).toString()
@@ -36,9 +37,7 @@ router.post('/', function(req, res) {
                 }
                 return res.redirect(url); 
             } else {
-                res.redirect('/login', {
-                    isFailed: true
-                });
+                res.redirect('/login');
             }
         });
     }

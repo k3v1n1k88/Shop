@@ -21,6 +21,13 @@ router.get('/', function(req, res, next) {
 	// return res.render('user');
 });
 
+router.get('/logout', function(req, res, next) {
+	req.session.user = null;
+	req.session.userdisplayname = null; 
+	res.redirect('/');
+	// return res.render('user');
+});
+
 router.get('/:type', function(req, res, next) {
 	if (req.session.isLogged) {
 		var type = req.params.type;
