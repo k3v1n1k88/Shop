@@ -83,7 +83,14 @@
 							<div class="tensanpham"><h5>{{ this.name }}</h5></div>
 							<div class="giasanpham"><h5 class="color-red"  style="margin-top: 4px; margin-bottom: 4px;">{{ this.price }} VND</h5></div>
 							<div class="loaisanpham"><h6>{{ this.type }}</h6></div>
+							<form class="col-md-5" action="/cart/add/{{ this.id }}" method="post">
+								<button type="submit" class="btn btn-danger">Add Cart</button>
+							</form>
+							<form class="col-md-5" action="/cart/add/{{ this.id }}" method="post">
+								<button type="submit" class="btn btn-success">Buy</button>
+							</form>
 						</div>
+						
 						{{/if}}
 						{{/each}}
 					</div>
@@ -95,7 +102,14 @@
 							<div class="tensanpham"><h5>{{ this.name }}</h5></div>
 							<div class="giasanpham"><h5 class="color-red" style="margin-top: 4px; margin-bottom: 4px;number-format: "###,##0.00" ;">{{ this.price }} VND</h5></div>
 							<div class="loaisanpham"><h6>{{ this.type }}</h6></div>
+							<form class="col-md-5" action="/cart/add/{{ this.id }}" method="post">
+								<button type="submit" class="btn btn-danger">Add Cart</button>
+							</form>
+							<form class="col-md-5" action="/cart/add/{{ this.id }}" method="post">
+								<button type="submit" class="btn btn-success">Buy</button>
+							</form>
 						</div>
+						
 						{{/if}}
 						{{/each}}
 					</div>
@@ -107,6 +121,12 @@
 							<div class="tensanpham"><h5>{{ this.name }}</h5></div>
 							<div class="giasanpham"><h5 class="color-red"  style="margin-top: 4px; margin-bottom: 4px;">{{ this.price }} VND</h5></div>
 							<div class="loaisanpham"><h6>{{ this.type }}</h6></div>
+							<form class="col-md-5" action="/cart/add/{{ this.id }}" method="post">
+								<button type="submit" class="btn btn-danger">Add Cart</button>
+							</form>
+							<form class="col-md-5" action="/cart/add/{{ this.id }}" method="post">
+								<button type="submit" class="btn btn-success">Buy</button>
+							</form>
 						</div>
 						{{/if}}
 						{{/each}}
