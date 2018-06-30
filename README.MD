@@ -34,8 +34,8 @@ Tran Thi Thanh Van  - 1512663
 
 # Hope this project will successfull
 # Cheer, bro
-# Completion schedule (last updated: 28/04/2018)
+# Completion schedule (last updated: 01/07/2018)
 ```
 Front-end: 90%
-Back-end: 33%
+Back-end: 90%
 ```
