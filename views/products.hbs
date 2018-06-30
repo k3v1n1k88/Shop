@@ -4,8 +4,6 @@
 				<h3>Shop</h3>
 				<hr style="border-color:#000; margin-top: 3px;margin-bottom: 0px">
 				<a href="javascript:;" style="color:#333; width: 100%; margin-top: 10px; margin-bottom: 10px;" class="pull-left"><h5>Home</h5></a>
-				<a href="javascript:;" style="color:#333; width: 100%; margin-top: 10px; margin-bottom: 10px;" class="pull-left"><h5>Túi xách</h5></a>
-				<a href="javascript:;" style="color:#333; width: 100%; margin-top: 10px; margin-bottom: 10px;" class="pull-left"><h5>Balô</h5></a>
 				{{!-- <ul class="nav nav-stacked">
 					<li><a href="javascript:;" style="color:#000; width: 100%;" class="pull-left">Home</a></li>
 					<li><a href="javascript:;" style="color:#000; width: 100%;" class="pull-left">Túi xách</a></li>
@@ -85,7 +83,14 @@
 							<div class="tensanpham"><h5>{{ this.name }}</h5></div>
 							<div class="giasanpham"><h5 class="color-red"  style="margin-top: 4px; margin-bottom: 4px;">{{ this.price }} VND</h5></div>
 							<div class="loaisanpham"><h6>{{ this.type }}</h6></div>
+							<form class="col-md-5" action="/cart/add/{{ this.id }}" method="post">
+								<button type="submit" class="btn btn-danger">Add Cart</button>
+							</form>
+							<form class="col-md-5" action="/cart/add/{{ this.id }}" method="post">
+								<button type="submit" class="btn btn-success">Buy</button>
+							</form>
 						</div>
+						
 						{{/if}}
 						{{/each}}
 					</div>
@@ -97,7 +102,14 @@
 							<div class="tensanpham"><h5>{{ this.name }}</h5></div>
 							<div class="giasanpham"><h5 class="color-red" style="margin-top: 4px; margin-bottom: 4px;number-format: "###,##0.00" ;">{{ this.price }} VND</h5></div>
 							<div class="loaisanpham"><h6>{{ this.type }}</h6></div>
+							<form class="col-md-5" action="/cart/add/{{ this.id }}" method="post">
+								<button type="submit" class="btn btn-danger">Add Cart</button>
+							</form>
+							<form class="col-md-5" action="/cart/add/{{ this.id }}" method="post">
+								<button type="submit" class="btn btn-success">Buy</button>
+							</form>
 						</div>
+						
 						{{/if}}
 						{{/each}}
 					</div>
@@ -109,6 +121,12 @@
 							<div class="tensanpham"><h5>{{ this.name }}</h5></div>
 							<div class="giasanpham"><h5 class="color-red"  style="margin-top: 4px; margin-bottom: 4px;">{{ this.price }} VND</h5></div>
 							<div class="loaisanpham"><h6>{{ this.type }}</h6></div>
+							<form class="col-md-5" action="/cart/add/{{ this.id }}" method="post">
+								<button type="submit" class="btn btn-danger">Add Cart</button>
+							</form>
+							<form class="col-md-5" action="/cart/add/{{ this.id }}" method="post">
+								<button type="submit" class="btn btn-success">Buy</button>
+							</form>
 						</div>
 						{{/if}}
 						{{/each}}

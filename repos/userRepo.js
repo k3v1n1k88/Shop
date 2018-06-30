@@ -17,9 +17,11 @@ exports.insertUser = user => {
 }
 
 exports.updateUser = user => {
-	var sql = `UPDATE users SET password = '${user.password}', email = '${user.email}', phone = ${user.phone}, displayname = '${user.displayname}', birthday = ${user.birthday}) WHERE username = '${user.username}'`;
+	var sql = `UPDATE users SET password = '${user.password}', email = '${user.email}', phone = ${user.phone}, displayname = '${user.displayname}', birthday = '${user.birthday}' WHERE username = '${user.username}'`;
+	console.log('------------------- udapte user ' + sql);
 	return db.save(sql);
 }
+
 
 // exports.loadAllProducts = () => {
 // 	var sql = 'select * from products';

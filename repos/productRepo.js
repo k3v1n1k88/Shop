@@ -60,7 +60,93 @@ exports.loadProductsWithOrderID = id => {
 	return db.load(sql);
 }
 
+exports.updateProduct = prod => {
+	console.log('----------------- +++++++++++++');
+	var sql = `UPDATE products SET name = '${prod.name}',
+					type = '${prod.type}',
+					manufacturer = '${prod.manufacturer}', 
+					quantity = ${prod.quantity}, 
+					price = ${prod.price}
+				WHERE id = '${prod.id}'`;
+	console.log(`----------------- +++++++++++++ ${prod.id}`);
+	return db.save(sql);
+}
+
 exports.updateQuantityAndBuy = (id, offset) => {
 	var sql = `UPDATE products SET quantity = quantity + ${offset}, buy = buy - ${offset}  WHERE id = '${id}'`;
 	return db.save(sql);
+}
+
+
+exports.updateQuantityAndBuy = (id, offset) => {
+	var sql = `UPDATE products SET quantity = quantity + ${offset}, buy = buy - ${offset}  WHERE id = '${id}'`;
+	return db.save(sql);
+}
+
+exports.loadByType = (type,branch,maxprice,minprice) => {
+	console.log(type);
+	console.log(branch===undefined);
+	console.log(Number(maxprice));
+	console.log(Number(minprice));
+	var maxprice = Number(maxprice);
+	var minprice = Number(minprice);
+	var list_sp='';
+	if(!(type===undefined)){
+		if(Array.isArray(type)){
+			for(var i = 0;i<type.length;i++){
+				list_sp+=`type = '${type[i]}' `;
+				if(i<type.length-1){
+					list_sp+='or ';
+				}
+			}
+		}
+		else{
+			list_sp+=`type = '${type}' `
+		}
+		if(!(branch===undefined))
+			list_sp+=" and ";
+	}
+	console.log(list_sp);
+	if(!(branch===undefined)){
+		if(Array.isArray(branch)){
+			for(var i = 0;i<branch.length;i++){
+				list_sp+=`manufacturer = '${branch[i]}' `;
+				if(i<branch.length-1){
+					list_sp+='or ';
+				}
+			}
+		}
+		else{
+			list_sp+=`manufacturer = '${branch}' `
+		}
+		if(maxprice>0||minprice>0)
+			list_sp+=" and ";
+	}
+	if(maxprice>0){
+		list_sp+=` price > ${minprice}`;
+		if(minprice>0)
+			list_sp+=` and `;
+	}
+	if(maxprice>0){
+		list_sp+=` price < ${maxprice}`;
+	}
+	console.log(list_sp);
+	if(!(list_sp===''))
+		list_sp='where '+list_sp;
+	console.log(list_sp);
+	var sql = `select * from products ${list_sp}`;
+	return db.load(sql);
+}
+
+exports.loadUpdateView = id =>{
+	var sql = `UPDATE products set view = view+1 WHERE id = '${id}'`;
+	return db.save(sql);
+}
+exports.loadSameTypeById = id=>{
+	var sql = `SELECT * FROM products WHERE type = (SELECT type FROM products WHERE id='${id}')`
+	return db.load(sql);
+};
+exports.loadSameBranchByID = id=>{
+	var sql = `SELECT * FROM products WHERE manufacturer = (SELECT manufacturer FROM products WHERE id='${id}')`
+	return db.load(sql);
 }

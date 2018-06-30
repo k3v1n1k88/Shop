@@ -24,6 +24,7 @@ router.get('/', function(req, res, next) {
 router.get('/logout', function(req, res, next) {
 	req.session.user = null;
 	req.session.userdisplayname = null; 
+	req.session.isLogged = false;
 	res.redirect('/');
 	// return res.render('user');
 });
@@ -110,11 +111,74 @@ router.get('/:type', function(req, res, next) {
 	// return res.render('user');
 });
 
-// router.get('/login', function(req, res, next) { 
-// 	if (req.session.isLogged) {
-// 		res.redirect('/');
-// 	}
-// 	res.redirect('/');
-// });
+router.post('/changeDisplayname', function(req, res) {
+	console.log('--------------------- changeDisplayname ' + newdisplayname);
+	var newdisplayname = req.body.new_displayname;
+	req.session.user.displayname = newdisplayname;
+	if (newdisplayname === '') {
+        req.session.userdisplayname = req.session.user.username; 
+    } else {
+        req.session.userdisplayname = req.session.user.displayname;
+    }
+    console.log('--------------------- changeDisplayname ' + newdisplayname);
+	userRepo.updateUser(req.session.user)
+		.then(value => {
+			return res.redirect('/user');
+		})
+		.catch(error => {
+			return res.redirect('/user');
+		});
+});
+
+router.post('/changePassword', function(req, res) {
+	var oldpw = req.body.old_password;
+	var newpw = req.body.new_password;
+	var retypepw = req.body.retype_password;
+	if (newpw !== retypepw) {
+		return res.redirect('/user');
+	} else {
+		if (req.session.user.password ===  SHA256(oldpw).toString()) {
+			req.session.user.password = SHA256(newpw).toString();
+			userRepo.updateUser(req.session.user)
+				.then(value => {
+					return res.redirect('/user');
+				})
+				.catch(error => {
+					return res.redirect('/user');
+				});
+		} else {
+			return res.redirect('/user');
+		}
+	}
+	
+});
+
+router.post('/changeEmail', function(req, res) {
+	var newemail = req.body.new_email;
+	console.log('--------------- changeemail ' + newemail);
+	req.session.user.email = newemail;
+
+	userRepo.updateUser(req.session.user)
+		.then(value => {
+			return res.redirect('/user');
+		})
+		.catch(error => {
+			return res.redirect('/user');
+		});
+});
+
+router.post('/changePhone', function(req, res) {
+	var newphone = req.body.new_phone;
+	console.log('------------------- phone ' + newphone);
+	req.session.user.phone = +newphone;
+
+	userRepo.updateUser(req.session.user)
+		.then(value => {
+			return res.redirect('/user');
+		})
+		.catch(error => {
+			return res.redirect('/user');
+		});
+});
 
 module.exports = router;

@@ -24,7 +24,8 @@ router.get('/detailId=:id', function(req, res, next) {
 				ordersID: ordersID,
 				orders: orders,
 				totalprice: totalprice,
-				userdisplayname: req.session.userdisplayname
+				userdisplayname: req.session.userdisplayname,
+				user: req.session.user
 			});
 		})		
 		.catch(err => {

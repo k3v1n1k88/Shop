@@ -16,6 +16,12 @@ exports.loadAllOrdersWithUsername = username => {
 	return db.load(sql);
 }
 
+exports.loadAllOrdersWithoutUsername = () => {
+	var sql = `select * from orders ORDER BY date DESC`;
+	console.log('--------- loadAllOrdersWithUsername ' + sql);
+	return db.load(sql);
+}
+
 exports.loadAllProducts = () => {
 	var sql = `select products.*, productsinorder.* from productsinorder, products where productsinorder.product = products.id`;
 	return db.load(sql);
@@ -44,6 +50,12 @@ exports.updateOrder = order => {
 exports.loadLastOrderID = username => {
 	var sql = `select max(id) as id from orders where user = '${username}'`;
 	return db.load(sql);	
+}
+
+exports.updateStatus = (id, status) => {
+	var sql = `UPDATE orders SET status = '${status}' WHERE id = ${id}`;
+	console.log('------- ' + sql);
+	return db.save(sql);	
 }
 
 // exports.loadTopViews = top => {

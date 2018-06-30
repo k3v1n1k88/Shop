@@ -48,57 +48,40 @@
                 <div id="price-item">
                     <h3>{{ this.price }}VND</h3>
                 </div>
-                <div class="selection" style="margin-top: 30px">
-                    <div id="selectionsize" class="col-md-8">
-                        <div class="form-group">
-                            <select class="form-control">
-                                <option value="">Chọn kích cỡ bạn muốn</option>
-                                <option value="">Size 1</option>
-                                <option value="">Size 2</option>
-                                <option value="">Size 3</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div id="selectionqty" class="col-md-4">
-                        <div class="form-group">
+                <div class="selection col-md-12" style="margin: 30px">
+                    <div id="selectionqty" class="col-md-6 col-offset-0">
+                        {{!-- <div class="form-group">
                             <select class="form-control">
                                 <option value="">Chọn số lượng</option>
                                 <option value="">1 cái</option>
                                 <option value="">2 cái</option>
                                 <option value="">3 cái</option>
                             </select>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
                 <!--end selection-->
-                <div id="color">
-                    <h3>Color</h3>
-                    <div class="color">
-                        <a href="#"><img class="img-thumbnail" src="/assets/color/black.png" style="margin: 7px;width:50px"></a>
-                        <a href="#"><img class="img-thumbnail" src="/assets/color/red.png" style="margin: 7px;width:50px"></a>
-                        <a href="#"><img class="img-thumbnail" src="/assets/color/green.png" style="margin: 7px;width:50px"></a>
-                    </div>
-                </div>
-                <div id="nhasanxuat">
+
+                <div id="nhasanxuat" style="margin: 30px;margin-left:10px">
                 	<h5>Loại: {{ this.type }}</h5>
                 </div>
-                <div id="xuatxu">
+                <div id="xuatxu" style="margin: 30px;margin-left:10px">
                 	<h5>Xuất xứ: {{ this.origin }}<h5>
                 </div>
-                <div id="nhasanxuat">
+                <div id="nhasanxuat" style="margin: 30px;margin-left:10px">
                 	<h5>Nhà sản xuất: {{ this.manufacturer }}</h5>
                 </div>
                 <!--end color chosen box-->
               
-                <div class="text-center" style="margin-top:50px">
-                    <div id="sold-quatity"><h4>Đã có <i><b>{{ this.buy }}</b></i> người đặt sản phẩm này<h4></div>
+                <div class="text-center" style="margin: 30px">
+                    <div id="sold-quatity"><h4>Đã có <i><b>{{ this.buy }}</b></i> người mua sản phẩm này<h4></div>
                 </div>
-                <form class="form-horizontal" id="" method="post" action="/product/add/{{ this.id }}">
+                <form class="form-horizontal" id="" method="post" action="/cart/add/{{ this.id }}">
 	                <button type="button submit" class="btn btn-success col-md-6">
 	                    <h4>Thêm vào giỏ hàng</h4>
 	                </button>
 	            </form>
-	            <form class="form-horizontal" id="" method="post" action="/product/buy/{{ this.id }}">
+	            <form class="form-horizontal" id="" method="post" action="/cart/buy/{{ this.id }}">
 	                <button type="button submit" class="btn btn-danger col-md-6">
 	                    <h4>Mua ngay</h4>
 	                </button>
@@ -134,42 +117,26 @@
                             <!-- Wrapper for slides -->
                             <div class="carousel-inner">
 								<div class="item active ">
+									{{# each listSameType13}}
 									<div class="row ">
 										<div class="col-md-4">
-											<a href="# ">
-												<img src="/assets/Sanpham/sanphamkhac_1.jpg " class="" style="height: 250px;">
-											</a>
-										</div>
-										<div class="col-md-4">
-											<a href="# ">
-												<img src="/assets/Sanpham/sanphamkhac_2.jpg" style="height: 250px;">
-											</a>
-										</div>
-										<div class="col-md-4">
-											<a href="# ">
-												<img src="/assets/Sanpham/sanphamkhac_4.jpg " class="img-responsive " style="height: 250px;">
+											<a href="/product/{{this.id}}">
+												<img src="/assets/image/{{ this.image }}" class="" style="height: 250px;">
 											</a>
 										</div>
 									</div>
+									{{/each}}
 								</div>
 								<div class="item ">
+									{{# each listSameType46}}
 									<div class="row ">
-										<div class="col-xs-4 ">
-											<a href="# ">
-												<img src="/assets/Sanpham/sanphamkhac_4.jpg " class="img-responsive " style="height: 250px;">
-											</a>
-										</div>
-										<div class="col-xs-4 ">
-											<a href="# ">
-												<img src="/assets/Sanpham/sanphamkhac_5.jpg " class="img-responsive " style="height: 250px;">
-											</a>
-										</div>
-										<div class="col-xs-4 ">
-											<a href="# ">
-												<img src="/assets/Sanpham/sanphamkhac_6.jpg " class="img-responsive " style="height: 250px;">
+										<div class="col-md-4">
+											<a href="/product/{{this.id}}">
+												<img src="/assets/image/{{ this.image }}" class="" style="height: 250px;">
 											</a>
 										</div>
 									</div>
+									{{/each}}
 								</div>					
 							</div>
 							<!-- Left and right controls -->

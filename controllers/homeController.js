@@ -49,6 +49,7 @@ router.get('/', function (req, res, next) {
 						next_topview_products: next_topview_products,
 						topnew_products: topview_products,
 						next_topnew_products: next_topnew_products,
+						user: req.session.user,
 						userdisplayname: req.session.userdisplayname
 					});
 					console.log("Loaded top 10 view data completed.");
@@ -65,6 +66,7 @@ router.get('/', function (req, res, next) {
 							next_topview_products: null,
 							topnew_products: null,
 							next_topnew_products: null,
+							user: req.session.user,
 							userdisplayname: req.session.userdisplayname
 						});
 				});	
@@ -79,6 +81,7 @@ router.get('/', function (req, res, next) {
 						next_topbuy_products: null,
 						topview_products: null,
 						next_topview_products: null,
+						user: req.session.user,
 						userdisplayname: req.session.userdisplayname
 					});
 				});	
@@ -93,6 +96,7 @@ router.get('/', function (req, res, next) {
 				next_topbuy_products: null,
 				topview_products: null,
 				next_topview_products: null,
+				user: req.session.user,
 				userdisplayname: req.session.userdisplayname
 			});
 		});
