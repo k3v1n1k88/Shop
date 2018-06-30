@@ -77,12 +77,15 @@ exports.updateQuantityAndBuy = (id, offset) => {
 	return db.save(sql);
 }
 
+<<<<<<< HEAD
 
 exports.updateQuantityAndBuy = (id, offset) => {
 	var sql = `UPDATE products SET quantity = quantity + ${offset}, buy = buy - ${offset}  WHERE id = '${id}'`;
 	return db.save(sql);
 }
 
+=======
+>>>>>>> 9c9bd8cfe1dbe9da68930f528fa03a6fd094e610
 exports.loadByType = (type,branch,maxprice,minprice) => {
 	console.log(type);
 	console.log(branch===undefined);
@@ -136,6 +139,7 @@ exports.loadByType = (type,branch,maxprice,minprice) => {
 	console.log(list_sp);
 	var sql = `select * from products ${list_sp}`;
 	return db.load(sql);
+<<<<<<< HEAD
 }
 
 exports.loadUpdateView = id =>{
@@ -149,4 +153,6 @@ exports.loadSameTypeById = id=>{
 exports.loadSameBranchByID = id=>{
 	var sql = `SELECT * FROM products WHERE manufacturer = (SELECT manufacturer FROM products WHERE id='${id}')`
 	return db.load(sql);
+=======
+>>>>>>> 9c9bd8cfe1dbe9da68930f528fa03a6fd094e610
 }

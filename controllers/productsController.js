@@ -142,6 +142,7 @@ router.get('/search', function(req, res, next){
 	
 });
 
+<<<<<<< HEAD
 // router.get('/searchbytext', function(req, res, next) { 
 // 	var id = req.params.id;
 // 	if (id <= 0) {
@@ -206,5 +207,4 @@ router.get('/search', function(req, res, next){
 // 		});	
 
 // });
-
 module.exports = router;
